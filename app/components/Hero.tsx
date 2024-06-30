@@ -35,6 +35,8 @@ const Hero = () => {
         SAVORY
       </h1>
 
+      <p className="text-4xl font-sans text-blanco-oscuro">HELADERIA & CAFETERIA</p>
+
       <Button classNameProps="" />
     </section>
   );

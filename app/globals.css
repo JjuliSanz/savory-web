@@ -3,17 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --blanco: #ECE0D1;
-  --blanco-oscuro: #DBC1AC;
+  --blanco: #ece0d1;
+  --blanco-oscuro: #dbc1ac;
   --marron-clarito: #967259;
   --marron-claro: #634832;
-  --marron: #38220F;
+  --marron: #38220f;
   --negro: #181305;
-  
+
   --amarillo: #f9e6ad;
 
   --blanco2: #f1ebe5;
   --blanco-oscuro2: #c9b29a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
