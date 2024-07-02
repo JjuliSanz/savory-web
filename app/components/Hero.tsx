@@ -6,7 +6,6 @@ import Image from "next/image";
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
-    videoRef.current?.load();
     videoRef.current?.play();
   }, []);
   return (
