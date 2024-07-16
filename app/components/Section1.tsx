@@ -108,8 +108,9 @@ const Section1 = () => {
   ];
 
   return (
-    <section className="w-full px-20 py-40 overflow-hidden relative">
-      <h2 className="text-5xl text-center">Descubre nuestro menu!</h2>
+    <section className="w-full px-20 py-40 overflow-hidden relative bg-[url('/bg-marron.jpg')] bg-fixed bg-cover ">
+      <h2 className="text-5xl text-center">Nosotros Servimos!</h2>
+      {/* <h2 className="text-5xl text-center">Descubre Nuestro Menu!</h2> */}
       <Swiper
         grabCursor={true}
         slidesPerView={4}
@@ -135,7 +136,10 @@ const Section1 = () => {
               imageSrc={card.imageSrc}
               title={card.title}
             />
-            <Link href="" className="block mx-auto mt-6 px-4 py-2 transition duration-300 ease-in-out border-[5px] border-blanco-oscuro w-fit text-blanco hover:scale-95 hover:bg-marron ">
+            <Link
+              href=""
+              className="block mx-auto mt-6 px-4 py-2 transition duration-300 ease-in-out border-[5px] border-blanco-oscuro w-fit text-blanco hover:scale-95 hover:bg-marron "
+            >
               {card.title}
             </Link>
           </SwiperSlide>

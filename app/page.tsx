@@ -1,11 +1,13 @@
 import Hero from "./components/Hero";
 import Section1 from "./components/Section1";
+import Section2 from "./components/Section2";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen w-full flex flex-col pt-[50px]">
       <Hero/>
       <Section1/>
+      <Section2/>
     </main>
   );
 }
