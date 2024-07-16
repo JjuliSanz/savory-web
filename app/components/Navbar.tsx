@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 // import LogoIcon from "../components/icons/Logo";
 import {
@@ -39,10 +39,10 @@ const Navbar = () => {
         className="w-full fixed top-0 z-50 h-[50px] "
       >
         <motion.div
-          initial={{ opacity: 0, filter: "blur(20px)" }}
+          initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            filter: "blur(0px)",
+
             transition: {
               duration: 1.5,
               ease: "easeInOut",
@@ -88,7 +88,7 @@ const Navbar = () => {
             GALERÍA
           </a>
           {/* CONTACT BUTTON */}
-          <PhoneIcon/>
+          <PhoneIcon />
 
           {/* MOBILE MENU ICON */}
           <svg

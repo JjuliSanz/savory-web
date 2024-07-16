@@ -22,6 +22,40 @@
   box-sizing: border-box;
 }
 
+.swiper-wrapper {
+  /* gap: 10px; */
+}
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  background-color: var(--marron-claro);
+  opacity: 0.8;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background-color: var(--marron);
+  opacity: 1;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.custom-prev.swiper-button-disabled,
+.custom-next.swiper-button-disabled {
+  opacity: 0.3; /* Más clara si no hay más slides */
+  pointer-events: none;
+}
+
 body {
   background: var(--marron-clarito);
 }
