@@ -110,6 +110,7 @@ const Section1 = () => {
   return (
     <section className="w-full px-20 py-40 overflow-hidden relative bg-[url('/bg-marron.jpg')] bg-fixed bg-cover ">
       <h2 className="text-5xl text-center">Nosotros Servimos!</h2>
+      <p>En Savory, la calidad es el corazón de todo lo que hacemos.</p>
       {/* <h2 className="text-5xl text-center">Descubre Nuestro Menu!</h2> */}
       <Swiper
         grabCursor={true}
