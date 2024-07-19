@@ -172,20 +172,13 @@ const Section2 = () => {
             y auténticos, cada producto que sale de nuestra heladería lleva
             consigo el compromiso de proporcionar lo mejor a nuestros clientes.
           </p>
-          <p className="text-xl font-medium text-marron-clarito">
-            Nos enorgullece ofrecer una variedad de opciones para todos los
-            gustos y preferencias, desde los clásicos favoritos hasta
-            innovadoras creaciones que despiertan los sentidos. Cada helado es
-            una expresión de nuestro compromiso con la excelencia y la pasión
-            por deleitar paladares exigentes.
-          </p>
         </div>
         {/* Imagenes */}
         <div className="md:w-1/2 w-full mt-6 md:mt-0 flex flex-row gap-4">
           <div className="flex flex-col w-full gap-4 pb-8">
             <div className="relative w-full h-72 bg-marron">
               <Image
-                src="/food/chocotorta.jpeg" // Reemplaza esta ruta con la imagen real de Savory
+                src="/sabores.jpeg" // Reemplaza esta ruta con la imagen real de Savory
                 alt="Savory Heladería y Cafetería 1"
                 layout="fill"
                 objectFit="cover"
@@ -194,7 +187,7 @@ const Section2 = () => {
             </div>
             <div className="relative w-full h-72 bg-marron">
               <Image
-                src="/food/combo-entrada.jpeg" // Reemplaza esta ruta con la imagen real de Savory
+                src="/food/helado.jpeg" // Reemplaza esta ruta con la imagen real de Savory
                 alt="Savory Heladería y Cafetería 2"
                 layout="fill"
                 objectFit="cover"
@@ -225,23 +218,51 @@ const Section2 = () => {
         </div>
       </section>
 
-      {/* CALIDAD COMIDA */}
-      <section className="min-h-screen flex flex-col md:flex-row items-center justify-between px-10 py-20 bg-blanco-oscuro">
-        {/* Imagenes */}
-        <div className="md:w-1/2 w-full mt-6 md:mt-0 flex flex-row gap-4">
-          <div className="flex flex-col w-full gap-4 pb-8">
-            <div className="relative w-full h-72 bg-blanco-oscuro rounded-lg">
+      <section
+        className="relative h-[500px] bg-fixed bg-center bg-cover"
+        style={{ backgroundImage: "url(/food/torta-oreo.jpg)" }}
+      >
+        <div className="absolute inset-0 bg-marron opacity-70"></div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
+          <h2 className="text-4xl md:text-6xl font-bold text-blanco mb-4">
+            Delicias de la Cafetería en Savory
+          </h2>
+          <p className="text-lg md:text-xl mb-6">
+            Savory no solo es reconocida por sus deliciosos helados, sino
+            también por su variada y exquisita oferta de comidas y bebidas en su
+            cafetería.
+          </p>
+          <a
+            href="#more"
+            className="px-6 py-3 bg-rose-700 text-white rounded-full hover:bg-rose-800 transition duration-300 ease-in-out"
+          >
+            Read More
+          </a>
+        </div>
+      </section>
+
+      <section
+        className="min-h-screen relative bg-fixed bg-center bg-cover flex flex-col items-center justify-center px-10 py-20 bg-blanco-oscuro"
+        // style={{ backgroundImage: "url(/food/torta-oreo.jpg)" }}
+        style={{ backgroundImage: "url(/bg.jpg)" }}
+      >
+        <div className="absolute inset-0 bg-blanco-oscuro opacity-1"></div>
+        {/* Contenedor principal */}
+        <div className="flex flex-col md:flex-row w-full gap-4 z-10">
+          {/* Columna de imágenes a la izquierda */}
+          <div className="flex flex-col md:w-1/4 w-full gap-4">
+            <div className="relative w-full h-64 bg-blanco-oscuro rounded-lg">
               <Image
-                src="/tostadosjyq.jpeg" // Reemplaza esta ruta con la imagen real de Savory
+                src="/tostadosjyq.jpeg"
                 alt="Savory Heladería y Cafetería 1"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-lg shadow-lg"
               />
             </div>
-            <div className="relative w-full h-72 bg-blanco-oscuro rounded-lg">
+            <div className="relative w-full h-64 bg-blanco-oscuro rounded-lg">
               <Image
-                src="/milkshake-varios.jpg" // Reemplaza esta ruta con la imagen real de Savory
+                src="/milkshake-varios.jpg"
                 alt="Savory Heladería y Cafetería 2"
                 layout="fill"
                 objectFit="cover"
@@ -249,19 +270,49 @@ const Section2 = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col w-full gap-4 pt-8">
-            <div className="relative w-full h-72 bg-blanco-oscuro rounded-lg">
+
+          {/* Texto en el centro */}
+          <div className="md:w-1/2 w-full px-4 flex flex-col items-center justify-center">
+            <h2 className="text-4xl font-bold text-marron mb-4 text-center">
+              Delicias de la Cafetería en Savory
+            </h2>
+            <p className="text-xl font-medium text-marron-claro mb-4 text-center">
+              Savory no solo es reconocida por sus deliciosos helados, sino
+              también por su variada y exquisita oferta de comidas y bebidas en
+              su cafetería. Los clientes pueden disfrutar de una amplia
+              selección de tortas y pasteles, perfectos para acompañar con una
+              taza de café o té.
+            </p>
+            <p className="text-xl font-medium text-marron-claro mb-4 text-center">
+              Además ofrecemos una variedad de sándwiches, tanto fríos como
+              calientes, que son ideales para un almuerzo rápido o una merienda
+              sustanciosa. Entre las opciones de bebidas, los clientes pueden
+              elegir entre cafés fríos y calientes, preparados con los mejores
+              granos para satisfacer los gustos más exigentes.
+            </p>
+            <p className="text-xl font-medium text-marron-claro text-center">
+              Para aquellos con antojos más dulces, contamos con una deliciosa
+              selección de panqueques, medialunas, alfajores, budines y muffins,
+              todos preparados con ingredientes de alta calidad. O quizás los
+              wraps, una opción fresca y ligera, perfecta para cualquier momento
+              del día.
+            </p>
+          </div>
+
+          {/* Columna de imágenes a la derecha */}
+          <div className="flex flex-col md:w-1/4 w-full gap-4">
+            <div className="relative w-full h-64 bg-blanco-oscuro rounded-lg">
               <Image
-                src="/tortas01.jpg" // Reemplaza esta ruta con la imagen real de Savory
+                src="/tostones-jugos.webp"
                 alt="Savory Heladería y Cafetería 3"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-lg shadow-lg"
               />
             </div>
-            <div className="relative w-full h-72 bg-blanco-oscuro rounded-lg">
+            <div className="relative w-full h-64 bg-blanco-oscuro rounded-lg">
               <Image
-                src="/tostones-jugos.webp" // Reemplaza esta ruta con la imagen real de Savory
+                src="/tortas01.jpg"
                 alt="Savory Heladería y Cafetería 4"
                 layout="fill"
                 objectFit="cover"
@@ -270,32 +321,42 @@ const Section2 = () => {
             </div>
           </div>
         </div>
-        {/* Texto */}
-        <div className="md:w-1/2 w-full px-4">
-          <h2 className="text-4xl font-bold text-marron mb-4">
-            Delicias de la Cafetería en Savory
-          </h2>
-          <p className="text-xl font-medium text-marron-claro mb-4">
-            Savory no solo es reconocida por sus deliciosos helados, sino
-            también por su variada y exquisita oferta de comidas y bebidas en su
-            cafetería. Los clientes pueden disfrutar de una amplia selección de
-            tortas y pasteles, perfectos para acompañar con una taza de café o
-            té.
-          </p>
-          <p className="text-xl font-medium text-marron-claro mb-4">
-            Además ofrecemos una variedad de sándwiches, tanto fríos como
-            calientes, que son ideales para un almuerzo rápido o una merienda
-            sustanciosa. Entre las opciones de bebidas, los clientes pueden
-            elegir entre cafés fríos y calientes, preparados con los mejores
-            granos para satisfacer los gustos más exigentes.
-          </p>
-          <p className="text-xl font-medium text-marron-claro">
-            Para aquellos con antojos más dulces, contamos con una deliciosa
-            selección de panqueques, medialunas, alfajores, budines y muffins,
-            todos preparados con ingredientes de alta calidad. O quizas los
-            wraps, una opción fresca y ligera, perfecta para cualquier momento
-            del día.
-          </p>
+
+        {/* Fila de imágenes debajo del texto */}
+        <div className="flex flex-col md:flex-row w-full gap-4 mt-8">
+          <div className="flex flex-col md:w-1/3 w-full gap-4">
+            <div className="relative w-full h-64 bg-blanco-oscuro rounded-lg">
+              <Image
+                src="/food/alfajor.jpeg"
+                alt="Savory Heladería y Cafetería 5"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col md:w-1/3 w-full gap-4">
+            <div className="relative w-full h-64 bg-blanco-oscuro rounded-lg">
+              <Image
+                src="/food/sandwiches.jpeg"
+                alt="Savory Heladería y Cafetería 5"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col md:w-1/3 w-full gap-4">
+            <div className="relative w-full h-64 bg-blanco-oscuro rounded-lg">
+              <Image
+                src="/capuccino-edit.jpg"
+                alt="Savory Heladería y Cafetería 6"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </>
