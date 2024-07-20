@@ -7,7 +7,7 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
-import PhoneIcon from "@/assets/icons/PhoneIcon";
+import {PhoneIcon} from "@/assets/icons/PhoneIcon";
 // import { ContactButton } from "../components/ui/ContactButton";
 
 const Navbar = () => {
