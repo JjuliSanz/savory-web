@@ -77,7 +77,7 @@ const Section1 = () => {
       imageSrc: "/capuccino-edit.jpg",
       title: "CAFETERIA",
     },
-    { imageSrc: "/milshake-varios.jpg", title: "BEBIDAS FRIAS" },
+    { imageSrc: "/milkshake-varios.jpg", title: "BEBIDAS FRIAS" },
     {
       videoSrc: "/tortas01.mp4",
       imageSrc: "/tortas01.jpg",
