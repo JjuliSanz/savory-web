@@ -1,7 +1,19 @@
-import Image from "next/image";
 import React from "react";
+import GalleryImage from "./GalleryImage";
 
 const Galeria = () => {
+  const images = [
+    { src: "/barritas.jpeg", alt: "Barritas heladas", width: 1440, height: 1440 },
+    { src: "/tortas01.jpg", alt: "Tortas", width: 1080, height: 1080 },
+    { src: "/cubatones.jpeg", alt: "Cubatones", width: 1440, height: 1440 },
+    { src: "/pote.jpeg", alt: "Pote", width: 1440, height: 1800 },
+    { src: "/ensalada.jpg", alt: "Ensalada", width: 1080, height: 1080 },
+    { src: "/tostadosjyq.jpeg", alt: "Tostados jamon y queso", width: 1200, height: 1200 },
+    { src: "/food/conito-noche.jpeg", alt: "Conito noche", width: 1440, height: 1800 },
+    { src: "/food/yogurts.jpeg", alt: "Yogurts", width: 1440, height: 1080 },
+    { src: "/food/sandwiches.jpeg", alt: "Sandwiches", width: 1440, height: 1080 }
+  ];
+
   return (
     <section className="min-h-screen py-20 bg-blanco-oscuro">
       <div className="container mx-auto px-4">
@@ -9,87 +21,15 @@ const Galeria = () => {
           Nuestra Galería
         </h2>
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/barritas.jpeg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 1"
-              width={1440}
-              height={1440}
-              className="hover:scale-105 transition-transform duration-300"
+          {images.map((image, index) => (
+            <GalleryImage
+              key={index}
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
             />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/tortas01.jpg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 2"
-              width={1080}
-              height={1080}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/cubatones.jpeg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 3"
-              width={1440}
-              height={1440}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/pote.jpeg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 4"
-              width={1440}
-              height={1800}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/ensalada.jpg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 5"
-              width={1080}
-              height={1080}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/tostadosjyq.jpeg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 6"
-              width={1200}
-              height={1200}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/food/conito-noche.jpeg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 4"
-              width={1440}
-              height={1800}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/food/yogurts.jpeg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 5"
-              width={1440}
-              height={1080}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="break-inside relative w-full h-auto bg-blanco-oscuro rounded-lg overflow-hidden">
-            <Image
-              src="/food/sandwiches.jpeg" // Reemplaza esta ruta con la imagen real
-              alt="Descripción de la imagen 6"
-              width={1440}
-              height={1080}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </div>
+          ))}
         </div>
       </div>
     </section>

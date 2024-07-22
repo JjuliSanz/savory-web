@@ -108,9 +108,11 @@ const Section1 = () => {
   ];
 
   return (
-    <section className="w-full px-20 py-40 overflow-hidden relative bg-[url('/bg-marron.jpg')] bg-fixed bg-cover ">
-      <h2 className="text-5xl text-center">Nosotros Servimos!</h2>
-      <p>En Savory, la calidad es el corazón de todo lo que hacemos.</p>
+    <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg-marron.jpg')] bg-fixed bg-cover relative">
+      {/* <div className="absolute inset-0 bg-marron opacity-50 z-0"></div> */}
+      <h2 className="text-blanco font-bold text-5xl text-center z-10">
+        Nosotros Servimos!
+      </h2>
       {/* <h2 className="text-5xl text-center">Descubre Nuestro Menu!</h2> */}
       <Swiper
         grabCursor={true}
@@ -128,7 +130,7 @@ const Section1 = () => {
         }}
         parallax={true}
         modules={[Pagination, Navigation, Parallax]}
-        className="w-full relative bg-transparent mt-20"
+        className="w-full relative bg-transparent mt-20 z-10"
       >
         {cards.map((card) => (
           <SwiperSlide key={card.title} style={{ width: "auto" }}>
@@ -139,7 +141,7 @@ const Section1 = () => {
             />
             <Link
               href=""
-              className="block mx-auto mt-6 px-4 py-2 transition duration-300 ease-in-out border-[5px] border-blanco-oscuro w-fit text-blanco hover:scale-95 hover:bg-marron "
+              className="block mx-auto mt-6 px-4 rounded py-2 transition duration-300 ease-in-out border-4 border-blanco-oscuro w-fit text-blanco hover:scale-95 bg-marron "
             >
               {card.title}
             </Link>
@@ -147,10 +149,10 @@ const Section1 = () => {
         ))}
       </Swiper>
       <div className="custom-pagination mt-4"></div>
-      <div className="custom-prev absolute left-5 top-[50%] bg-transparent text-marron text-6xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
+      <div className="z-10 custom-prev absolute left-5 top-[50%] bg-transparent text-marron text-7xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
         &#10094;
       </div>
-      <div className="custom-next absolute right-5 top-[50%] bg-transparent text-marron text-6xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
+      <div className="z-10 custom-next absolute right-5 top-[50%] bg-transparent text-marron text-7xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
         &#10095;
       </div>
     </section>

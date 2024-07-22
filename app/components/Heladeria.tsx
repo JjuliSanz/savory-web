@@ -3,24 +3,30 @@ import React from "react";
 
 const Heladeria = () => {
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-between px-10 py-20 bg-marron">
-      <div className="md:w-1/2 w-full px-4">
+    <section className="min-h-screen flex flex-col md:flex-row gap-6 items-center justify-between px-10 py-20 bg-marron">
+      <div className="md:w-1/2 w-full flex flex-col items-center">
         <h2 className="text-4xl font-bold text-blanco mb-4">
           Descubre la Excelencia en Cada Bocado: Nuestro Compromiso con la
           Calidad
         </h2>
-        <p className="text-xl font-medium text-marron-clarito mb-4">
+        <p className="text-xl font-medium text-blanco-oscuro mb-4">
           Cada sorbo, cada cucharada de nuestro helado artesanal es una obra
           maestra de sabor y frescura. Nos dedicamos a seleccionar los
           ingredientes más finos y naturales, asegurando que cada lote sea una
           experiencia de indulgencia pura y satisfacción inigualable.
         </p>
-        <p className="text-xl font-medium text-marron-clarito mb-4">
+        <p className="text-xl font-medium text-blanco-oscuro mb-4">
           Nuestros helados se elaboran con recetas cuidadosamente
           perfeccionadas. Desde la textura cremosa hasta los sabores intensos y
           auténticos, cada producto que sale de nuestra heladería lleva consigo
           el compromiso de proporcionar lo mejor a nuestros clientes.
         </p>
+
+        <button className="px-4 py-2 border-4 border-blanco text-blanco text-xl font-bold rounded-xl hover:scale-95 transition duration-300 ease-in-out hover:bg-blanco hover:text-marron">
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            Menu
+          </a>
+        </button>
       </div>
       {/* Imagenes */}
       <div className="md:w-1/2 w-full mt-6 md:mt-0 flex flex-row gap-4">

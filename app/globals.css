@@ -22,10 +22,6 @@
   box-sizing: border-box;
 }
 
-.swiper-wrapper {
-  /* gap: 10px; */
-}
-
 .custom-pagination {
   display: flex;
   justify-content: center;
