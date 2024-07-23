@@ -70,7 +70,7 @@ const Card = ({
   );
 };
 
-const Section1 = () => {
+const MenuCards = () => {
   const cards = [
     {
       videoSrc: "/Coffe1.mp4",
@@ -159,4 +159,4 @@ const Section1 = () => {
   );
 };
 
-export default Section1;
+export default MenuCards;

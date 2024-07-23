@@ -1,18 +1,18 @@
-import Adentro from "./components/Adentro";
-import Cafeteria from "./components/Cafeteria";
+import Adentro from "./sections/Adentro";
+import Cafeteria from "./sections/Cafeteria";
 import FilaImagenes from "./components/FilaImagenes";
-import Galeria from "./components/Galeria";
-import Heladeria from "./components/Heladeria";
-import Hero from "./components/Hero";
-import Info from "./components/Info";
-import Section1 from "./components/Section1";
-import About from "./components/About";
+import Galeria from "./sections/Galeria";
+import Heladeria from "./sections/Heladeria";
+import Hero from "./sections/Hero";
+import Info from "./sections/Info";
+import MenuCards from "./sections/MenuCards";
+import About from "./sections/About";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen w-full flex flex-col pt-[50px]">
       <Hero/>
-      <Section1/>
+      <MenuCards/>
       <About/>
       <Adentro/>
       <Heladeria/>
