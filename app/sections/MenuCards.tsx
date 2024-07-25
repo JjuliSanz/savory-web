@@ -76,34 +76,45 @@ const MenuCards = () => {
       videoSrc: "/Coffe1.mp4",
       imageSrc: "/capuccino-edit.jpg",
       title: "CAFETERIA",
+      value: "cafeteria",
     },
-    { imageSrc: "/milkshake-varios.jpg", title: "BEBIDAS FRIAS" },
+    { imageSrc: "/milkshake-varios.jpg", title: "FRIOS", value: "frios" },
     {
       videoSrc: "/tortas01.mp4",
       imageSrc: "/tortas01.jpg",
       title: "TORTAS Y DELICIAS",
+      value: "tortas_delicias",
     },
     {
       videoSrc: "/tostados.mp4",
       imageSrc: "/tostadosjyq.jpeg",
-      title: "SALADOS",
+      title: "SALADOS CLASICOS",
+      value: "salados_clasicos",
     },
     {
       videoSrc: "/tostones.mp4",
       imageSrc: "/tostones-jugos.webp",
       title: "TOSTONES",
+      value: "tostones",
     },
     {
       videoSrc: "/sandwich.mp4",
       imageSrc: "/sandwichpollo.jpeg",
       title: "SANDWICHES",
+      value: "sandwiches",
     },
-    { imageSrc: "/ensalada.jpg", title: "ENSALADAS" },
-    { videoSrc: "/pote.mp4", imageSrc: "/pote.jpeg", title: "HELADOS" },
+    { imageSrc: "/ensalada.jpg", title: "ENSALADAS", value: "ensaladas" },
+    {
+      videoSrc: "/pote.mp4",
+      imageSrc: "/pote.jpeg",
+      title: "HELADERIA",
+      value: "heladeria",
+    },
     {
       videoSrc: "/cubatones.mp4",
       imageSrc: "/cubatones.jpeg",
       title: "POSTRES HELADOS",
+      value: "postres_helados",
     },
   ];
 
@@ -140,8 +151,8 @@ const MenuCards = () => {
               title={card.title}
             />
             <Link
-              href=""
-              className="block mx-auto mt-6 px-4 rounded py-2 transition duration-300 ease-in-out border-4 border-blanco-oscuro w-fit text-blanco hover:scale-95 bg-marron "
+              href={`/menu/?value=${card.value}`}
+              className="block mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out border-4 border-blanco-oscuro w-fit text-blanco hover:scale-95 bg-marron "
             >
               {card.title}
             </Link>

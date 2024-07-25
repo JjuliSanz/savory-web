@@ -5,11 +5,12 @@ import { InstagramIcon } from "@/assets/icons/InstagramIcon";
 import { PhoneIcon } from "@/assets/icons/PhoneIcon";
 import { PinIcon } from "@/assets/icons/PinIcon";
 import { WhatsIcon } from "@/assets/icons/WhatsIcon";
+import Link from "next/link";
 import React from "react";
 
 const Info = () => {
   return (
-    <section
+    <section id="info"
       className="relative min-h-screen bg-fixed bg-center bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20"
       style={{ backgroundImage: "url(/food/torta-oreo.jpg)" }}
     >
@@ -26,7 +27,7 @@ const Info = () => {
             <PhoneIcon /> 4516-0691
           </li>
           <li className="w-fit">
-            <a
+            <Link
               href="https://api.whatsapp.com/send?phone=541137852214"
               target="_blank"
               rel="noopener noreferrer"
@@ -34,10 +35,10 @@ const Info = () => {
             >
               <WhatsIcon />
               11 3785-2214
-            </a>
+            </Link>
           </li>
           <li className="w-fit">
-            <a
+            <Link
               href="https://www.instagram.com/savoryheladoscafe/"
               target="_blank"
               rel="noopener noreferrer"
@@ -45,7 +46,7 @@ const Info = () => {
             >
               <InstagramIcon />
               SavoryHeladosCafe
-            </a>{" "}
+            </Link>{" "}
           </li>
           <li className="w-fit">
             <a

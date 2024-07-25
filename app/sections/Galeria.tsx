@@ -15,7 +15,7 @@ const Galeria = () => {
   ];
 
   return (
-    <section className="min-h-screen py-20 bg-blanco-oscuro">
+    <section id="galeria" className="min-h-screen py-20 bg-blanco-oscuro">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-marron text-center mb-10">
           Nuestra Galería
