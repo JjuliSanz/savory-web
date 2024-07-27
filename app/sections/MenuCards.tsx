@@ -119,9 +119,12 @@ const MenuCards = () => {
   ];
 
   return (
-    <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg-marron.jpg')] bg-fixed bg-cover relative">
-      {/* <div className="absolute inset-0 bg-marron opacity-50 z-0"></div> */}
-      <h2 className="text-blanco font-bold text-5xl text-center z-10">
+    // <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg-marron.jpg')] bg-fixed bg-cover relative">
+    // <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-marron bg-fixed bg-cover relative">
+    <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg.jpg')] bg-fixed bg-cover relative">
+    
+      <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
+      <h2 className="text-blanco font-bold text-5xl text-center z-20">
         Nosotros Servimos!
       </h2>
       {/* <h2 className="text-5xl text-center">Descubre Nuestro Menu!</h2> */}
@@ -151,8 +154,8 @@ const MenuCards = () => {
               title={card.title}
             />
             <Link
-              href={`/menu/?value=${card.value}`}
-              className="block mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out border-4 border-blanco-oscuro w-fit text-blanco hover:scale-95 bg-marron "
+              href={`/menu/?category=${card.value}`}
+              className="block mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out border-4 border-blanco-oscuro w-fit text-blanco-oscuro hover:scale-95 bg-marron "
             >
               {card.title}
             </Link>

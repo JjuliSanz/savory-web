@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { cafeteria, promociones, tortas_delicias } from "@/constants";
 import { MenuType } from "@/types";
 import { motion } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const menuTabs: MenuType[] = [
   {
@@ -86,11 +87,23 @@ const itemVariants = {
 };
 
 export default function Menu() {
-  const [selectedCategory, setSelectedCategory] = useState("promociones");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedCategory = searchParams.get("category") || "promociones";
+
+  useEffect(() => {
+    if (!searchParams.get("category")) {
+      router.replace(`/menu?category=promociones`);
+    }
+  }, []);
+
+  const handleCategoryChange = (category: any) => {
+    router.push(`/menu?category=${category}`);
+  };
 
   return (
     <main className="mt-[50px] pt-10 min-h-screen bg-blanco-oscuro">
-      <nav className="w-fit max-w-xl mx-auto flex justify-center p-4 bg-marron rounded">
+      <nav className="w-fit max-w-3xl mx-auto flex justify-center p-4 bg-marron rounded">
         <ul className="flex flex-wrap justify-center gap-4">
           {menuTabs.map((category) => (
             <li
@@ -100,7 +113,7 @@ export default function Menu() {
                   ? "text-blanco-oscuro underline"
                   : "text-marron-claro"
               }`}
-              onClick={() => setSelectedCategory(category.value)}
+              onClick={() => handleCategoryChange(category.value)}
             >
               {category.title.charAt(0).toUpperCase() + category.title.slice(1)}
             </li>
