@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
-import { cn } from "../utils/cn";
+import { cn } from "../../utils/cn";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -122,9 +122,8 @@ const MenuCards = () => {
     // <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg-marron.jpg')] bg-fixed bg-cover relative">
     // <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-marron bg-fixed bg-cover relative">
     <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg.jpg')] bg-fixed bg-cover relative">
-    
       <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
-      <h2 className="text-blanco font-bold text-5xl text-center z-20">
+      <h2 className="relative text-blanco font-bold text-5xl text-center z-20">
         Nosotros Servimos!
       </h2>
       {/* <h2 className="text-5xl text-center">Descubre Nuestro Menu!</h2> */}
@@ -155,18 +154,18 @@ const MenuCards = () => {
             />
             <Link
               href={`/menu/?category=${card.value}`}
-              className="block mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out border-4 border-blanco-oscuro w-fit text-blanco-oscuro hover:scale-95 bg-marron "
+              className="block w-fit mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out text-lg font-bold border-4 border-blanco-oscuro text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron bg-marron "
             >
               {card.title}
             </Link>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="custom-pagination mt-4"></div>
-      <div className="z-10 custom-prev absolute left-5 top-[50%] bg-transparent text-marron text-7xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
+      <div className="custom-pagination relative z-20 mt-4"></div>
+      <div className="z-10 custom-prev absolute left-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
         &#10094;
       </div>
-      <div className="z-10 custom-next absolute right-5 top-[50%] bg-transparent text-marron text-7xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
+      <div className="z-10 custom-next absolute right-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
         &#10095;
       </div>
     </section>

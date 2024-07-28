@@ -35,7 +35,7 @@ body {
 }
 
 .custom-pagination .swiper-pagination-bullet {
-  background-color: var(--marron-claro);
+  background-color: var(--marron);
   opacity: 0.8;
   width: 20px;
   height: 20px;
@@ -44,7 +44,7 @@ body {
 }
 
 .custom-pagination .swiper-pagination-bullet-active {
-  background-color: var(--marron);
+  background-color: var(--blanco-oscuro);
   opacity: 1;
   width: 20px;
   height: 20px;
