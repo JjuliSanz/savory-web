@@ -1,12 +1,12 @@
-import Adentro from "../components/sections/Adentro";
-import Cafeteria from "../components/sections/Cafeteria";
-import FilaImagenes from "../components/FilaImagenes";
-import Galeria from "../components/sections/Galeria";
-import Heladeria from "../components/sections/Heladeria";
-import Hero from "../components/sections/Hero";
-import Info from "../components/sections/Info";
-import MenuCards from "../components/sections/MenuCards";
-import About from "../components/sections/About";
+import Adentro from "@/components/sections/Adentro";
+import Cafeteria from "@/components/sections/Cafeteria";
+import FilaImagenes from "@/components/FilaImagenes";
+import Galeria from "@/components/sections/Galeria";
+import Heladeria from "@/components/sections/Heladeria";
+import Hero from "@/components/sections/Hero";
+import Info from "@/components/sections/Info";
+import MenuCards from "@/components/sections/MenuCards";
+import About from "@/components/sections/About";
 
 export default function Home() {
   return (
