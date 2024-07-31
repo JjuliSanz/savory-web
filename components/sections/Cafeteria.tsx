@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Cafeteria = () => {
@@ -68,9 +69,9 @@ const Cafeteria = () => {
         </p>
 
         <button className="px-3 py-2 border-4 border-marron text-marron text-xl font-bold rounded-xl hover:scale-95 transition duration-300 ease-in-out hover:bg-marron hover:text-blanco-oscuro">
-          <a href="http://" target="_blank" rel="noopener noreferrer">
+          <Link href="/menu">
             Menu
-          </a>
+          </Link>
         </button>       
       </div>
     </section>

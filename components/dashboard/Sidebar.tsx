@@ -9,12 +9,18 @@ const Sidebar: React.FC = () => {
   return (
     <div className="min-h-screen w-64 bg-marron flex flex-col">
       <div className="flex items-center justify-center h-20 border-b border-blanco-oscuro">
-        <h1 className="text-3xl text-blanco-oscuro font-bold">SAVORY</h1>
+        <Link href="/">
+          <h1 className="text-3xl text-blanco-oscuro font-bold">SAVORY</h1>
+        </Link>
       </div>
       <nav className="flex-1 p-4">
         <ul>
           <li
-            className={`mb-4 ${pathname === "/dashboard/usuarios" ? "bg-blanco-oscuro text-marron" : "text-blanco-oscuro"}`}
+            className={`mb-4 ${
+              pathname === "/dashboard/usuarios"
+                ? "bg-blanco-oscuro text-marron"
+                : "text-blanco-oscuro"
+            }`}
           >
             <Link
               href="/dashboard/usuarios"
@@ -23,7 +29,13 @@ const Sidebar: React.FC = () => {
               Usuarios
             </Link>
           </li>
-          <li className={`mb-4 ${pathname === "/dashboard" ? "bg-blanco-oscuro text-marron" : "text-blanco-oscuro"}`}>
+          <li
+            className={`mb-4 ${
+              pathname === "/dashboard"
+                ? "bg-blanco-oscuro text-marron"
+                : "text-blanco-oscuro"
+            }`}
+          >
             <Link
               href="/dashboard"
               className="block py-2 px-4 rounded  text-xl font-medium hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300"
@@ -32,7 +44,11 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
           <li
-            className={`mb-4 ${pathname === "/dashboard/secciones" ? "bg-blanco-oscuro text-marron" : "text-blanco-oscuro"}`}
+            className={`mb-4 ${
+              pathname === "/dashboard/secciones"
+                ? "bg-blanco-oscuro text-marron"
+                : "text-blanco-oscuro"
+            }`}
           >
             <Link
               href="/dashboard/secciones"
