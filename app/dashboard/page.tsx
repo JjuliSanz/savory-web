@@ -3,7 +3,7 @@ import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { cafeteria, promociones, tortas_delicias } from "@/constants";
 import { MenuItem, MenuType } from "@/types";
 import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -85,24 +85,35 @@ export default function Dashboard() {
   const selectedCategory = searchParams.get("category") || "promociones";
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
+  const [visualizar, setVisualizar] = useState(false);
 
   useEffect(() => {
     if (!searchParams.get("category")) {
       router.replace(`/dashboard?category=promociones`);
     }
-  }, []);
+  }, [router, searchParams]);
 
   const handleCategoryChange = (category: any) => {
     router.push(`/dashboard?category=${category}`);
   };
 
   const handleEdit = (item: MenuItem) => {
-    setIsDrawerOpen(true)
-    setSelectedItem(item)
+    setIsDrawerOpen(true);
+    setSelectedItem(item);
   };
 
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
+    setSelectedItem(null);
+  };
+
+  const handleVisualizar = (item: MenuItem) => {
+    setVisualizar(true);
+    setSelectedItem(item);
+  };
+
+  const handleCloseVisualizar = () => {
+    setVisualizar(false);
     setSelectedItem(null);
   };
 
@@ -192,19 +203,68 @@ export default function Dashboard() {
                   >
                     Borrar
                   </button>
+                  <button
+                    onClick={() => handleVisualizar(item)}
+                    className="text-marron hover:opacity-80 font-bold py-2 px-4 rounded ml-2"
+                  >
+                    Preview
+                  </button>
                 </td>
               </tr>
             ))}
         </tbody>
       </table>
-
+      {visualizar && selectedItem && (
+        <div
+          className="fixed inset-0 bg-negro bg-opacity-80 flex justify-center items-center z-50"
+          onClick={() => handleCloseVisualizar()}
+        >
+          <div className="bg-marron rounded-lg flex flex-col h-[400px] w-[300px]">
+            <div className="relative w-full h-60">
+              <Image
+                src={selectedItem.imageSrc}
+                alt={selectedItem.title}
+                width={500}
+                height={500}
+                loading="lazy"
+                className="object-cover w-full h-full rounded-t-lg"
+              />
+            </div>
+            <div className="w-full flex flex-col grow justify-between gap-4 p-4">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-blanco text-lg font-bold">
+                  {selectedItem.title}
+                </h3>
+                {selectedItem.ingredients && (
+                  <p className="text-blanco-oscuro font-bold text-sm">
+                    {selectedItem.ingredients}
+                  </p>
+                )}
+              </div>
+              <p className="text-end text-blanco-oscuro font-bold text-base">
+                {selectedItem.price}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
       {isDrawerOpen && selectedItem && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-50">
-          <div className="bg-white w-1/3 h-full p-6 overflow-auto flex flex-col">
-            <button onClick={handleCloseDrawer} className="w-[40px] text-red-500 font-bold justify-self-end self-end">
-              <CloseIcon className=""/>
+          <motion.div
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ ease: "easeInOut", duration: 0.5 }}
+            className="bg-white w-1/3 h-full p-6 overflow-auto flex flex-col"
+          >
+            <button
+              onClick={handleCloseDrawer}
+              className="w-[40px] text-red-500 font-bold justify-self-end self-end"
+            >
+              <CloseIcon className="" />
             </button>
-            <h2 className="text-marron text-xl font-bold mb-4">Editar Producto</h2>
+            <h2 className="text-marron text-xl font-bold mb-4">
+              Editar Producto
+            </h2>
             <form>
               <div className="mb-4">
                 <label className="block text-marron text-sm font-bold mb-2">
@@ -228,7 +288,10 @@ export default function Dashboard() {
                   value={selectedItem.ingredients}
                   className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
                   onChange={(e) =>
-                    setSelectedItem({ ...selectedItem, ingredients: e.target.value })
+                    setSelectedItem({
+                      ...selectedItem,
+                      ingredients: e.target.value,
+                    })
                   }
                 />
               </div>
@@ -249,7 +312,7 @@ export default function Dashboard() {
                 Guardar Cambios
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       )}
     </main>

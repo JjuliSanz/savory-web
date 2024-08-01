@@ -133,7 +133,7 @@ export default function Menu() {
             <motion.div
               variants={itemVariants}
               key={`${selectedCategory}-${index}`}
-              className="bg-marron rounded-lg flex flex-col"
+              className="bg-marron rounded-lg flex flex-col h-[400px]"
             >
               <div className="relative w-full h-60">
                 <Image
