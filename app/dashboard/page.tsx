@@ -6,24 +6,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { connectDB } from "@/utils/mongoose";
+import MenuItemModel from "@/models/MenuItemModel";
+import TableRow from "@/components/dashboard/TableRow";
+import ProductForm from "@/components/dashboard/Form";
+import { PreviewModal } from "@/components/dashboard/PreviewModal";
+import { Drawer } from "@/components/dashboard/Drawer";
 
-const menuItems: MenuItem[] = [
-  {
-    id: 1,
-    imageSrc: "/food/chocotorta.jpeg",
-    title: "Producto 1",
-    ingredients: "Ingrediente 1, Ingrediente 2",
-    price: "$10.00",
-  },
-  {
-    id: 2,
-    imageSrc: "/food/chocotorta.jpeg",
-    title: "Producto 2",
-    ingredients: "Ingrediente 3, Ingrediente 4",
-    price: "$15.00",
-  },
-  // Agrega más productos según sea necesario
-];
+// async function loadMenu() {
+//   connectDB();
+//   const menu = await MenuItemModel.find();
+//   return menu;
+// }
 
 const menuTabs: MenuType[] = [
   { title: "Promociones", value: "promociones", data: promociones },
@@ -85,13 +79,18 @@ export default function Dashboard() {
   const selectedCategory = searchParams.get("category") || "promociones";
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
-  const [visualizar, setVisualizar] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    if (!searchParams.get("category")) {
-      router.replace(`/dashboard?category=promociones`);
-    }
-  }, [router, searchParams]);
+  // useEffect(() => {
+  //   if (!searchParams.get("category")) {
+  //     router.replace(`/dashboard?category=promociones`);
+  //   }
+  // }, [router, searchParams]);
+
+  const handleFormOpen = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleCategoryChange = (category: any) => {
     router.push(`/dashboard?category=${category}`);
@@ -107,21 +106,27 @@ export default function Dashboard() {
     setSelectedItem(null);
   };
 
-  const handleVisualizar = (item: MenuItem) => {
-    setVisualizar(true);
+  const handlePreviewOpen = (item: MenuItem) => {
+    setIsPreviewOpen(!isPreviewOpen);
     setSelectedItem(item);
   };
 
-  const handleCloseVisualizar = () => {
-    setVisualizar(false);
+  const handlePreviewClose = () => {
+    setIsPreviewOpen(false);
     setSelectedItem(null);
   };
 
-  const handleDelete = (id: number) => {
-    console.log("Delete item with id:", id);
+  const handleDelete = async (id: number) => {
+    if (window.confirm("Are you sure you want to delete")) {
+      const res = await fetch(`/api/menu/${id}`, {
+        method: "DELETE",
+      });
+      router.refresh();
+      handleCloseDrawer();
+    }
   };
   return (
-    <main className="overflow-x-auto">
+    <main className="flex-1 ml-64 p-8 bg-blanco-oscuro">
       <nav className="w-fit max-w-3xl mx-auto flex justify-center p-4 bg-marron rounded">
         <ul className="flex flex-wrap justify-center gap-4">
           {menuTabs.map((category) => (
@@ -145,7 +150,10 @@ export default function Dashboard() {
           placeholder="Buscar productos"
           className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron"
         />
-        <button className="px-3 py-2 border-2 border-marron text-marron text-lg font-bold rounded-xl hover:scale-95 transition duration-300 ease-in-out hover:bg-marron hover:text-blanco-oscuro">
+        <button
+          onClick={() => handleFormOpen()}
+          className="px-3 py-2 border-2 border-marron text-marron text-lg font-bold rounded-xl hover:scale-95 transition duration-300 ease-in-out hover:bg-marron hover:text-blanco-oscuro"
+        >
           Agregar Producto
         </button>
       </div>
@@ -171,149 +179,39 @@ export default function Dashboard() {
           {menuTabs
             .find((category) => category.value === selectedCategory)
             ?.data.map((item) => (
-              <tr key={item.id}>
-                <td className="pl-4 py-4 border-b border-marron-clarito">
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.title}
-                    width={70}
-                    height={50}
-                    className="rounded-sm object-cover w-[100px]"
-                  />
-                </td>
-                <td className="px-6 py-4 border-b border-marron-clarito text-lg font-medium">
-                  {item.title}
-                </td>
-                <td className="px-6 py-4 border-b border-marron-clarito">
-                  {item.ingredients}
-                </td>
-                <td className="px-6 py-4 border-b border-marron-clarito">
-                  {item.price}
-                </td>
-                <td className="px-6 py-4 border-b border-marron-clarito text-right">
-                  <button
-                    onClick={() => handleEdit(item)}
-                    className="text-blue-500 hover:text-blue-700 font-bold py-2 px-4 rounded"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded ml-2"
-                  >
-                    Borrar
-                  </button>
-                  <button
-                    onClick={() => handleVisualizar(item)}
-                    className="text-marron hover:opacity-80 font-bold py-2 px-4 rounded ml-2"
-                  >
-                    Preview
-                  </button>
-                </td>
-              </tr>
+              <TableRow
+                key={item.id}
+                item={item}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+                handlePreviewOpen={handlePreviewOpen}
+              />
             ))}
         </tbody>
       </table>
-      {visualizar && selectedItem && (
-        <div
-          className="fixed inset-0 bg-negro bg-opacity-80 flex justify-center items-center z-50"
-          onClick={() => handleCloseVisualizar()}
-        >
-          <div className="bg-marron rounded-lg flex flex-col h-[400px] w-[300px]">
-            <div className="relative w-full h-60">
-              <Image
-                src={selectedItem.imageSrc}
-                alt={selectedItem.title}
-                width={500}
-                height={500}
-                loading="lazy"
-                className="object-cover w-full h-full rounded-t-lg"
-              />
-            </div>
-            <div className="w-full flex flex-col grow justify-between gap-4 p-4">
-              <div className="flex flex-col gap-2">
-                <h3 className="text-blanco text-lg font-bold">
-                  {selectedItem.title}
-                </h3>
-                {selectedItem.ingredients && (
-                  <p className="text-blanco-oscuro font-bold text-sm">
-                    {selectedItem.ingredients}
-                  </p>
-                )}
-              </div>
-              <p className="text-end text-blanco-oscuro font-bold text-base">
-                {selectedItem.price}
-              </p>
-            </div>
-          </div>
-        </div>
+
+      {/* Preview Menu Item Card */}
+      {isPreviewOpen && selectedItem && (
+        <PreviewModal
+          isPreviewOpen={isPreviewOpen}
+          handlePreviewClose={handlePreviewClose}
+          selectedItem={selectedItem}
+        />
       )}
+
+      {/* Edit Item Form */}
       {isDrawerOpen && selectedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-50">
-          <motion.div
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ ease: "easeInOut", duration: 0.5 }}
-            className="bg-white w-1/3 h-full p-6 overflow-auto flex flex-col"
-          >
-            <button
-              onClick={handleCloseDrawer}
-              className="w-[40px] text-red-500 font-bold justify-self-end self-end"
-            >
-              <CloseIcon className="" />
-            </button>
-            <h2 className="text-marron text-xl font-bold mb-4">
-              Editar Producto
-            </h2>
-            <form>
-              <div className="mb-4">
-                <label className="block text-marron text-sm font-bold mb-2">
-                  Título
-                </label>
-                <input
-                  type="text"
-                  value={selectedItem.title}
-                  className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
-                  onChange={(e) =>
-                    setSelectedItem({ ...selectedItem, title: e.target.value })
-                  }
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-marron text-sm font-bold mb-2">
-                  Ingredientes
-                </label>
-                <input
-                  type="text"
-                  value={selectedItem.ingredients}
-                  className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
-                  onChange={(e) =>
-                    setSelectedItem({
-                      ...selectedItem,
-                      ingredients: e.target.value,
-                    })
-                  }
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-marron text-sm font-bold mb-2">
-                  Precio
-                </label>
-                <input
-                  type="text"
-                  value={selectedItem.price}
-                  className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
-                  onChange={(e) =>
-                    setSelectedItem({ ...selectedItem, price: e.target.value })
-                  }
-                />
-              </div>
-              <button className="bg-marron text-white font-bold py-2 px-4 rounded">
-                Guardar Cambios
-              </button>
-            </form>
-          </motion.div>
-        </div>
+        <Drawer
+          isDrawerOpen={isDrawerOpen}
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+          handleCloseDrawer={handleCloseDrawer}
+        />
+      )}
+
+      {/* Add Product Form */}
+      {isOpen && (
+        <ProductForm isOpen={isOpen} handleFormOpen={handleFormOpen} />
       )}
     </main>
   );

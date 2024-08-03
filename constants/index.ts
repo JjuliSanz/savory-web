@@ -1,4 +1,4 @@
-import { MenuItem } from "@/types";
+import { MenuItem, MenuType } from "@/types";
 
 
 export const promociones: MenuItem[] = [
@@ -311,5 +311,60 @@ export const tortas_delicias: MenuItem[] = [
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Tiramisú",
     price: "$7000",
+  },
+];
+
+
+const menuTabs: MenuType[] = [
+  { title: "Promociones", value: "promociones", data: promociones },
+  {
+    title: "Cafetería",
+    value: "cafeteria",
+    data: cafeteria,
+  },
+  {
+    title: "Frios",
+    value: "frios",
+    data: cafeteria,
+  },
+  {
+    title: "Tortas y Delicias",
+    value: "tortas_delicias",
+    data: tortas_delicias,
+  },
+  {
+    title: "Salados Clasicos",
+    value: "salados_clasicos",
+    data: tortas_delicias,
+  },
+  {
+    title: "Tostones",
+    value: "tostones",
+    data: tortas_delicias,
+  },
+  {
+    title: "Wraps",
+    value: "wraps",
+    data: tortas_delicias,
+  },
+  {
+    title: "Sandwiches",
+    value: "sandwiches",
+    data: tortas_delicias,
+  },
+  {
+    title: "Ensaladas",
+    value: "ensaladas",
+    data: tortas_delicias,
+  },
+  {
+    title: "Postres Helados",
+    value: "postres_helados",
+    data: tortas_delicias,
+  },
+  {
+    title: "Heladeria",
+    value: "heladeria",
+    data: tortas_delicias,
   },
 ];
