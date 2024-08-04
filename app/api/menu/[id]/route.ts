@@ -8,7 +8,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    connectDB();
+    await connectDB();
     const menuItemFound = await MenuDB.findById(params.id);
 
     if (!menuItemFound)
@@ -28,6 +28,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
+    await connectDB();
     const deletedMenuItem = await MenuDB.findByIdAndDelete(params.id);
 
     if (!deletedMenuItem)
@@ -46,6 +47,7 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
+    await connectDB();
     const data = await request.json();
     const updatedMenuItem = await MenuDB.findByIdAndUpdate(params.id, data, {
       new: true,

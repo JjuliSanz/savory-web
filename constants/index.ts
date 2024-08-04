@@ -1,6 +1,5 @@
 import { MenuItem, MenuType } from "@/types";
 
-
 export const promociones: MenuItem[] = [
   {
     id: 1,
@@ -61,59 +60,92 @@ export const promociones: MenuItem[] = [
 export const cafeteria: MenuItem[] = [
   {
     id: 1,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café en Pocillo",
     price: "$50",
   },
   {
     id: 2,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café en Jarrito",
     price: "$60",
   },
   {
     id: 3,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Cortado en Jarrito",
     price: "$60",
   },
   {
     id: 4,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Lágrima en Jarrito",
     price: "$60",
   },
   {
     id: 5,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café con Leche",
     price: "$60",
   },
-  { id: 6, imageSrc: "/capuccino-edit.jpg", title: "Café Latte", price: "$60" },
-  { id: 7, imageSrc: "/capuccino-edit.jpg", title: "Café Doble", price: "$60" },
+  {
+    id: 6,
+    category: "Cafeteria",
+    imageSrc: "/capuccino-edit.jpg",
+    title: "Café Latte",
+    price: "$60",
+  },
+  {
+    id: 7,
+    category: "Cafeteria",
+    imageSrc: "/capuccino-edit.jpg",
+    title: "Café Doble",
+    price: "$60",
+  },
   {
     id: 8,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Lágrima Doble",
     price: "$60",
   },
-  { id: 9, imageSrc: "/capuccino-edit.jpg", title: "Capuccino", price: "$60" },
+  {
+    id: 9,
+    category: "Cafeteria",
+    imageSrc: "/capuccino-edit.jpg",
+    title: "Capuccino",
+    price: "$60",
+  },
   { id: 10, imageSrc: "/capuccino-edit.jpg", title: "Submarino", price: "$60" },
   {
     id: 11,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Chocolatada",
     price: "$60",
   },
   {
     id: 12,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Mate cocido / Té",
     price: "$60",
   },
-  { id: 13, imageSrc: "/capuccino-edit.jpg", title: "Té", price: "$60" },
+  {
+    id: 13,
+    category: "Cafeteria",
+    imageSrc: "/capuccino-edit.jpg",
+    title: "Té",
+    price: "$60",
+  },
   {
     id: 14,
+    category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Mate cocido",
     price: "$60",
@@ -212,6 +244,7 @@ export const frios: MenuItem[] = [
 export const yogurts: MenuItem[] = [
   {
     id: 1,
+    category: "Yogurts",
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt Natural",
     ingredients: "Durazno, kiwi, banana y cereales",
@@ -219,6 +252,7 @@ export const yogurts: MenuItem[] = [
   },
   {
     id: 2,
+    category: "Yogurts",
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt de Frutos",
     ingredients: "Frutos rojos y cereales",
@@ -226,6 +260,7 @@ export const yogurts: MenuItem[] = [
   },
   {
     id: 3,
+    category: "Yogurts",
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt Maracuya",
     ingredients: "Durazno y cereales",
@@ -312,8 +347,84 @@ export const tortas_delicias: MenuItem[] = [
     title: "Torta Tiramisú",
     price: "$7000",
   },
+  {
+    id: 13,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Panqueque con dulce de leche",
+    ingredients: "Dos unidades",
+    price: "$3700",
+  },
+  {
+    id: 14,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Panqueque con Nutella",
+    ingredients: "Dos unidades",
+    price: "$4500",
+  },
+  {
+    id: 15,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Panqueque con dulce de leche + bocha de helado",
+    ingredients: "Dos unidades + bocha de helado (Sabor a elección)",
+    price: "$4600",
+  },
+  {
+    id: 16,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Panqueque con nutella + bocha de helado",
+    ingredients: "Dos unidades + bocha de helado (Sabor a elección)",
+    price: "$5400",
+  },
+  {
+    id: 17,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Medialunas de manteca",
+    price: "$350",
+  },
+  {
+    id: 18,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Muffin de dulce de leche",
+    price: "$1300",
+  },
+  {
+    id: 19,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Muffin de frutos rojos",
+    price: "$1300",
+  },
+  {
+    id: 19,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Budín marmolado",
+    price: "$1500",
+  },
+  {
+    id: 19,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Budín de limón y amapolas",
+    price: "$1500",
+  },
+  {
+    id: 19,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Budín de banana y nuez pecan",
+    price: "$1500",
+  },
+  {
+    id: 19,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Alfajor cookie de pistacho",
+    price: "$3800",
+  },
+  {
+    id: 19,
+    imageSrc: "/food/chocotorta.jpeg",
+    title: "Alfajor cookie de mantecol",
+    price: "$3800",
+  },
+  
 ];
-
 
 const menuTabs: MenuType[] = [
   { title: "Promociones", value: "promociones", data: promociones },

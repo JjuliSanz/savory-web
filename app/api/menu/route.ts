@@ -31,12 +31,19 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     await connectDB();
-    
-    const data = await request.json();
-    const newMenuItem = new MenuDB(data);
-    const savedMenuItem = await newMenuItem.save();
 
-    return NextResponse.json(savedMenuItem);
+    const data = await request.json();
+
+    if (Array.isArray(data)) {
+      const savedMenuItems = await MenuDB.insertMany(data);
+      
+      return NextResponse.json(savedMenuItems);
+    } else {
+      const newMenuItem = new MenuDB(data);
+      const savedMenuItem = await newMenuItem.save();
+
+      return NextResponse.json(savedMenuItem);
+    }
   } catch (error: any) {
     return NextResponse.json(
       { message: error.message },

@@ -2,64 +2,64 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { cafeteria, promociones, tortas_delicias } from "@/constants";
-import { MenuType } from "@/types";
+import { MenuItem, MenuType } from "@/types";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const menuTabs: MenuType[] = [
   {
     title: "Promociones",
-    value: "promociones",
+    value: "Promociones",
     data: promociones,
   },
   {
     title: "Cafetería",
-    value: "cafeteria",
+    value: "Cafeteria",
     data: cafeteria,
   },
   {
     title: "Frios",
-    value: "frios",
+    value: "Frios",
     data: cafeteria,
   },
   {
     title: "Tortas y Delicias",
-    value: "tortas_delicias",
+    value: "Tortas_Delicias",
     data: tortas_delicias,
   },
   {
     title: "Salados Clasicos",
-    value: "salados_clasicos",
+    value: "Salados_Clasicos",
     data: tortas_delicias,
   },
   {
     title: "Tostones",
-    value: "tostones",
+    value: "Tostones",
     data: tortas_delicias,
   },
   {
     title: "Wraps",
-    value: "wraps",
+    value: "Wraps",
     data: tortas_delicias,
   },
   {
     title: "Sandwiches",
-    value: "sandwiches",
+    value: "Sandwiches",
     data: tortas_delicias,
   },
   {
     title: "Ensaladas",
-    value: "ensaladas",
+    value: "Ensaladas",
     data: tortas_delicias,
   },
   {
     title: "Postres Helados",
-    value: "postres_helados",
+    value: "Postres_Helados",
     data: tortas_delicias,
   },
   {
     title: "Heladeria",
-    value: "heladeria",
+    value: "Heladeria",
     data: tortas_delicias,
   },
 ];
@@ -89,13 +89,23 @@ const itemVariants = {
 export default function Menu() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const selectedCategory = searchParams.get("category") || "promociones";
+  const selectedCategory = searchParams.get("category") || "Promociones";
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  // useEffect(() => {
+  //   if (!searchParams.get("category")) {
+  //     router.replace(`/menu?category=promociones`);
+  //   }
+  // }, []);
+  const fetchMenuItems = async (category: string) => {
+    const response = await fetch(`/api/menu?category=${category}`);
+    const data = await response.json();
+
+    setMenuItems(data);
+  };
 
   useEffect(() => {
-    if (!searchParams.get("category")) {
-      router.replace(`/menu?category=promociones`);
-    }
-  }, []);
+    fetchMenuItems(selectedCategory);
+  }, [selectedCategory]);
 
   const handleCategoryChange = (category: any) => {
     router.push(`/menu?category=${category}`);
@@ -127,9 +137,10 @@ export default function Menu() {
         animate="visible"
         className="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
       >
-        {menuTabs
-          .find((category) => category.value === selectedCategory)
-          ?.data.map((item, index) => (
+        {menuItems.length === 0 ? (
+          <p className="col-span-full text-2xl text-marron font-bold">No se encontraron productos </p>
+        ) : (
+          menuItems.map((item, index) => (
             <motion.div
               variants={itemVariants}
               key={`${selectedCategory}-${index}`}
@@ -157,11 +168,12 @@ export default function Menu() {
                   )}
                 </div>
                 <p className="text-end text-blanco-oscuro font-bold text-base">
-                  {item.price}
+                  {item.price} $
                 </p>
               </div>
             </motion.div>
-          ))}
+          ))
+        )}
       </motion.section>
     </main>
   );
