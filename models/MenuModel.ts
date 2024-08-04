@@ -1,11 +1,15 @@
 import { Schema, model, models } from "mongoose";
 
-const menuItemModel = new Schema(
+const menuModel: Schema = new Schema(
   {
     id: {
       type: Number,
       required: [true, "El id es requerido"],
       unique: [true, "El id debe ser unico"],
+    },
+    category: {
+      type: String,
+      required: [true, "La categoria es requerida"],
       trim: true,
     },
     title: {
@@ -34,4 +38,4 @@ const menuItemModel = new Schema(
     timestamps: true,
   }
 );
-export default models.MenuItemModel || model('MenuItemModel', menuItemModel)
+export default models.MenuDB || model('MenuDB', menuModel)

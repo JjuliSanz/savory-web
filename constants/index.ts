@@ -5,19 +5,19 @@ export const promociones: MenuItem[] = [
   {
     id: 1,
     imageSrc: "/food/combo-entrada.jpeg",
-    title: "Jarrito + 2 Medialunas ",
+    title: "Jarrito + 2 Medialunas",
     price: "$2600",
   },
   {
     id: 2,
     imageSrc: "/food/combo-entrada.jpeg",
-    title: "Café con Leche + 3 Medialunas ",
+    title: "Café con Leche + 3 Medialunas",
     price: "$3400",
   },
   {
     id: 3,
     imageSrc: "/food/combo-entrada.jpeg",
-    title: "Tostado + Vaso de jugo ",
+    title: "Tostado + Vaso de jugo",
     price: "$7300",
   },
   {

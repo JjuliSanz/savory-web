@@ -1,10 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/utils/mongoose";
-import MenuItemModel from "@/models/MenuItemModel";
-export async function GET() {
-  connectDB();
+import MenuDB from "@/models/MenuModel";
+// export async function GET() {
+//   await connectDB();
+//   try {
+//     const menuItems = await MenuItemModel.find();
+//     return NextResponse.json(menuItems);
+//   } catch (error: any) {
+//     return NextResponse.json({ message: error.message }, { status: 500 });
+//   }
+// }
+
+export async function GET(request: NextRequest) {
   try {
-    const menuItems = await MenuItemModel.find();
+    await connectDB();
+
+    const url = new URL(request.url);
+    const category = url.searchParams.get("category");
+
+    const query = category ? { category } : {};
+
+    const menuItems = await MenuDB.find(query);
+
     return NextResponse.json(menuItems);
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
@@ -12,10 +29,11 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  await connectDB();
   try {
+    await connectDB();
+    
     const data = await request.json();
-    const newMenuItem = new MenuItemModel(data);
+    const newMenuItem = new MenuDB(data);
     const savedMenuItem = await newMenuItem.save();
 
     return NextResponse.json(savedMenuItem);
@@ -43,7 +61,7 @@ export async function POSTMultiple(request: NextRequest) {
       );
     }
 
-    const savedItems = await MenuItemModel.insertMany(data);
+    const savedItems = await MenuDB.insertMany(data);
     return NextResponse.json(savedItems);
   } catch (error: any) {
     return NextResponse.json(

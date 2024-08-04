@@ -51,6 +51,19 @@ export const Drawer = ({
           </div>
           <div className="mb-4">
             <label className="block text-marron text-sm font-bold mb-2">
+              Categoría
+            </label>
+            <input
+              type="text"
+              value={selectedItem.category}
+              className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
+              onChange={(e) =>
+                setSelectedItem({ ...selectedItem, category: e.target.value })
+              }
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-marron text-sm font-bold mb-2">
               Ingredientes
             </label>
             <input

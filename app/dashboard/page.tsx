@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { connectDB } from "@/utils/mongoose";
-import MenuItemModel from "@/models/MenuItemModel";
+import MenuItemModel from "@/models/MenuModel";
 import TableRow from "@/components/dashboard/TableRow";
 import ProductForm from "@/components/dashboard/Form";
 import { PreviewModal } from "@/components/dashboard/PreviewModal";
@@ -20,55 +20,97 @@ import { Drawer } from "@/components/dashboard/Drawer";
 // }
 
 const menuTabs: MenuType[] = [
-  { title: "Promociones", value: "promociones", data: promociones },
+  {
+    title: "Promociones",
+    value: "Promociones",
+    data: [
+      {
+        id: 1,
+        imageSrc: "/food/combo-entrada.jpeg",
+        title: "Jarrito + 2 Medialunas ",
+        price: "$2600",
+      },
+      {
+        id: 2,
+        imageSrc: "/food/combo-entrada.jpeg",
+        title: "Café con Leche + 3 Medialunas ",
+        price: "$3400",
+      },
+      {
+        id: 3,
+        imageSrc: "/food/combo-entrada.jpeg",
+        title: "Tostado + Vaso de jugo ",
+        price: "$7300",
+      },
+    ],
+  },
   {
     title: "Cafetería",
-    value: "cafeteria",
-    data: cafeteria,
+    value: "Cafeteria",
+    data: [
+      {
+        id: 1,
+        imageSrc: "/capuccino-edit.jpg",
+        title: "Café en Pocillo",
+        price: "$50",
+      },
+      {
+        id: 2,
+        imageSrc: "/capuccino-edit.jpg",
+        title: "Café en Jarrito",
+        price: "$60",
+      },
+      {
+        id: 3,
+        imageSrc: "/capuccino-edit.jpg",
+        title: "Cortado en Jarrito",
+        price: "$60",
+      },
+    ],
   },
   {
     title: "Frios",
-    value: "frios",
+    value: "Frios",
     data: cafeteria,
   },
   {
     title: "Tortas y Delicias",
-    value: "tortas_delicias",
+    value: "Tortas_Delicias",
     data: tortas_delicias,
   },
   {
     title: "Salados Clasicos",
-    value: "salados_clasicos",
+    value: "Salados_clasicos",
     data: tortas_delicias,
   },
   {
     title: "Tostones",
-    value: "tostones",
+    value: "Tostones",
     data: tortas_delicias,
   },
   {
     title: "Wraps",
-    value: "wraps",
+    value: "Wraps",
     data: tortas_delicias,
   },
   {
     title: "Sandwiches",
-    value: "sandwiches",
+    value: "Sandwiches",
     data: tortas_delicias,
   },
   {
     title: "Ensaladas",
-    value: "ensaladas",
+    value: "Ensaladas",
     data: tortas_delicias,
   },
   {
     title: "Postres Helados",
-    value: "postres_helados",
+    value: "Postres_helados",
     data: tortas_delicias,
   },
   {
     title: "Heladeria",
-    value: "heladeria",
+    value: "Heladeria",
     data: tortas_delicias,
   },
 ];
@@ -76,11 +118,23 @@ const menuTabs: MenuType[] = [
 export default function Dashboard() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const selectedCategory = searchParams.get("category") || "promociones";
+  const selectedCategory = searchParams.get("category") || "Promociones";
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const fetchMenuItems = async (category: string) => {
+    const response = await fetch(`/api/menu?category=${category}`);
+    const data = await response.json();
+    
+    setMenuItems(data);
+  };
+
+  useEffect(() => {
+    fetchMenuItems(selectedCategory);
+  }, [selectedCategory]);
 
   // useEffect(() => {
   //   if (!searchParams.get("category")) {
@@ -88,12 +142,12 @@ export default function Dashboard() {
   //   }
   // }, [router, searchParams]);
 
-  const handleFormOpen = () => {
-    setIsOpen(!isOpen);
+  const handleCategoryChange = (category: string) => {
+    router.push(`/dashboard?category=${category}`);
   };
 
-  const handleCategoryChange = (category: any) => {
-    router.push(`/dashboard?category=${category}`);
+  const handleFormOpen = () => {
+    setIsOpen(!isOpen);
   };
 
   const handleEdit = (item: MenuItem) => {
@@ -176,9 +230,14 @@ export default function Dashboard() {
           </tr>
         </thead>
         <tbody>
-          {menuTabs
-            .find((category) => category.value === selectedCategory)
-            ?.data.map((item) => (
+          {menuItems.length === 0 ? (
+            <tr>
+              <td colSpan={5} className="text-center py-4">
+                No hay productos.
+              </td>
+            </tr>
+          ) : (
+            menuItems.map((item) => (
               <TableRow
                 key={item.id}
                 item={item}
@@ -186,7 +245,8 @@ export default function Dashboard() {
                 handleDelete={handleDelete}
                 handlePreviewOpen={handlePreviewOpen}
               />
-            ))}
+            ))
+          )}
         </tbody>
       </table>
 

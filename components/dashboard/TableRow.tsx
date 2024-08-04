@@ -26,13 +26,13 @@ const TableRow = ({
           className="rounded-sm object-cover w-[100px]"
         />
       </td>
-      <td className="px-6 py-4 border-b border-marron-clarito text-lg font-medium">
+      <td className="px-6 py-4 border-b border-marron-clarito text-marron text-lg font-medium">
         {item.title}
       </td>
-      <td className="px-6 py-4 border-b border-marron-clarito">
+      <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">
         {item.ingredients}
       </td>
-      <td className="px-6 py-4 border-b border-marron-clarito">{item.price}</td>
+      <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">{item.price}$</td>
       <td className="px-6 py-4 border-b border-marron-clarito text-right">
         <button
           onClick={() => handleEdit(item)}

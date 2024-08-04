@@ -5,6 +5,7 @@ import React, { useState } from "react";
 
 interface FormData {
   id: string;
+  category: string;
   title: string;
   description?: string;
   imageSrc: string;
@@ -19,6 +20,7 @@ interface ProductFormProps {
 const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     id: "",
+    category: "",
     title: "",
     description: "",
     imageSrc: "",
@@ -27,13 +29,16 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
   const router = useRouter();
   const [error, setError] = useState(false);
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    
   };
 
   const createMenuItem = async () => {
@@ -43,11 +48,11 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      handleFormOpen();
+
       const data = res.json();
-      console.log(data);
 
       if (res.status === 200) {
+        handleFormOpen();
         router.refresh();
       }
     } catch (error: any) {
@@ -71,7 +76,7 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
       <form
         onClick={(e) => e.stopPropagation()}
         onSubmit={handleSubmit}
-        className="w-[400px] bg-blanco-oscuro p-6 rounded-lg relative "
+        className="w-[400px] bg-blanco-oscuro p-6 rounded-lg relative text-marron-claro"
       >
         <button
           onClick={handleFormOpen}
@@ -93,9 +98,38 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
             name="id"
             value={formData.id}
             onChange={handleChange}
-            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
             required
           />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="CATEGORY"
+            className="block text-sm font-bold mb-2 text-marron"
+          >
+            CATEGORY
+          </label>
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
+            required
+          >
+            <option value="" disabled>Select a category</option>
+            <option value="Promociones">Promociones</option>
+            <option value="Cafeteria">Cafetería</option>
+            <option value="Frios">Frios</option>
+            <option value="Tortas_Delicias">Tortas y Delicias</option>
+            <option value="Salados_Clasicos">Salados Clásicos</option>
+            <option value="Tostones">Tostones</option>
+            <option value="Wraps">Wraps</option>
+            <option value="Sandwiches">Sandwiches</option>
+            <option value="Ensaladas">Ensaladas</option>
+            <option value="Postres_Helados">Postres Helados</option>
+            <option value="Heladeria">Heladería</option>
+          </select>
         </div>
         <div className="mb-4">
           <label
@@ -110,7 +144,7 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
             required
           />
         </div>
@@ -126,7 +160,7 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
           />
         </div>
         <div className="mb-4">
@@ -142,7 +176,7 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
             name="imageSrc"
             value={formData.imageSrc}
             onChange={handleChange}
-            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
             required
           />
         </div>
@@ -159,7 +193,7 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
             name="price"
             value={formData.price}
             onChange={handleChange}
-            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
             required
           />
         </div>

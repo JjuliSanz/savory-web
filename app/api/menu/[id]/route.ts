@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { connectDB } from "@/utils/mongoose";
-import MenuItemModel from "@/models/MenuItemModel";
+import MenuDB from "@/models/MenuModel";
 
 export async function GET(
   request: NextRequest,
@@ -9,7 +9,7 @@ export async function GET(
 ) {
   try {
     connectDB();
-    const menuItemFound = await MenuItemModel.findById(params.id);
+    const menuItemFound = await MenuDB.findById(params.id);
 
     if (!menuItemFound)
       return NextResponse.json(
@@ -28,7 +28,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const deletedMenuItem = await MenuItemModel.findByIdAndDelete(params.id);
+    const deletedMenuItem = await MenuDB.findByIdAndDelete(params.id);
 
     if (!deletedMenuItem)
       return NextResponse.json(
@@ -47,7 +47,7 @@ export async function PUT(
 ) {
   try {
     const data = await request.json();
-    const updatedMenuItem = await MenuItemModel.findByIdAndUpdate(params.id, data, {
+    const updatedMenuItem = await MenuDB.findByIdAndUpdate(params.id, data, {
       new: true,
     });
     return NextResponse.json(updatedMenuItem);
