@@ -1,7 +1,7 @@
 "use client";
 import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { cafeteria, promociones, tortas_delicias } from "@/constants";
-import { MenuItem, MenuType } from "@/types";
+import { MenuItem, MenuTab, MenuType } from "@/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -19,99 +19,54 @@ import { Drawer } from "@/components/dashboard/Drawer";
 //   return menu;
 // }
 
-const menuTabs: MenuType[] = [
+const menuTabs: MenuTab[] = [
   {
     title: "Promociones",
     value: "Promociones",
-    data: [
-      {
-        id: 1,
-        imageSrc: "/food/combo-entrada.jpeg",
-        title: "Jarrito + 2 Medialunas ",
-        price: "$2600",
-      },
-      {
-        id: 2,
-        imageSrc: "/food/combo-entrada.jpeg",
-        title: "Café con Leche + 3 Medialunas ",
-        price: "$3400",
-      },
-      {
-        id: 3,
-        imageSrc: "/food/combo-entrada.jpeg",
-        title: "Tostado + Vaso de jugo ",
-        price: "$7300",
-      },
-    ],
   },
   {
     title: "Cafetería",
     value: "Cafeteria",
-    data: [
-      {
-        id: 1,
-        imageSrc: "/capuccino-edit.jpg",
-        title: "Café en Pocillo",
-        price: "$50",
-      },
-      {
-        id: 2,
-        imageSrc: "/capuccino-edit.jpg",
-        title: "Café en Jarrito",
-        price: "$60",
-      },
-      {
-        id: 3,
-        imageSrc: "/capuccino-edit.jpg",
-        title: "Cortado en Jarrito",
-        price: "$60",
-      },
-    ],
   },
   {
     title: "Frios",
     value: "Frios",
-    data: cafeteria,
+  },
+  {
+    title: "Yogurts",
+    value: "Yogurts",
   },
   {
     title: "Tortas y Delicias",
     value: "Tortas_Delicias",
-    data: tortas_delicias,
   },
   {
     title: "Salados Clasicos",
-    value: "Salados_clasicos",
-    data: tortas_delicias,
+    value: "Salados_Clasicos",
   },
   {
     title: "Tostones",
     value: "Tostones",
-    data: tortas_delicias,
   },
   {
     title: "Wraps",
     value: "Wraps",
-    data: tortas_delicias,
   },
   {
     title: "Sandwiches",
     value: "Sandwiches",
-    data: tortas_delicias,
   },
   {
     title: "Ensaladas",
     value: "Ensaladas",
-    data: tortas_delicias,
   },
   {
     title: "Postres Helados",
-    value: "Postres_helados",
-    data: tortas_delicias,
+    value: "Postres_Helados",
   },
   {
     title: "Heladeria",
     value: "Heladeria",
-    data: tortas_delicias,
   },
 ];
 
@@ -128,7 +83,7 @@ export default function Dashboard() {
   const fetchMenuItems = async (category: string) => {
     const response = await fetch(`/api/menu?category=${category}`);
     const data = await response.json();
-    
+
     setMenuItems(data);
   };
 

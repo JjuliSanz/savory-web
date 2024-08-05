@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 
     if (Array.isArray(data)) {
       const savedMenuItems = await MenuDB.insertMany(data);
-      
+
       return NextResponse.json(savedMenuItems);
     } else {
       const newMenuItem = new MenuDB(data);
@@ -54,28 +54,3 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function POSTMultiple(request: NextRequest) {
-  await connectDB();
-
-  try {
-    const data = await request.json();
-    if (!Array.isArray(data)) {
-      return NextResponse.json(
-        { message: "Expected an array of objects" },
-        {
-          status: 400,
-        }
-      );
-    }
-
-    const savedItems = await MenuDB.insertMany(data);
-    return NextResponse.json(savedItems);
-  } catch (error: any) {
-    return NextResponse.json(
-      { message: error.message },
-      {
-        status: 400,
-      }
-    );
-  }
-}

@@ -2,65 +2,58 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { cafeteria, promociones, tortas_delicias } from "@/constants";
-import { MenuItem, MenuType } from "@/types";
+import { MenuItem, MenuTab, MenuType } from "@/types";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const menuTabs: MenuType[] = [
+const menuTabs: MenuTab[] = [
   {
     title: "Promociones",
     value: "Promociones",
-    data: promociones,
   },
   {
     title: "Cafetería",
     value: "Cafeteria",
-    data: cafeteria,
   },
   {
     title: "Frios",
     value: "Frios",
-    data: cafeteria,
+  },
+  {
+    title: "Yogurts",
+    value: "Yogurts",
   },
   {
     title: "Tortas y Delicias",
     value: "Tortas_Delicias",
-    data: tortas_delicias,
   },
   {
     title: "Salados Clasicos",
-    value: "Salados_Clasicos",
-    data: tortas_delicias,
+    value: "Salados_clasicos",
   },
   {
     title: "Tostones",
     value: "Tostones",
-    data: tortas_delicias,
   },
   {
     title: "Wraps",
     value: "Wraps",
-    data: tortas_delicias,
   },
   {
     title: "Sandwiches",
     value: "Sandwiches",
-    data: tortas_delicias,
   },
   {
     title: "Ensaladas",
     value: "Ensaladas",
-    data: tortas_delicias,
   },
   {
     title: "Postres Helados",
     value: "Postres_Helados",
-    data: tortas_delicias,
   },
   {
     title: "Heladeria",
     value: "Heladeria",
-    data: tortas_delicias,
   },
 ];
 
@@ -138,7 +131,9 @@ export default function Menu() {
         className="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
       >
         {menuItems.length === 0 ? (
-          <p className="col-span-full text-2xl text-marron font-bold">No se encontraron productos </p>
+          <p className="col-span-full text-2xl text-marron font-bold">
+            No se encontraron productos{" "}
+          </p>
         ) : (
           menuItems.map((item, index) => (
             <motion.div

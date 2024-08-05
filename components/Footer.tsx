@@ -26,7 +26,7 @@ const Footer = () => {
           </li>
           <li>
             <Link
-              href="/menu"
+              href="/menu?category=Promociones"
               className="transition ease-in-out duration-300 hover:scale-95 hover:opacity-70"
             >
               Menu

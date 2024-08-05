@@ -56,7 +56,7 @@ const Navbar = () => {
         </Link>
         {/* DESKTOP MENU */}
         <Link
-          href="/menu"
+          href="/menu?category=Promociones"
           className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 ${
             pathname === "/menu" ? "underline" : ""
           }`}

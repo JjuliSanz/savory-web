@@ -12,3 +12,8 @@ export type MenuType = {
   value: string;
   data: MenuItem[];
 };
+
+export type MenuTab = {
+  title: string;
+  value: string;
+}

@@ -64,7 +64,7 @@ export const Drawer = ({
           </div>
           <div className="mb-4">
             <label className="block text-marron text-sm font-bold mb-2">
-              Ingredientes
+              Descripcion
             </label>
             <input
               type="text"
