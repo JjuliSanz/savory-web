@@ -30,7 +30,7 @@ const TableRow = ({
         {item.title}
       </td>
       <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">
-        {item.ingredients}
+        {item.description}
       </td>
       <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">{item.price} $</td>
       <td className="px-6 py-4 border-b border-marron-clarito text-right">

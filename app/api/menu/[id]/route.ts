@@ -54,6 +54,6 @@ export async function PUT(
     });
     return NextResponse.json(updatedMenuItem);
   } catch (error: any) {
-    return NextResponse.json({ message: error.message }, { status: 400 });
+    return NextResponse.json({ error: error }, { status: 400 });
   }
 }

@@ -1,9 +1,12 @@
+import { Types } from "mongoose";
+
 export type MenuItem = {
-  id: number;
+  _id?: string;
+  id?: number;
   category?: string;
   imageSrc: string;
   title: string;
-  ingredients?: string;
+  description?: string;
   price: string;
 };
 
@@ -16,4 +19,4 @@ export type MenuType = {
 export type MenuTab = {
   title: string;
   value: string;
-}
+};

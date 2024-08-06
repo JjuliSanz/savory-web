@@ -10,6 +10,7 @@ interface DrawerProps {
   handleCloseDrawer: () => void;
   selectedItem: MenuItem | null;
   setSelectedItem: (item: MenuItem | null) => void;
+  handleSaveChanges: (item: MenuItem) => void;
 }
 
 export const Drawer = ({
@@ -17,8 +18,14 @@ export const Drawer = ({
   handleCloseDrawer,
   selectedItem,
   setSelectedItem,
+  handleSaveChanges,
 }: DrawerProps) => {
-  if (!isDrawerOpen || !selectedItem ) return null;
+  if (!isDrawerOpen || !selectedItem) return null;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSaveChanges(selectedItem);
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-0">
@@ -35,7 +42,20 @@ export const Drawer = ({
           <CloseIcon className="" />
         </button>
         <h2 className="text-marron text-xl font-bold mb-4">Editar Producto</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block text-marron text-sm font-bold mb-2">
+              ID
+            </label>
+            <input
+              type="text"
+              value={selectedItem.id}
+              className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
+              onChange={(e) =>
+                setSelectedItem({ ...selectedItem, id: Number(e.target.value) })
+              }
+            />
+          </div>
           <div className="mb-4">
             <label className="block text-marron text-sm font-bold mb-2">
               Título
@@ -53,28 +73,55 @@ export const Drawer = ({
             <label className="block text-marron text-sm font-bold mb-2">
               Categoría
             </label>
-            <input
-              type="text"
+            <select
               value={selectedItem.category}
               className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
               onChange={(e) =>
                 setSelectedItem({ ...selectedItem, category: e.target.value })
               }
-            />
+            >
+              <option value="" disabled>
+                Select a category
+              </option>
+              <option value="Promociones">Promociones</option>
+              <option value="Cafeteria">Cafetería</option>
+              <option value="Frios">Frios</option>
+              <option value="Tortas_Delicias">Tortas y Delicias</option>
+              <option value="Salados_Clasicos">Salados Clásicos</option>
+              <option value="Tostones">Tostones</option>
+              <option value="Wraps">Wraps</option>
+              <option value="Sandwiches">Sandwiches</option>
+              <option value="Ensaladas">Ensaladas</option>
+              <option value="Postres_Helados">Postres Helados</option>
+              <option value="Heladeria">Heladería</option>
+            </select>
           </div>
           <div className="mb-4">
             <label className="block text-marron text-sm font-bold mb-2">
-              Descripcion
+              Descripción
             </label>
             <input
               type="text"
-              value={selectedItem.ingredients}
+              value={selectedItem.description}
               className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
               onChange={(e) =>
                 setSelectedItem({
                   ...selectedItem,
-                  ingredients: e.target.value,
+                  description: e.target.value,
                 })
+              }
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-marron text-sm font-bold mb-2">
+              Image Src
+            </label>
+            <input
+              type="text"
+              value={selectedItem.imageSrc}
+              className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron w-full"
+              onChange={(e) =>
+                setSelectedItem({ ...selectedItem, imageSrc: e.target.value })
               }
             />
           </div>
@@ -91,7 +138,10 @@ export const Drawer = ({
               }
             />
           </div>
-          <button className="bg-marron text-white font-bold py-2 px-4 rounded">
+          <button
+            type="submit"
+            className="bg-marron text-white font-bold py-2 px-4 rounded"
+          >
             Guardar Cambios
           </button>
         </form>

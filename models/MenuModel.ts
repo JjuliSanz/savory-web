@@ -4,7 +4,6 @@ const menuModel: Schema = new Schema(
   {
     id: {
       type: Number,
-      required: [true, "El id es requerido"],
       unique: [true, "El id debe ser unico"],
     },
     category: {

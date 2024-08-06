@@ -163,35 +163,35 @@ export const frios: MenuItem[] = [
     id: 2,
     imageSrc: "/milkshake-varios.jpg",
     title: "Nutella latte",
-    ingredients: "Café, nutella y leche cremosa",
+    description: "Café, nutella y leche cremosa",
     price: "$4100",
   },
   {
     id: 3,
     imageSrc: "/milkshake-varios.jpg",
     title: "Frapuccino",
-    ingredients: "Dulce de leche, Oreo y chocotorta",
+    description: "Dulce de leche, Oreo y chocotorta",
     price: "$4900",
   },
   {
     id: 4,
     imageSrc: "/milkshake-varios.jpg",
     title: "Licuado con agua",
-    ingredients: "Consultar frutas del día.",
+    description: "Consultar frutas del día.",
     price: "$2900",
   },
   {
     id: 5,
     imageSrc: "/milkshake-varios.jpg",
     title: "Licuado con jugo",
-    ingredients: "Consultar frutas del día.",
+    description: "Consultar frutas del día.",
     price: "$3400",
   },
   {
     id: 6,
     imageSrc: "/milkshake-varios.jpg",
     title: "Licuado con leche",
-    ingredients: "Consultar frutas del día.",
+    description: "Consultar frutas del día.",
     price: "$3200",
   },
   {
@@ -210,14 +210,14 @@ export const frios: MenuItem[] = [
     id: 9,
     imageSrc: "/milkshake-varios.jpg",
     title: "Sundae",
-    ingredients: "Ensalada de frutas + 3 bochas de helado + crema",
+    description: "Ensalada de frutas + 3 bochas de helado + crema",
     price: "$6300",
   },
   {
     id: 10,
     imageSrc: "/milkshake-varios.jpg",
     title: "Don pedro",
-    ingredients: "Helado de americana (2 bochas) + nueces y whisky",
+    description: "Helado de americana (2 bochas) + nueces y whisky",
     price: "$4800",
   },
   {
@@ -236,7 +236,7 @@ export const frios: MenuItem[] = [
     id: 13,
     imageSrc: "/milkshake-varios.jpg",
     title: "Milshakes",
-    ingredients: "Batido de leche con sabor de helado a elección",
+    description: "Batido de leche con sabor de helado a elección",
     price: "$3800",
   },
 ];
@@ -247,7 +247,7 @@ export const yogurts: MenuItem[] = [
     category: "Yogurts",
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt Natural",
-    ingredients: "Durazno, kiwi, banana y cereales",
+    description: "Durazno, kiwi, banana y cereales",
     price: "$3800",
   },
   {
@@ -255,7 +255,7 @@ export const yogurts: MenuItem[] = [
     category: "Yogurts",
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt de Frutos",
-    ingredients: "Frutos rojos y cereales",
+    description: "Frutos rojos y cereales",
     price: "$4900",
   },
   {
@@ -263,7 +263,7 @@ export const yogurts: MenuItem[] = [
     category: "Yogurts",
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt Maracuya",
-    ingredients: "Durazno y cereales",
+    description: "Durazno y cereales",
     price: "$4900",
   },
 ];
@@ -273,14 +273,14 @@ export const tortas_delicias: MenuItem[] = [
     id: 1,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Raffaello",
-    ingredients: "Cheescake de coco y chocolate blanco",
+    description: "Cheescake de coco y chocolate blanco",
     price: "$7000",
   },
   {
     id: 2,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Cheescake con brownie",
-    ingredients:
+    description:
       "Cheescake de Vainilla horneado con base de brownke y salsa de frutos rojos",
     price: "$7000",
   },
@@ -288,7 +288,7 @@ export const tortas_delicias: MenuItem[] = [
     id: 3,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Mantecol",
-    ingredients: "Cheescake de mantecol con pedacitos de mantecol",
+    description: "Cheescake de mantecol con pedacitos de mantecol",
     price: "$7000",
   },
   {
@@ -319,7 +319,7 @@ export const tortas_delicias: MenuItem[] = [
     id: 8,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Balcarce",
-    ingredients:
+    description:
       "Pionono, dulce de leche, crema y frutos secos (nueces, almendras, pasas de uva)",
     price: "$7000",
   },
@@ -351,28 +351,28 @@ export const tortas_delicias: MenuItem[] = [
     id: 13,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con dulce de leche",
-    ingredients: "Dos unidades",
+    description: "Dos unidades",
     price: "$3700",
   },
   {
     id: 14,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con Nutella",
-    ingredients: "Dos unidades",
+    description: "Dos unidades",
     price: "$4500",
   },
   {
     id: 15,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con dulce de leche + bocha de helado",
-    ingredients: "Dos unidades + bocha de helado (Sabor a elección)",
+    description: "Dos unidades + bocha de helado (Sabor a elección)",
     price: "$4600",
   },
   {
     id: 16,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con nutella + bocha de helado",
-    ingredients: "Dos unidades + bocha de helado (Sabor a elección)",
+    description: "Dos unidades + bocha de helado (Sabor a elección)",
     price: "$5400",
   },
   {
@@ -431,7 +431,7 @@ export const salados_clasicos: MenuItem[] = [
     category: "Salados_Clasicos",
     imageSrc: "/milkshake-varios.jpg",
     title: "Tostado de jamón y queso ",
-    ingredients: "En pan de miga",
+    description: "En pan de miga",
     price: "$4800",
   },
   {
@@ -439,7 +439,7 @@ export const salados_clasicos: MenuItem[] = [
     category: "Salados_Clasicos",
     imageSrc: "/milkshake-varios.jpg",
     title: "Medio tostado ",
-    ingredients: "En pan de miga",
+    description: "En pan de miga",
     price: "$3200",
   },
   {
@@ -454,7 +454,7 @@ export const salados_clasicos: MenuItem[] = [
     category: "Salados_Clasicos",
     imageSrc: "/milkshake-varios.jpg",
     title: "Canasta de tostadas ",
-    ingredients:
+    description:
       "Tostadas y grisines con queso crema, mermelada y dulce de leche",
     price: "$4400",
   },
@@ -463,7 +463,7 @@ export const salados_clasicos: MenuItem[] = [
     category: "Salados_Clasicos",
     imageSrc: "/milkshake-varios.jpg",
     title: "Tostado frances",
-    ingredients:
+    description:
       "Pan de miga, jamón, queso dambo, queso cheddar. ( Embebido en huevo )",
     price: "$6200",
   },
@@ -475,7 +475,7 @@ export const tostones: MenuItem[] = [
     category: "Tostones",
     imageSrc: "/tostones-jugos.webp",
     title: "Avocado Toast",
-    ingredients:
+    description:
       "Huevo revuelto, queso tipo finlandia, palta, tomate y panceta crispy",
     price: "$6400",
   },
@@ -484,7 +484,7 @@ export const tostones: MenuItem[] = [
     category: "Tostones",
     imageSrc: "/tostones-jugos.webp",
     title: "Crustón",
-    ingredients: "Huevo revuelto, rúcula y queso parmesano",
+    description: "Huevo revuelto, rúcula y queso parmesano",
     price: "$5700",
   },
   {
@@ -492,7 +492,7 @@ export const tostones: MenuItem[] = [
     category: "Tostones",
     imageSrc: "/tostones-jugos.webp",
     title: "Crustón Cru",
-    ingredients: "Huevo revuelto, rúcula, queso parmesano y jamón crudo",
+    description: "Huevo revuelto, rúcula, queso parmesano y jamón crudo",
     price: "$6100",
   },
   {
@@ -500,7 +500,7 @@ export const tostones: MenuItem[] = [
     category: "Tostones",
     imageSrc: "/tostones-jugos.webp",
     title: "Salmón toast",
-    ingredients: "Queso tipo finlandia, huevo revuelto y salmón ahumado",
+    description: "Queso tipo finlandia, huevo revuelto y salmón ahumado",
     price: "$9500",
   },
 ];
@@ -511,7 +511,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/sandwich-lomito.jpg",
     title: "Sandwich Lomito",
-    ingredients:
+    description:
       "Fiambre de lomito, lechuga, tomates, queso y huevo revuelto en pan frances",
     price: "$7700",
   },
@@ -520,7 +520,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/sandwich-pollo.jpeg",
     title: "Pollo al Verdeo",
-    ingredients: "Pollo al verdeo en pan frances",
+    description: "Pollo al verdeo en pan frances",
     price: "$7900",
   },
   {
@@ -528,7 +528,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/sandwich-bondiola.jpg",
     title: "Sandwich de Atún",
-    ingredients: "Atún, cebolla morada, lechuga, tomate, huevo y salsa de queso ciboulette en pan francés",
+    description: "Atún, cebolla morada, lechuga, tomate, huevo y salsa de queso ciboulette en pan francés",
     price: "$7200",
   },
   {
@@ -536,7 +536,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/sandwich-bondiola.jpg",
     title: "Sandwich Bondiola",
-    ingredients: "Fiambre de bondiola, tomates confitados, queso azul, rúcula y aceite de oliva en pan ciabatta",
+    description: "Fiambre de bondiola, tomates confitados, queso azul, rúcula y aceite de oliva en pan ciabatta",
     price: "$7800",
   },
   {
@@ -565,7 +565,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/canoa.jpeg",
     title: "Canoa en pan francés",
-    ingredients: "Pollo a los 4 quesos (con pesto)",
+    description: "Pollo a los 4 quesos (con pesto)",
     price: "$7900",
   },
   {
@@ -573,7 +573,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/chipa-de-chedar.jpeg",
     title: "Chipa cheddar",
-    ingredients: "Queso cheddar, panceta y huevo revuelto",
+    description: "Queso cheddar, panceta y huevo revuelto",
     price: "$6700",
   },
   {
@@ -581,7 +581,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/pan-de-chipa.jpeg",
     title: "Chipa jamón y queso",
-    ingredients: "Lechuga, tomate, jamón y queso con salsa de mayonesa",
+    description: "Lechuga, tomate, jamón y queso con salsa de mayonesa",
     price: "$6300",
   },
   {
@@ -589,7 +589,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/pan-de-chipa.jpeg",
     title: "Chipa jamón crudo",
-    ingredients: "Rúcula, jamón crudo, queso, palta y cebolla caramelizada",
+    description: "Rúcula, jamón crudo, queso, palta y cebolla caramelizada",
     price: "$7200",
   },
 ];
@@ -600,7 +600,7 @@ export const ensaladas: MenuItem[] = [
     category: "Ensaladas",
     imageSrc: "/ensalada.jpg",
     title: "Caesar",
-    ingredients:
+    description:
       "Lechuga, queso parmesano, pollo rebozado en cereal, crustones y salsa caesar",
     price: "$6200",
   },
@@ -609,7 +609,7 @@ export const ensaladas: MenuItem[] = [
     category: "Ensaladas",
     imageSrc: "/ensalada.jpg",
     title: "Sávory",
-    ingredients: "Arroz, huevo, jamón, queso cremoso, kanikama, zanahoría y choclo",
+    description: "Arroz, huevo, jamón, queso cremoso, kanikama, zanahoría y choclo",
     price: "$6600",
   },
 ];
@@ -620,7 +620,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/barritas.jpeg",
     title: "Paletas Bañadas en chocolate negro",
-    ingredients:
+    description:
       "Pistacho, Chocotorta, Kinder, Menta granizada, Chocolate Block",
     price: "$3600",
   },
@@ -629,7 +629,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/cubatones.jpeg",
     title: "Cubanotes bañados en chocolate negro",
-    ingredients: "Dulce de leche, vainilla, frutilla a la crema, sambayón, bombon sávory",
+    description: "Dulce de leche, vainilla, frutilla a la crema, sambayón, bombon sávory",
     price: "$3200",
   },
   {
@@ -637,7 +637,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/cubatones-blanco.jpeg",
     title: "Cubanotes bañados en chocolate blanco",
-    ingredients: "Mascarpone, chocolate suizo, kinder",
+    description: "Mascarpone, chocolate suizo, kinder",
     price: "$3400",
   },
   {
@@ -645,7 +645,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/cubatones-bombon.jpeg",
     title: "Cubanotes bañados en chocolate negro con Bombones",
-    ingredients: "americana",
+    description: "americana",
     price: "$3400",
   },
   {
@@ -695,7 +695,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/bombones.jpeg",
     title: "Bombon Americana",
-    ingredients: "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
+    description: "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
     price: "$2700",
   },
   {
@@ -703,7 +703,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/bombones.jpeg",
     title: "Bombon Chocolate",
-    ingredients: "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
+    description: "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
     price: "$2700",
   },
   {
@@ -711,7 +711,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/bombones.jpeg",
     title: "Bombon Dulce de leche",
-    ingredients: "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
+    description: "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
     price: "$2700",
   },
 ];
@@ -757,7 +757,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Bombón Sávory",
-    ingredients: "Crema de avellanas con un veteado de chocolate",
+    description: "Crema de avellanas con un veteado de chocolate",
     price: "$6100",
   },
   {
@@ -842,7 +842,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Mascarpone con Frutos",
-    ingredients: "Queso mascarpone con salsa de frutos rojos",
+    description: "Queso mascarpone con salsa de frutos rojos",
     price: "$9500",
   },
   {
@@ -948,7 +948,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate Suizo",
-    ingredients: "Chocolate negro al rum con dulce de leche repostero",
+    description: "Chocolate negro al rum con dulce de leche repostero",
     price: "$9500",
   },
   {
@@ -956,7 +956,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate Sávory",
-    ingredients: "Chocolate negro con dulce de leche repostero y pedacitos de chocolate blanco",
+    description: "Chocolate negro con dulce de leche repostero y pedacitos de chocolate blanco",
     price: "$9500",
   },
   {
@@ -978,7 +978,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate blanco tentación",
-    ingredients: "Chocolate blanco con dulce de leche repostero y bombones rellenos",
+    description: "Chocolate blanco con dulce de leche repostero y bombones rellenos",
     price: "$9500",
   },
   {
@@ -986,7 +986,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Raffaello",
-    ingredients: "Chocolate blanco con veteado de coco y cereales",
+    description: "Chocolate blanco con veteado de coco y cereales",
     price: "$9500",
   },
   {
@@ -1015,7 +1015,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Dulce de leche Súper",
-    ingredients: "Dulce de leche repostero y bombones rellenos de dulce de leche",
+    description: "Dulce de leche repostero y bombones rellenos de dulce de leche",
     price: "$9500",
   },
   {
@@ -1093,7 +1093,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Limón Siciliano",
-    ingredients: "Limón al agua con salsa de frutos rojos",
+    description: "Limón al agua con salsa de frutos rojos",
     price: "$9500",
   },
   {

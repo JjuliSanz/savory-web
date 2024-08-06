@@ -156,9 +156,9 @@ export default function Menu() {
                   <h3 className="text-blanco text-lg font-bold">
                     {item.title}
                   </h3>
-                  {item.ingredients && (
+                  {item.description && (
                     <p className="text-blanco-oscuro font-bold text-sm">
-                      {item.ingredients}
+                      {item.description}
                     </p>
                   )}
                 </div>

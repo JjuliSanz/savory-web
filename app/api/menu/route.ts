@@ -1,15 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/utils/mongoose";
 import MenuDB from "@/models/MenuModel";
-// export async function GET() {
-//   await connectDB();
-//   try {
-//     const menuItems = await MenuItemModel.find();
-//     return NextResponse.json(menuItems);
-//   } catch (error: any) {
-//     return NextResponse.json({ message: error.message }, { status: 500 });
-//   }
-// }
 
 export async function GET(request: NextRequest) {
   try {
@@ -20,7 +11,8 @@ export async function GET(request: NextRequest) {
 
     const query = category ? { category } : {};
 
-    const menuItems = await MenuDB.find(query);
+    const menuItems = await MenuDB.find(query)
+    .sort({ createdAt: 1 });
 
     return NextResponse.json(menuItems);
   } catch (error: any) {

@@ -1,7 +1,7 @@
 "use client";
 import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface FormData {
   id: string;
@@ -28,6 +28,27 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
   });
   const router = useRouter();
   const [error, setError] = useState(false);
+
+  const fetchNextId = async () => {
+    try {
+      const response = await fetch("/api/menu/nextId");
+      const data = await response.json();
+      setFormData((prevData) => ({
+        ...prevData,
+        id: data.nextId.toString(),
+      }));
+    } catch (error) {
+      console.error("Error fetching next ID:", error);
+      setError(true);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchNextId();
+    }
+  }, [isOpen]);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -38,7 +59,6 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
       ...prevData,
       [name]: value,
     }));
-    
   };
 
   const createMenuItem = async () => {
@@ -98,8 +118,9 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
             name="id"
             value={formData.id}
             onChange={handleChange}
-            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium cursor-not-allowed"
             required
+            disabled
           />
         </div>
         <div className="mb-4">
@@ -117,7 +138,9 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
             className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
             required
           >
-            <option value="" disabled>Select a category</option>
+            <option value="" disabled>
+              Select a category
+            </option>
             <option value="Promociones">Promociones</option>
             <option value="Cafeteria">Cafetería</option>
             <option value="Frios">Frios</option>

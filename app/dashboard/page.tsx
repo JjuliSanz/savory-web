@@ -81,21 +81,21 @@ export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
 
   const fetchMenuItems = async (category: string) => {
-    const response = await fetch(`/api/menu?category=${category}`);
-    const data = await response.json();
-
-    setMenuItems(data);
+    try {
+      const response = await fetch(`/api/menu?category=${category}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch menu items");
+      }
+      const data = await response.json();
+      setMenuItems(data);
+    } catch (error) {
+      console.error("Error fetching menu items:", error);
+    }
   };
 
   useEffect(() => {
     fetchMenuItems(selectedCategory);
   }, [selectedCategory]);
-
-  // useEffect(() => {
-  //   if (!searchParams.get("category")) {
-  //     router.replace(`/dashboard?category=promociones`);
-  //   }
-  // }, [router, searchParams]);
 
   const handleCategoryChange = (category: string) => {
     router.push(`/dashboard?category=${category}`);
@@ -115,6 +115,25 @@ export default function Dashboard() {
     setSelectedItem(null);
   };
 
+  const handleSaveChanges = async (item: MenuItem) => {
+    try {
+      const response = await fetch(`/api/menu/${item._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(item),
+      });
+      const updatedItem = await response.json();
+      console.log(updatedItem, "updatedItem");
+
+      router.refresh();
+      handleCloseDrawer();
+    } catch (error) {
+      console.error("Error updating item:", error);
+    }
+  };
+
   const handlePreviewOpen = (item: MenuItem) => {
     setIsPreviewOpen(!isPreviewOpen);
     setSelectedItem(item);
@@ -127,15 +146,29 @@ export default function Dashboard() {
 
   const handleDelete = async (id: number) => {
     if (window.confirm("Are you sure you want to delete")) {
-      const res = await fetch(`/api/menu/${id}`, {
-        method: "DELETE",
-      });
-      router.refresh();
-      handleCloseDrawer();
+      try {
+        const res = await fetch(`/api/menu/${id}`, {
+          method: "DELETE",
+        });
+
+        if (!res.ok) {
+          throw new Error(`Error al borrar el item con el id: ${id}`);
+        }
+
+        router.refresh();
+        handleCloseDrawer();
+      } catch (error) {
+        console.error("Error deleting item:", error);
+      }
     }
   };
+
   return (
-    <main className="flex-1 ml-64 p-8 bg-blanco-oscuro">
+    <main
+      className={`flex-1 ml-64 p-8 bg-blanco-oscuro ${
+        isDrawerOpen ? "overflow-hidden" : ""
+      }`}
+    >
       <nav className="w-fit max-w-3xl mx-auto flex justify-center p-4 bg-marron rounded">
         <ul className="flex flex-wrap justify-center gap-4">
           {menuTabs.map((category) => (
@@ -176,7 +209,7 @@ export default function Dashboard() {
               Título
             </th>
             <th className="px-6 py-3 border-b-2 border-marron-clarito text-left leading-4 text-marron tracking-wider">
-              Ingredientes
+              Descripción
             </th>
             <th className="px-6 py-3 border-b-2 border-marron-clarito text-left leading-4 text-marron tracking-wider">
               Precio
@@ -221,6 +254,7 @@ export default function Dashboard() {
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           handleCloseDrawer={handleCloseDrawer}
+          handleSaveChanges={handleSaveChanges}
         />
       )}
 
