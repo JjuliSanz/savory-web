@@ -5,13 +5,15 @@ import { MenuItem, MenuTab, MenuType } from "@/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { connectDB } from "@/utils/mongoose";
 import MenuItemModel from "@/models/MenuModel";
 import TableRow from "@/components/dashboard/TableRow";
 import ProductForm from "@/components/dashboard/Form";
 import { PreviewModal } from "@/components/dashboard/PreviewModal";
 import { Drawer } from "@/components/dashboard/Drawer";
+import LoadingSkeleton from "@/components/dashboard/LoadingSkeleton";
+import { revalidatePath } from "next/cache";
 
 // async function loadMenu() {
 //   connectDB();
@@ -70,6 +72,20 @@ const menuTabs: MenuTab[] = [
   },
 ];
 
+const fetchMenuItems = async (category: string): Promise<MenuItem[]> => {
+  try {
+    const response = await fetch(`/api/menu?category=${category}`);
+    if (!response.ok) {
+      throw new Error("Error al cargar el menu");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching menu items:", error);
+    throw error; // Throw the error so it can be handled where the function is called
+  }
+};
+
 export default function Dashboard() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -80,21 +96,30 @@ export default function Dashboard() {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const fetchMenuItems = async (category: string) => {
-    try {
-      const response = await fetch(`/api/menu?category=${category}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch menu items");
-      }
-      const data = await response.json();
-      setMenuItems(data);
-    } catch (error) {
-      console.error("Error fetching menu items:", error);
-    }
-  };
+  // const fetchMenuItems = async (category: string) => {
+  //   try {
+  //     const response = await fetch(`/api/menu?category=${category}`);
+  //     if (!response.ok) {
+  //       throw new Error("Error al cargar el menu");
+  //     }
+  //     const data = await response.json();
+  //     setMenuItems(data);
+  //   } catch (error) {
+  //     console.error("Error fetching menu items:", error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchMenuItems(selectedCategory);
+    const loadMenuItems = async () => {
+      try {
+        const data = await fetchMenuItems(selectedCategory);
+        setMenuItems(data);
+      } catch (error) {
+        console.error("Error fetching menu items:", error);
+      }
+    };
+
+    loadMenuItems();
   }, [selectedCategory]);
 
   const handleCategoryChange = (category: string) => {
@@ -104,6 +129,8 @@ export default function Dashboard() {
   const handleFormOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  
 
   const handleEdit = (item: MenuItem) => {
     setIsDrawerOpen(true);
@@ -126,6 +153,10 @@ export default function Dashboard() {
       });
       const updatedItem = await response.json();
       console.log(updatedItem, "updatedItem");
+
+      if (!response.ok) {
+        throw new Error("Error al editar el menu");
+      }
 
       router.refresh();
       handleCloseDrawer();
@@ -152,10 +183,10 @@ export default function Dashboard() {
         });
 
         if (!res.ok) {
-          throw new Error(`Error al borrar el item con el id: ${id}`);
+          throw new Error(`Error al borrar el item seleccionado`);
         }
 
-        router.refresh();
+        revalidatePath(`/dashboard?category=${selectedCategory}`)
         handleCloseDrawer();
       } catch (error) {
         console.error("Error deleting item:", error);
@@ -217,15 +248,9 @@ export default function Dashboard() {
             <th className="px-6 py-3 border-b-2 border-marron-clarito"></th>
           </tr>
         </thead>
-        <tbody>
-          {menuItems.length === 0 ? (
-            <tr>
-              <td colSpan={5} className="text-center py-4">
-                No hay productos.
-              </td>
-            </tr>
-          ) : (
-            menuItems.map((item) => (
+        <Suspense fallback={<LoadingSkeleton />}>
+          <tbody>
+            {menuItems.map((item) => (
               <TableRow
                 key={item.id}
                 item={item}
@@ -233,9 +258,9 @@ export default function Dashboard() {
                 handleDelete={handleDelete}
                 handlePreviewOpen={handlePreviewOpen}
               />
-            ))
-          )}
-        </tbody>
+            ))}
+          </tbody>
+        </Suspense>
       </table>
 
       {/* Preview Menu Item Card */}

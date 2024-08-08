@@ -32,7 +32,7 @@ const TableRow = ({
       <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">
         {item.description}
       </td>
-      <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">{item.price} $</td>
+      <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium flex items-center">{item.price} <span className="inline">$</span></td>
       <td className="px-6 py-4 border-b border-marron-clarito text-right">
         <button
           onClick={() => handleEdit(item)}

@@ -16,7 +16,13 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(menuItems);
   } catch (error: any) {
-    return NextResponse.json({ message: error.message }, { status: 500 });
+    let errorMessage = 'Ocurrió un error. Por favor, inténtelo de nuevo.';
+    if (error.message.includes('database')) {
+      errorMessage = 'Error de base de datos. Por favor, inténtelo de nuevo más tarde.';
+    } else if (error.message.includes('network')) {
+      errorMessage = 'Error de red. Por favor, verifique su conexión a internet.';
+    }
+    return NextResponse.json({ message: errorMessage  }, { status: 500 });
   }
 }
 

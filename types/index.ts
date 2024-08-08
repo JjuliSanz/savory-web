@@ -2,7 +2,7 @@ import { Types } from "mongoose";
 
 export type MenuItem = {
   _id?: string;
-  id?: number;
+  id: number;
   category?: string;
   imageSrc: string;
   title: string;
