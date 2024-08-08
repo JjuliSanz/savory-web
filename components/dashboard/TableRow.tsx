@@ -5,14 +5,14 @@ import React from "react";
 interface TableRowProps {
   item: MenuItem;
   handleEdit: (item: MenuItem) => void;
-  handleDelete: (id: number) => void;
+  handleDeleteClick: (item: MenuItem) => void;
   handlePreviewOpen: (item: MenuItem) => void;
 }
 
 const TableRow = ({
   item,
   handleEdit,
-  handleDelete,
+  handleDeleteClick,
   handlePreviewOpen,
 }: TableRowProps) => {
   return (
@@ -32,7 +32,12 @@ const TableRow = ({
       <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">
         {item.description}
       </td>
-      <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium flex items-center">{item.price} <span className="inline">$</span></td>
+      <td className="px-6 py-4 border-b border-marron-clarito text-marron text-base font-medium">
+        <div className="flex gap-1">
+          {" "}
+          {item.price} <span className="inline">$</span>
+        </div>
+      </td>
       <td className="px-6 py-4 border-b border-marron-clarito text-right">
         <button
           onClick={() => handleEdit(item)}
@@ -41,7 +46,7 @@ const TableRow = ({
           Editar
         </button>
         <button
-          onClick={() => handleDelete(item.id)}
+          onClick={() => handleDeleteClick(item)}
           className="text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded ml-2"
         >
           Borrar

@@ -14,12 +14,8 @@ import { PreviewModal } from "@/components/dashboard/PreviewModal";
 import { Drawer } from "@/components/dashboard/Drawer";
 import LoadingSkeleton from "@/components/dashboard/LoadingSkeleton";
 import { revalidatePath } from "next/cache";
-
-// async function loadMenu() {
-//   connectDB();
-//   const menu = await MenuItemModel.find();
-//   return menu;
-// }
+import DeleteModal from "@/components/dashboard/DeleteAlert";
+import { fetchMenuItems } from "@/utils/actions";
 
 const menuTabs: MenuTab[] = [
   {
@@ -72,29 +68,20 @@ const menuTabs: MenuTab[] = [
   },
 ];
 
-const fetchMenuItems = async (category: string): Promise<MenuItem[]> => {
-  try {
-    const response = await fetch(`/api/menu?category=${category}`);
-    if (!response.ok) {
-      throw new Error("Error al cargar el menu");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching menu items:", error);
-    throw error; // Throw the error so it can be handled where the function is called
-  }
-};
 
 export default function Dashboard() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedCategory = searchParams.get("category") || "Promociones";
+
+
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   // const fetchMenuItems = async (category: string) => {
   //   try {
@@ -130,8 +117,6 @@ export default function Dashboard() {
     setIsOpen(!isOpen);
   };
 
-  
-
   const handleEdit = (item: MenuItem) => {
     setIsDrawerOpen(true);
     setSelectedItem(item);
@@ -142,28 +127,7 @@ export default function Dashboard() {
     setSelectedItem(null);
   };
 
-  const handleSaveChanges = async (item: MenuItem) => {
-    try {
-      const response = await fetch(`/api/menu/${item._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(item),
-      });
-      const updatedItem = await response.json();
-      console.log(updatedItem, "updatedItem");
-
-      if (!response.ok) {
-        throw new Error("Error al editar el menu");
-      }
-
-      router.refresh();
-      handleCloseDrawer();
-    } catch (error) {
-      console.error("Error updating item:", error);
-    }
-  };
+  
 
   const handlePreviewOpen = (item: MenuItem) => {
     setIsPreviewOpen(!isPreviewOpen);
@@ -175,10 +139,15 @@ export default function Dashboard() {
     setSelectedItem(null);
   };
 
-  const handleDelete = async (id: number) => {
-    if (window.confirm("Are you sure you want to delete")) {
+  const handleDeleteClick = (item: MenuItem) => {
+    setSelectedItem(item);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleDelete = async () => {
+    if (selectedItem) {
       try {
-        const res = await fetch(`/api/menu/${id}`, {
+        const res = await fetch(`/api/menu/${selectedItem._id}`, {
           method: "DELETE",
         });
 
@@ -186,10 +155,11 @@ export default function Dashboard() {
           throw new Error(`Error al borrar el item seleccionado`);
         }
 
-        revalidatePath(`/dashboard?category=${selectedCategory}`)
-        handleCloseDrawer();
+        router.refresh()
+        setIsDeleteModalOpen(false);
       } catch (error) {
         console.error("Error deleting item:", error);
+        throw new Error("Hubo un error al borrar el item seleccionado");
       }
     }
   };
@@ -255,7 +225,7 @@ export default function Dashboard() {
                 key={item.id}
                 item={item}
                 handleEdit={handleEdit}
-                handleDelete={handleDelete}
+                handleDeleteClick={handleDeleteClick}
                 handlePreviewOpen={handlePreviewOpen}
               />
             ))}
@@ -279,14 +249,26 @@ export default function Dashboard() {
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           handleCloseDrawer={handleCloseDrawer}
-          handleSaveChanges={handleSaveChanges}
+          // handleSaveChanges={handleSaveChanges}
         />
       )}
 
       {/* Add Product Form */}
       {isOpen && (
-        <ProductForm isOpen={isOpen} handleFormOpen={handleFormOpen} />
+        <ProductForm
+          isOpen={isOpen}
+          handleFormOpen={handleFormOpen}
+          selectedCategory={selectedCategory}
+        />
       )}
+
+      {/* Delete Modal Alert */}
+      <DeleteModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleDelete}
+        selectedItem={selectedItem}
+      />
     </main>
   );
 }

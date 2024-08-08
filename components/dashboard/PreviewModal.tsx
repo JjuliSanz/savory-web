@@ -42,9 +42,9 @@ export const PreviewModal = ({
             <h3 className="text-blanco text-lg font-bold">
               {selectedItem.title}
             </h3>
-            {selectedItem.ingredients && (
+            {selectedItem.description && (
               <p className="text-blanco-oscuro font-bold text-sm">
-                {selectedItem.ingredients}
+                {selectedItem.description}
               </p>
             )}
           </div>

@@ -1,17 +1,19 @@
 "use client";
 import { CloseIcon } from "@/assets/icons/CloseIcon";
+import { createMenuItem } from "@/utils/actions";
+import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Skeleton = () => (
-  <div className="w-[400px] bg-blanco-oscuro p-6 rounded-lg relative text-marron-claro">
+  <div className="w-[400px] h-screen bg-blanco-oscuro p-6 rounded-lg relative text-marron-claro">
     <div className="animate-pulse">
-      <div className="h-8 bg-gray-300 mb-4 rounded"></div>
-      <div className="h-8 bg-gray-300 mb-4 rounded"></div>
-      <div className="h-8 bg-gray-300 mb-4 rounded"></div>
-      <div className="h-8 bg-gray-300 mb-4 rounded"></div>
-      <div className="h-8 bg-gray-300 mb-4 rounded"></div>
-      <div className="h-8 bg-gray-300 mb-4 rounded"></div>
+      <div className="h-12 bg-marron mb-4 rounded"></div>
+      <div className="h-12 bg-marron mb-4 rounded"></div>
+      <div className="h-12 bg-marron mb-4 rounded"></div>
+      <div className="h-12 bg-marron mb-4 rounded"></div>
+      <div className="h-12 bg-marron mb-4 rounded"></div>
+      <div className="h-12 bg-marron mb-4 rounded"></div>
     </div>
   </div>
 );
@@ -28,9 +30,14 @@ interface FormData {
 interface ProductFormProps {
   isOpen: boolean;
   handleFormOpen: () => void; // Prop para manejar el cierre del formulario
+  selectedCategory: string;
 }
 
-const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
+const ProductForm = ({
+  isOpen,
+  handleFormOpen,
+  selectedCategory,
+}: ProductFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     id: "",
     category: "",
@@ -78,31 +85,37 @@ const ProductForm = ({ isOpen, handleFormOpen }: ProductFormProps) => {
     }));
   };
 
-  const createMenuItem = async () => {
-    try {
-      const res = await fetch("/api/menu", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+  // const createMenuItem = async () => {
+  //   try {
+  //     const res = await fetch("/api/menu", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     });
 
-      const data = res.json();
+  //     const data = res.json();
 
-      handleFormOpen();
-      router.refresh();
+  //     handleFormOpen();
+  //     revalidatePath(`/dashboard?category=${selectedCategory}`);
 
-      if (!res.ok) {
-        throw new Error("Error al añadir el producto al menu");
-      }
-    } catch (error: any) {
-      console.log(error);
-      setError(true);
-    }
-  };
+  //     if (!res.ok) {
+  //       throw new Error("Error al añadir el producto al menu");
+  //     }
+  //   } catch (error: any) {
+  //     console.log(error);
+  //     setError(true);
+  //   }
+  // };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createMenuItem();
+    try {
+      await createMenuItem(formData, selectedCategory);
+      handleFormOpen();
+      router.refresh()
+    } catch (error) {
+      setError(true);
+    }
   };
 
   if (!isOpen) return null;

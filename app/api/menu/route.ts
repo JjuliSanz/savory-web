@@ -11,18 +11,19 @@ export async function GET(request: NextRequest) {
 
     const query = category ? { category } : {};
 
-    const menuItems = await MenuDB.find(query)
-    .sort({ createdAt: 1 });
+    const menuItems = await MenuDB.find(query).sort({ createdAt: 1 });
 
     return NextResponse.json(menuItems);
   } catch (error: any) {
-    let errorMessage = 'Ocurrió un error. Por favor, inténtelo de nuevo.';
-    if (error.message.includes('database')) {
-      errorMessage = 'Error de base de datos. Por favor, inténtelo de nuevo más tarde.';
-    } else if (error.message.includes('network')) {
-      errorMessage = 'Error de red. Por favor, verifique su conexión a internet.';
+    let errorMessage = "Ocurrió un error. Por favor, inténtelo de nuevo.";
+    if (error.message.includes("database")) {
+      errorMessage =
+        "Error de base de datos. Por favor, inténtelo de nuevo más tarde.";
+    } else if (error.message.includes("network")) {
+      errorMessage =
+        "Error de red. Por favor, verifique su conexión a internet.";
     }
-    return NextResponse.json({ message: errorMessage  }, { status: 500 });
+    return NextResponse.json({ message: errorMessage }, { status: 500 });
   }
 }
 
@@ -51,4 +52,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-

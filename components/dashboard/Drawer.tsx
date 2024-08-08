@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import { useDrawer } from "@/hooks/useDrawer";
 import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { MenuItem } from "@/types";
+import { editMenuItem } from "@/utils/actions";
 
 interface DrawerProps {
   isDrawerOpen: boolean;
   handleCloseDrawer: () => void;
   selectedItem: MenuItem | null;
   setSelectedItem: (item: MenuItem | null) => void;
-  handleSaveChanges: (item: MenuItem) => void;
+  // handleSaveChanges: (item: MenuItem) => void;
 }
 
 export const Drawer = ({
@@ -18,13 +19,15 @@ export const Drawer = ({
   handleCloseDrawer,
   selectedItem,
   setSelectedItem,
-  handleSaveChanges,
+  // handleSaveChanges,
 }: DrawerProps) => {
   if (!isDrawerOpen || !selectedItem) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    handleSaveChanges(selectedItem);
+    // handleSaveChanges(selectedItem);
+    editMenuItem(selectedItem);
+    handleCloseDrawer();
   };
 
   return (
