@@ -15,9 +15,9 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
-      <h2>Algo salió mal</h2>
-      <p>{error.message}</p>
+    <div className="ml-64 w-full h-screen pt-10 flex flex-col items-center gap-2">
+      <h2 className="text-xl text-marron font-semibold">Algo salió mal</h2>
+      <p className="text-lg text-marron-claro font-medium">{error.message}</p>
       {/* <button onClick={() => reset()}></button> */}
     </div>
   );

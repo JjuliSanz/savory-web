@@ -1,14 +1,16 @@
-// actions.ts
 import { MenuItem } from "@/types";
-import { revalidatePath } from "next/cache"; // Importa revalidatePath si lo vas a usar
-import { NextRequest } from "next/server"; // Si estás usando NextRequest
-// Asegúrate de tener la ruta correcta
+import { revalidatePath } from "next/cache";
+import { NextRequest } from "next/server";
 
 export const fetchMenuItems = async (category: string): Promise<MenuItem[]> => {
   try {
-    const response = await fetch(`/api/menu?category=${category}`, {
-      cache: "no-store",
-    });
+    console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/menu?category=${category}`,
+      {
+        cache: "no-store",
+      }
+    );
     if (!response.ok) {
       throw new Error("Error al cargar el menu");
     }
@@ -22,7 +24,8 @@ export const fetchMenuItems = async (category: string): Promise<MenuItem[]> => {
 
 export const createMenuItem = async (data: any, selectedCategory: string) => {
   try {
-    const res = await fetch("/api/menu", {
+    console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/menu`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -43,23 +46,38 @@ export const createMenuItem = async (data: any, selectedCategory: string) => {
 
 export const editMenuItem = async (item: MenuItem) => {
   try {
-    const response = await fetch(`/api/menu/${item._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(item),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/menu/${item._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(item),
+      }
+    );
     const updatedItem = await response.json();
     console.log(updatedItem, "updatedItem");
 
     if (!response.ok) {
       throw new Error("Error al editar el menu");
     }
-
-
-    
   } catch (error) {
     console.error("Error updating item:", error);
+  }
+};
+
+export const deleteMenuItem = async (item: MenuItem) => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/menu/${item._id}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error al borrar el item seleccionado`);
+    }
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    throw new Error("Hubo un error al borrar el item seleccionado");
   }
 };

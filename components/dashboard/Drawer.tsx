@@ -5,6 +5,7 @@ import { useDrawer } from "@/hooks/useDrawer";
 import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { MenuItem } from "@/types";
 import { editMenuItem } from "@/utils/actions";
+import { useRouter } from "next/navigation";
 
 interface DrawerProps {
   isDrawerOpen: boolean;
@@ -19,24 +20,27 @@ export const Drawer = ({
   handleCloseDrawer,
   selectedItem,
   setSelectedItem,
-  // handleSaveChanges,
-}: DrawerProps) => {
-  if (!isDrawerOpen || !selectedItem) return null;
+}: // handleSaveChanges,
+DrawerProps) => {
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // handleSaveChanges(selectedItem);
-    editMenuItem(selectedItem);
-    handleCloseDrawer();
+    if (selectedItem) {
+      editMenuItem(selectedItem);
+      handleCloseDrawer();
+      router.refresh();
+    }
   };
-
+  
+  if (!isDrawerOpen || !selectedItem) return null;
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-0">
       <motion.div
         initial={{ x: 300, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ ease: "easeInOut", duration: 0.5 }}
-        className="bg-white w-1/3 h-full p-6 overflow-auto flex flex-col z-10"
+        className="bg-white w-1/3 max-h-screen pt-1 p-6 overflow-auto overscroll-contain flex flex-col z-10"
       >
         <button
           onClick={handleCloseDrawer}
