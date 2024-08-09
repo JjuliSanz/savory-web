@@ -68,6 +68,7 @@ const CategorySelector = ({
         {menuTabs.map((category) => (
           <motion.li
             key={category.value}
+            layoutId="underline"
             className={`cursor-pointer text-lg font-semibold hover:text-blanco-oscuro duration-300 ease-in-out transition  ${
               selectedCategory === category.value
                 ? "text-blanco-oscuro underline"
@@ -75,9 +76,7 @@ const CategorySelector = ({
             }`}
             onClick={() => handleCategoryChange(category.value)}
           >
-            <motion.div className="underline" layoutId="underline">
-              {category.title.charAt(0).toUpperCase() + category.title.slice(1)}
-            </motion.div>
+            {category.title.charAt(0).toUpperCase() + category.title.slice(1)}
           </motion.li>
         ))}
       </ul>

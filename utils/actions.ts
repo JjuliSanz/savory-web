@@ -1,16 +1,21 @@
+import MenuModel from "@/models/MenuModel";
 import { MenuItem } from "@/types";
 import { revalidatePath } from "next/cache";
 import { NextRequest } from "next/server";
 
-export const fetchMenuItems = async (category: string): Promise<MenuItem[]> => {
+export const fetchMenuItems = async (
+  category: string,
+  search?: string
+): Promise<MenuItem[]> => {
   try {
-    console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/menu?category=${category}`,
-      {
-        cache: "no-store",
-      }
-    );
+    const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/api/menu`);
+    url.searchParams.append("category", category);
+    if (search) {
+      url.searchParams.append("search", search);
+    }
+    const response = await fetch(url.toString(), {
+      cache: "no-store",
+    });
     if (!response.ok) {
       throw new Error("Error al cargar el menu");
     }
@@ -24,7 +29,6 @@ export const fetchMenuItems = async (category: string): Promise<MenuItem[]> => {
 
 export const createMenuItem = async (data: any, selectedCategory: string) => {
   try {
-    console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/menu`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -69,9 +73,12 @@ export const editMenuItem = async (item: MenuItem) => {
 
 export const deleteMenuItem = async (item: MenuItem) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/menu/${item._id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/menu/${item._id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (!res.ok) {
       throw new Error(`Error al borrar el item seleccionado`);
@@ -81,3 +88,4 @@ export const deleteMenuItem = async (item: MenuItem) => {
     throw new Error("Hubo un error al borrar el item seleccionado");
   }
 };
+

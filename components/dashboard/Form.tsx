@@ -120,7 +120,7 @@ const ProductForm = ({ selectedCategory }: ProductFormProps) => {
             <form
               onClick={(e) => e.stopPropagation()}
               onSubmit={handleSubmit}
-              className="w-[400px] h-full overflow-auto overscroll-contain bg-blanco-oscuro p-6 rounded relative text-marron-claro"
+              className={`w-[400px] h-full overflow-auto overscroll-contain bg-blanco-oscuro p-6 rounded relative text-marron-claro`}
             >
               <button
                 onClick={handleFormOpen}

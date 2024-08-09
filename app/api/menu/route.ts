@@ -8,9 +8,13 @@ export async function GET(request: NextRequest) {
 
     const url = new URL(request.url);
     const category = url.searchParams.get("category");
+    const search = url.searchParams.get("search");
 
-    const query = category ? { category } : {};
+    const query:any = category ? { category } : {};
 
+    if (search) {
+      query.title = { $regex: search, $options: "i" }; // Busqueda insensible a mayúsculas y minúsculas
+    }
     const menuItems = await MenuDB.find(query).sort({ createdAt: 1 });
 
     return NextResponse.json(menuItems);
