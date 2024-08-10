@@ -16,7 +16,7 @@ const Sidebar: React.FC = () => {
       <nav className="flex-1 p-4">
         <ul>
           <li
-            className={`mb-4 ${
+            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
               pathname === "/dashboard/usuarios"
                 ? "bg-blanco-oscuro text-marron"
                 : "text-blanco-oscuro"
@@ -24,13 +24,13 @@ const Sidebar: React.FC = () => {
           >
             <Link
               href="/dashboard/usuarios"
-              className="block py-2 px-4 rounded  text-xl font-medium hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300"
+              className="block py-2 px-4 text-xl font-medium"
             >
               Usuarios
             </Link>
           </li>
           <li
-            className={`mb-4 ${
+            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
               pathname === "/dashboard"
                 ? "bg-blanco-oscuro text-marron"
                 : "text-blanco-oscuro"
@@ -38,13 +38,13 @@ const Sidebar: React.FC = () => {
           >
             <Link
               href="/dashboard"
-              className="block py-2 px-4 rounded  text-xl font-medium hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300"
+              className="block py-2 px-4 text-xl font-medium"
             >
               Menu
             </Link>
           </li>
           <li
-            className={`mb-4 ${
+            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
               pathname === "/dashboard/secciones"
                 ? "bg-blanco-oscuro text-marron"
                 : "text-blanco-oscuro"
@@ -52,9 +52,23 @@ const Sidebar: React.FC = () => {
           >
             <Link
               href="/dashboard/secciones"
-              className="block py-2 px-4 rounded  text-xl font-medium hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300"
+              className="block py-2 px-4 text-xl font-medium"
             >
               Secciones
+            </Link>
+          </li>
+          <li
+            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
+              pathname === "/dashboard/addProduct"
+                ? "bg-blanco-oscuro text-marron"
+                : "text-blanco-oscuro"
+            }`}
+          >
+            <Link
+              href="/dashboard/addProduct"
+              className="block py-2 px-4 text-xl font-medium"
+            >
+              Agregar Producto
             </Link>
           </li>
         </ul>

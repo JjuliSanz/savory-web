@@ -1,6 +1,5 @@
 "use client";
-import { CloseIcon } from "@/assets/icons/CloseIcon";
-import { addMenuItem, addTest, getLastId } from "@/utils/serverActions";
+import { addMenuItem } from "@/utils/serverActions";
 import React, { useRef } from "react";
 import { useFormStatus } from "react-dom";
 
@@ -26,62 +25,62 @@ const Button = () => {
   );
 };
 
-const ServerForm = (nextId: any) => {
+const ServerForm = ({ nextId }: { nextId: number }) => {
   const ref = useRef<HTMLFormElement>(null);
+
   return (
     <form
       ref={ref}
-      action={addTest}
-      className={`w-[400px] h-full overflow-auto overscroll-contain bg-blanco-oscuro p-6 rounded relative text-marron-claro`}
+      action={addMenuItem}
+      className={`w-[600px] h-full overflow-auto overscroll-contain bg-blanco-oscuro rounded relative text-marron-claro mx-auto`}
     >
-      <button className="absolute top-0 right-0 text-marron w-8 hover:opacity-70 hover:scale-95 transition duration-300 ease-in-out">
-        <CloseIcon />
-      </button>
-
-      <div className="mb-4">
-        <label
-          htmlFor="id"
-          className="block text-sm font-bold mb-2 text-marron"
-        >
-          ID
-        </label>
-        <input
-          type="text"
-          id="id"
-          name="id"
-          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium cursor-not-allowed"
-          required
-          value={nextId}
-        />
-      </div>
-      <div className="mb-4">
-        <label
-          htmlFor="CATEGORY"
-          className="block text-sm font-bold mb-2 text-marron"
-        >
-          CATEGORY
-        </label>
-        <select
-          id="category"
-          name="category"
-          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
-          required
-        >
-          <option value="" disabled>
-            Select a category
-          </option>
-          <option value="Promociones">Promociones</option>
-          <option value="Cafeteria">Cafetería</option>
-          <option value="Frios">Frios</option>
-          <option value="Tortas_Delicias">Tortas y Delicias</option>
-          <option value="Salados_Clasicos">Salados Clásicos</option>
-          <option value="Tostones">Tostones</option>
-          <option value="Wraps">Wraps</option>
-          <option value="Sandwiches">Sandwiches</option>
-          <option value="Ensaladas">Ensaladas</option>
-          <option value="Postres_Helados">Postres Helados</option>
-          <option value="Heladeria">Heladería</option>
-        </select>
+      <div className="flex space-x-4 mb-4">
+        <div className="w-1/3">
+          <label
+            htmlFor="id"
+            className="block text-sm font-bold mb-2 text-marron"
+          >
+            ID
+          </label>
+          <input
+            type="text"
+            id="id"
+            name="id"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold cursor-not-allowed"
+            required
+            value={nextId}
+            readOnly
+          />
+        </div>
+        <div className="w-2/3">
+          <label
+            htmlFor="category"
+            className="block text-sm font-bold mb-2 text-marron"
+          >
+            CATEGORÍA
+          </label>
+          <select
+            id="category"
+            name="category"
+            className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
+            required
+          >
+            <option value="" disabled>
+              Selecciona la categoría
+            </option>
+            <option value="Promociones">Promociones</option>
+            <option value="Cafeteria">Cafetería</option>
+            <option value="Frios">Frios</option>
+            <option value="Tortas_Delicias">Tortas y Delicias</option>
+            <option value="Salados_Clasicos">Salados Clásicos</option>
+            <option value="Tostones">Tostones</option>
+            <option value="Wraps">Wraps</option>
+            <option value="Sandwiches">Sandwiches</option>
+            <option value="Ensaladas">Ensaladas</option>
+            <option value="Postres_Helados">Postres Helados</option>
+            <option value="Heladeria">Heladería</option>
+          </select>
+        </div>
       </div>
       <div className="mb-4">
         <label
@@ -94,7 +93,7 @@ const ServerForm = (nextId: any) => {
           type="text"
           id="title"
           name="title"
-          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
+          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
           required
         />
       </div>
@@ -108,7 +107,7 @@ const ServerForm = (nextId: any) => {
         <textarea
           id="description"
           name="description"
-          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
+          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
         />
       </div>
       <div className="mb-4">
@@ -122,7 +121,7 @@ const ServerForm = (nextId: any) => {
           type="text"
           id="imageSrc"
           name="imageSrc"
-          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
+          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
           required
         />
       </div>
@@ -137,7 +136,7 @@ const ServerForm = (nextId: any) => {
           type="text"
           id="price"
           name="price"
-          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
+          className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
           required
         />
       </div>

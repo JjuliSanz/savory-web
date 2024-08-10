@@ -4,8 +4,8 @@ import React from "react";
 const DeleteButton = ({ id }: { id: string }) => {
   const deleteMenuItemID = deleteMenuItem.bind(null, id);
   return (
-    <form action={deleteMenuItemID}>
-      <button type="submit" className="rounded-md border p-2 hover:bg-gray-100">
+    <form action={deleteMenuItemID} className="w-fit">
+      <button type="submit" className="text-red-500 hover:text-red-700 font-bold text-start rounded">
         BORRAR
       </button>
     </form>

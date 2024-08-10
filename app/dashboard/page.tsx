@@ -1,72 +1,50 @@
-
 import { motion } from "framer-motion";
 
 import { Suspense } from "react";
 
-import TableRow from "@/components/dashboard/TableRow";
-import ProductForm from "@/components/dashboard/Form";
 
 import LoadingSkeleton from "@/components/dashboard/LoadingSkeleton";
 
-import { fetchMenuItems } from "@/utils/actions";
+
 import CategorySelector from "@/components/dashboard/CategorySelector";
 import ToTopButton from "@/components/dashboard/ToTopButton";
-
+import MenuList from "./secciones/MenuList";
+import SearchBar from "@/components/dashboard/SearchBar";
+import Link from "next/link";
 
 export default async function Dashboard({
   searchParams,
 }: {
-  searchParams: { category?: string };
+  searchParams?: { category?: string; query?: string };
 }) {
-  const selectedCategory = searchParams.category || "Promociones";
-  const menuItems = await fetchMenuItems(selectedCategory);
+  const selectedCategory = searchParams?.category || "Promociones";
+  const query = searchParams?.query || "";
 
 
   return (
     <main className={`flex-1 ml-56 p-8 bg-blanco-oscuro`}>
       <CategorySelector selectedCategory={selectedCategory} />
       <header className="items-center justify-between block sm:flex mt-10">
-        <input
-          type="text"
-          placeholder="Buscar productos"
-          className="bg-transparent text-marron placeholder-marron border-2 border-marron rounded-xl px-3 py-2 focus:outline-none focus:ring-0 focus:border-marron"
-        />
+        <SearchBar placeholder="Buscar productos por su titulo" />
+
         {/* ADD PRODUCT */}
-        <ProductForm selectedCategory={selectedCategory} />
+        <button className="px-3 py-2 border-2 border-marron text-marron text-lg font-bold rounded-xl hover:scale-95 transition duration-300 ease-in-out hover:bg-marron hover:text-blanco-oscuro">
+          <Link href="/dashboard/addProduct">Agregar Producto</Link>
+        </button>
       </header>
-      <table className="min-w-full bg-blanco mt-10">
-        <thead>
-          <tr>
-            <th className="px-6 py-3 border-b-2 border-marron-clarito text-left leading-4 text-marron tracking-wider">
-              Imagen
-            </th>
-            <th className="px-6 py-3 border-b-2 border-marron-clarito text-left leading-4 text-marron tracking-wider">
-              Título
-            </th>
-            <th className="px-6 py-3 border-b-2 border-marron-clarito text-left leading-4 text-marron tracking-wider">
-              Descripción
-            </th>
-            <th className="px-6 py-3 border-b-2 border-marron-clarito text-left leading-4 text-marron tracking-wider">
-              Precio
-            </th>
-            <th className="px-6 py-3 border-b-2 border-marron-clarito"></th>
-          </tr>
-        </thead>
+      <div className="min-w-full bg-blanco mt-10">
+        <div className="w-full grid grid-cols-6 gap-2 border-b-2 border-marron-clarito px-6 py-3 text-left text-lg font-semibold text-marron tracking-wider">
+          <div className="col-span-1 ">Imagen</div>
+          <div className="col-span-1 ">Título</div>
+          <div className="col-span-2 ">Descripción</div>
+          <div className="col-span-1 ">Precio</div>
+          <div className="col-span-1 ">Acciones</div>
+        </div>
         <Suspense fallback={<LoadingSkeleton />}>
-          <tbody>
-            {menuItems.length === 0 ? (
-              <tr>
-                <td className="text-center text-lg font-semibold py-4 text-marron">
-                No hay productos en esta categoría
-                </td>
-              </tr>
-            ) : (
-              menuItems.map((item) => <TableRow key={item.id} item={item} />)
-            )}
-          </tbody>
+          <MenuList selectedCategory={selectedCategory} query={query} />
         </Suspense>
-      </table>
-      <ToTopButton/>
+      </div>
+      <ToTopButton />
     </main>
   );
 }
