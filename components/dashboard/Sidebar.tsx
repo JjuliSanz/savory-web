@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut } from "@/auth";
 
 const Sidebar: React.FC = () => {
   const pathname = usePathname();
@@ -72,6 +73,17 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
         </ul>
+        <form
+          action={async () => {
+            'use server';
+            await signOut();
+          }}
+        >
+          <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+            {/* <PowerIcon className="w-6" /> */}
+            <div className="hidden md:block">Sign Out</div>
+          </button>
+        </form>
       </nav>
     </div>
   );

@@ -3,11 +3,11 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useDrawer } from "@/hooks/useDrawer";
 import { CloseIcon } from "@/assets/icons/CloseIcon";
-import { MenuItem } from "@/types";
+import { MenuItem, State } from "@/types";
 import { editMenuItem } from "@/utils/actions";
 import { useRouter } from "next/navigation";
 import { updateMenuItem } from "@/utils/serverActions";
-import { useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 
 const Button = () => {
   const { pending } = useFormStatus();
@@ -27,6 +27,9 @@ const Button = () => {
 export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const ref = useRef<HTMLFormElement>(null);
+  const initialState: State = { message: null, errors: {} };
+  const updatedMenuItem = updateMenuItem.bind(null, selectedItem._id!);
+  const [state, formAction] = useFormState(updatedMenuItem, initialState);
 
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
@@ -36,8 +39,7 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
   };
 
   const handleEdit = async (formData: FormData) => {
-    const updatedMenuItem = updateMenuItem.bind(null, selectedItem._id!);
-    await updatedMenuItem(formData);
+    await formAction(formData);
     handleCloseDrawer();
   };
 

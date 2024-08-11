@@ -32,3 +32,10 @@ export type State = {
   }
   message?: string | null;
 }
+
+export type User = {
+  email: string;
+  name: string;
+  password: string;
+  
+}

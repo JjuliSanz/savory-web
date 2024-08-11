@@ -6,6 +6,10 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { connectDB } from "./mongoose";
+import { signIn } from "@/auth";
+import { AuthError } from "next-auth";
+import User from "@/models/UsersModel";
+import bcrypt from "bcrypt";
 
 export const getMenuItemById = async (id: string): Promise<MenuItem> => {
   try {
@@ -48,7 +52,6 @@ export const getLastId = async () => {
 };
 
 export const addMenuItem = async (prevState: any, formData: FormData) => {
-  await connectDB();
   // Validate form fields using Zod
   const validatedFields = CreateMenuItem.safeParse({
     id: formData.get("id"),
@@ -63,7 +66,7 @@ export const addMenuItem = async (prevState: any, formData: FormData) => {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Invoice.",
+      message: "Missing Fields. Failed to Create Menu Item.",
     };
   }
 
@@ -71,6 +74,8 @@ export const addMenuItem = async (prevState: any, formData: FormData) => {
     validatedFields.data;
 
   try {
+    await connectDB();
+
     await MenuDB.create({
       id: id,
       category: category,
@@ -79,34 +84,48 @@ export const addMenuItem = async (prevState: any, formData: FormData) => {
       imageSrc: imageSrc,
       price: price,
     });
-    revalidatePath("/dashboard");
-    redirect(`/dashboard?category=${category}`);
-    
-    return {
-      ...prevState,
-      message: "Menu Item Created Successfully.",
-    };
   } catch (error) {
     return {
       message: "Database Error: Failed to Create Menu Item.",
     };
   }
+
+  revalidatePath("/dashboard");
+  redirect(`/dashboard?category=${category}`);
+
+  return {
+    ...prevState,
+    message: "Menu Item Created Successfully.",
+  };
 };
 
-export const updateMenuItem = async (_id: string, formData: FormData) => {
-  try {
-    await connectDB();
-    const { id, category, title, description, imageSrc, price } =
-      FormSchema.parse({
-        _id: _id, // Make sure _id is also parsed and validated
-        id: formData.get("id"),
-        category: formData.get("category"),
-        title: formData.get("title"),
-        description: formData.get("description"),
-        imageSrc: formData.get("imageSrc"),
-        price: formData.get("price"),
-      });
+export const updateMenuItem = async (
+  _id: string,
+  prevState: any,
+  formData: FormData
+) => {
+  await connectDB();
 
+  const validatedFields = FormSchema.safeParse({
+    id: formData.get("id"),
+    category: formData.get("category"),
+    title: formData.get("title"),
+    description: formData.get("description"),
+    imageSrc: formData.get("imageSrc"),
+    price: formData.get("price"),
+  });
+
+  // If form validation fails, return errors early. Otherwise, continue.
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Create Menu Item.",
+    };
+  }
+
+  const { id, category, title, description, imageSrc, price } =
+    validatedFields.data;
+  try {
     await MenuDB.findByIdAndUpdate(
       _id,
       {
@@ -119,13 +138,18 @@ export const updateMenuItem = async (_id: string, formData: FormData) => {
       },
       { new: true }
     );
-
-    revalidatePath("/dashboard");
-    redirect(`/dashboard?category=${category}`);
   } catch (error) {
-    console.error("Error updating menu item:", error);
-    throw error;
+    return {
+      message: "Database Error: Failed to Create Menu Item.",
+    };
   }
+
+  revalidatePath("/dashboard");
+  redirect(`/dashboard?category=${category}`);
+  return {
+    ...prevState,
+    message: "Menu Item Updated Successfully.",
+  };
 };
 
 export const deleteMenuItem = async (_id: string) => {
@@ -139,17 +163,85 @@ export const deleteMenuItem = async (_id: string) => {
   }
 };
 
-const RegisterSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address",
-  }),
-  name: z.string().min(1, {
-    message: "Please enter your name",
-  }),
-  password: z.string().min(6, {
-    message: "Password must be at least 6 characters long",
-  }),
-  confirmPassword: z.string().min(6, {
-    message: "Password must be at least 6 characters long",
-  }),
-});
+const RegisterSchema = z
+  .object({
+    email: z.string().email("Email inválido"),
+    name: z.string().min(1, "Nombre es requerido"),
+    password: z
+      .string()
+      .min(6, "La contraseña debe tener al menos 6 caracteres"),
+    confirmPassword: z
+      .string()
+      .min(6, "La confirmación de contraseña debe tener al menos 6 caracteres"),
+    role: z.enum(["admin", "user"]).optional(), // Agrega validación para el rol (opcional)
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Las contraseñas no coinciden",
+    path: ["confirmPassword"],
+  });
+
+export async function createUser(prevState: any, formData: FormData) {
+  const validatedFields = RegisterSchema.safeParse({
+    email: formData.get("email"),
+    name: formData.get("name"),
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword"),
+    role: formData.get("role"),
+  });
+
+  if (!validatedFields.success) {
+    
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Create User.",
+    };
+  }
+
+  const { email, name, password, role } = validatedFields.data;
+
+  try {
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    await connectDB();
+    await User.create({
+      email,
+      name,
+      password: hashedPassword,
+      role,
+    });
+  } catch (error) {
+    return {
+      message: "Database Error: Failed to Create Menu Item.",
+    };
+  }
+
+  revalidatePath("/login");
+  redirect(`/login`);
+
+  return {
+    ...prevState,
+    message: "Menu Item Created Successfully.",
+  };
+}
+
+export async function authenticate(prevState: any, formData: FormData) {
+  try {
+    await signIn("credentials", formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return "Invalid credentials.";
+        default:
+          return "Something went wrong.";
+      }
+    }
+    throw error;
+  }
+
+  return {
+    ...prevState,
+    message: "Menu Item Created Successfully.",
+  };
+}
