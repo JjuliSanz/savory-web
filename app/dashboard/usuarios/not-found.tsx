@@ -9,7 +9,7 @@ export default function NotFound() {
       <h2 className="text-marron text-xl font-semibold">404 Not Found</h2>
       <p className='text-marron-claro text-lg font-medium'>Could not find the requested invoice.</p>
       <Link
-        href="/dashboard/invoices"
+        href="/dashboard?category=Promociones"
         className="mt-4 rounded-md border border-marron bg-transparent px-4 py-2 text-sm text-marron transition-colors hover:bg-marron hover:text-blanco-oscuro"
       >
         Go Back

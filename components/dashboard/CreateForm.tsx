@@ -1,7 +1,8 @@
 "use client";
+import { State } from "@/types";
 import { addMenuItem } from "@/utils/serverActions";
-import React, { useRef } from "react";
-import { useFormStatus } from "react-dom";
+import React, { useRef, useActionState } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 
 const Button = () => {
   const { pending } = useFormStatus();
@@ -25,13 +26,14 @@ const Button = () => {
   );
 };
 
-const ServerForm = ({ nextId }: { nextId: number }) => {
+const CreateForm = ({ nextId }: { nextId: number }) => {
   const ref = useRef<HTMLFormElement>(null);
-
+  const initialState: State = { message: null, errors: {} };
+  const [state, formAction] = useFormState(addMenuItem, initialState);
   return (
     <form
       ref={ref}
-      action={addMenuItem}
+      action={formAction}
       className={`w-[600px] h-full overflow-auto overscroll-contain bg-blanco-oscuro rounded relative text-marron-claro mx-auto`}
     >
       <div className="flex space-x-4 mb-4">
@@ -47,10 +49,18 @@ const ServerForm = ({ nextId }: { nextId: number }) => {
             id="id"
             name="id"
             className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold cursor-not-allowed"
-            required
+            aria-describedby="id-error"
             value={nextId}
             readOnly
           />
+        </div>
+        <div id="id-error" aria-live="polite" aria-atomic="true">
+          {state.errors?.id &&
+            state.errors.id.map((error: any) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))}
         </div>
         <div className="w-2/3">
           <label
@@ -63,7 +73,7 @@ const ServerForm = ({ nextId }: { nextId: number }) => {
             id="category"
             name="category"
             className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-            required
+            aria-describedby="category-error"
           >
             <option value="" disabled>
               Selecciona la categoría
@@ -81,6 +91,14 @@ const ServerForm = ({ nextId }: { nextId: number }) => {
             <option value="Heladeria">Heladería</option>
           </select>
         </div>
+        <div id="category-error" aria-live="polite" aria-atomic="true">
+          {state.errors?.category &&
+            state.errors.category.map((error: string) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))}
+        </div>
       </div>
       <div className="mb-4">
         <label
@@ -94,8 +112,16 @@ const ServerForm = ({ nextId }: { nextId: number }) => {
           id="title"
           name="title"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-          required
+          aria-describedby="title-error"
         />
+      </div>
+      <div id="title-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.title &&
+          state.errors.title.map((error: string) => (
+            <p className="mt-2 text-sm text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
       </div>
       <div className="mb-4">
         <label
@@ -108,7 +134,16 @@ const ServerForm = ({ nextId }: { nextId: number }) => {
           id="description"
           name="description"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
+          aria-describedby="description-error"
         />
+      </div>
+      <div id="description-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.description &&
+          state.errors.description.map((error: string) => (
+            <p className="mt-2 text-sm text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
       </div>
       <div className="mb-4">
         <label
@@ -122,9 +157,17 @@ const ServerForm = ({ nextId }: { nextId: number }) => {
           id="imageSrc"
           name="imageSrc"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-          required
+          aria-describedby="imageSrc-error"
         />
       </div>
+      <div id="imageSrc-error" aria-live="polite" aria-atomic="true">
+          {state.errors?.imageSrc &&
+            state.errors.imageSrc.map((error: string) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))}
+        </div>
       <div className="mb-4">
         <label
           htmlFor="price"
@@ -137,12 +180,20 @@ const ServerForm = ({ nextId }: { nextId: number }) => {
           id="price"
           name="price"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-          required
+          aria-describedby="price-error"
         />
       </div>
+      <div id="price-error" aria-live="polite" aria-atomic="true">
+          {state.errors?.price &&
+            state.errors.price.map((error: string) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))}
+        </div>
       <Button />
     </form>
   );
 };
 
-export default ServerForm;
+export default CreateForm;

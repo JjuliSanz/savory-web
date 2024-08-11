@@ -1,5 +1,5 @@
 import SearchBar from "@/components/dashboard/SearchBar";
-import MenuList from "./MenuList";
+import MenuList from "../../../components/dashboard/MenuList";
 
 const Secciones = ({
   searchParams,

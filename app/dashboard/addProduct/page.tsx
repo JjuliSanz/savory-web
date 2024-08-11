@@ -1,4 +1,4 @@
-import ServerForm from "@/components/dashboard/ServerForm";
+import CreateForm from "@/components/dashboard/CreateForm";
 import { getLastId } from "@/utils/serverActions";
 import React from "react";
 
@@ -7,7 +7,7 @@ const AddProcut = async () => {
 
   return (
     <main className="flex-1 ml-56 p-8 bg-blanco-oscuro">
-      <ServerForm nextId={nextId} />
+      <CreateForm nextId={nextId} />
     </main>
   );
 };

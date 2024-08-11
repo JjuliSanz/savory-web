@@ -1,10 +1,9 @@
 import React from "react";
 import { fetchMenuItems } from "@/utils/actions";
-import TableRow from "@/components/dashboard/TableRow";
 import Image from "next/image";
-import Link from "next/link";
 import DeleteButton from "./DeleteButton";
-import EditButton from "./EditButton";
+import { Drawer } from "@/components/dashboard/Drawer";
+import { PreviewModal } from "@/components/dashboard/PreviewModal";
 const MenuList = async ({
   query,
   selectedCategory,
@@ -47,9 +46,7 @@ const MenuList = async ({
                 className="rounded-sm object-cover w-[100px]"
               />
             </div>
-            <div className="col-span-1 text-xl font-semibold">
-              {item.title}
-            </div>
+            <div className="col-span-1 text-xl font-semibold">{item.title}</div>
             <div className="col-span-2 text-lg font-medium">
               {item.description}
             </div>
@@ -57,9 +54,9 @@ const MenuList = async ({
               {item.price}$
             </div>
             <div className="col-span-1 flex flex-col gap-2">
-              <EditButton _id={item._id} />
-
-              <DeleteButton id={item._id} />
+              <Drawer selectedItem={item} />
+              <DeleteButton id={item._id} title={item.title} />
+              <PreviewModal selectedItem={item} />
             </div>
           </div>
         ))}

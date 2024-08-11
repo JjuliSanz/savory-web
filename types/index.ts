@@ -20,3 +20,15 @@ export type MenuTab = {
   title: string;
   value: string;
 };
+
+export type State = {
+  errors?: {
+    id?: number[];
+    category?: string[];
+    imageSrc?: string[];
+    title?: string[];
+    description?: string[];
+    price?: string[];
+  }
+  message?: string | null;
+}

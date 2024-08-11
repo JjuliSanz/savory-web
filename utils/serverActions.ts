@@ -1,7 +1,7 @@
 "use server";
 
 import MenuDB from "@/models/MenuModel";
-import { MenuItem } from "@/types";
+import { MenuItem, State } from "@/types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -17,18 +17,20 @@ export const getMenuItemById = async (id: string): Promise<MenuItem> => {
     return menuItem;
   } catch (error) {
     console.error("Error fetching menu item by ID:", error);
-    throw error; 
+    throw error;
   }
 };
 
 const FormSchema = z.object({
   _id: z.string(),
-  id: z.coerce.number(),
-  category: z.string(),
-  title: z.string(),
+  id: z.coerce.number({
+    invalid_type_error: "El id ya existe",
+  }),
+  category: z.string({ invalid_type_error: "Ingrese una categoria valida" }),
+  title: z.string({ invalid_type_error: "Ingrese un titulo valido" }),
   description: z.string(),
-  imageSrc: z.string(),
-  price: z.string(),
+  imageSrc: z.string({ invalid_type_error: "La imagen es obligatoria" }),
+  price: z.string({ invalid_type_error: "El precio no puede ser 0" }),
 });
 
 const CreateMenuItem = FormSchema.omit({ _id: true });
@@ -45,19 +47,30 @@ export const getLastId = async () => {
   }
 };
 
-export const addMenuItem = async (formData: FormData) => {
-  try {
-    await connectDB();
-    const { id, category, title, description, imageSrc, price } =
-      CreateMenuItem.parse({
-        id: formData.get("id"),
-        category: formData.get("category"),
-        title: formData.get("title"),
-        description: formData.get("description"),
-        imageSrc: formData.get("imageSrc"),
-        price: formData.get("price"),
-      });
+export const addMenuItem = async (prevState: any, formData: FormData) => {
+  await connectDB();
+  // Validate form fields using Zod
+  const validatedFields = CreateMenuItem.safeParse({
+    id: formData.get("id"),
+    category: formData.get("category"),
+    title: formData.get("title"),
+    description: formData.get("description"),
+    imageSrc: formData.get("imageSrc"),
+    price: formData.get("price"),
+  });
 
+  // If form validation fails, return errors early. Otherwise, continue.
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Create Invoice.",
+    };
+  }
+
+  const { id, category, title, description, imageSrc, price } =
+    validatedFields.data;
+
+  try {
     await MenuDB.create({
       id: id,
       category: category,
@@ -66,12 +79,17 @@ export const addMenuItem = async (formData: FormData) => {
       imageSrc: imageSrc,
       price: price,
     });
-
-    revalidatePath("/dashboard/menu");
-    redirect(`/dashboard/menu?category=${category}`);
+    revalidatePath("/dashboard");
+    redirect(`/dashboard?category=${category}`);
+    
+    return {
+      ...prevState,
+      message: "Menu Item Created Successfully.",
+    };
   } catch (error) {
-    console.error("Error adding menu item:", error);
-    throw error;
+    return {
+      message: "Database Error: Failed to Create Menu Item.",
+    };
   }
 };
 
@@ -102,8 +120,8 @@ export const updateMenuItem = async (_id: string, formData: FormData) => {
       { new: true }
     );
 
-    revalidatePath("/dashboard/usuarios");
-    redirect("/dashboard/usuarios");
+    revalidatePath("/dashboard");
+    redirect(`/dashboard?category=${category}`);
   } catch (error) {
     console.error("Error updating menu item:", error);
     throw error;
@@ -114,9 +132,24 @@ export const deleteMenuItem = async (_id: string) => {
   try {
     await connectDB();
     await MenuDB.findByIdAndDelete(_id);
-    revalidatePath("/dashboard/usuarios");
+    revalidatePath("/dashboard");
   } catch (error) {
     console.error("Error deleting menu item:", error);
     throw error;
   }
 };
+
+const RegisterSchema = z.object({
+  email: z.string().email({
+    message: "Please enter a valid email address",
+  }),
+  name: z.string().min(1, {
+    message: "Please enter your name",
+  }),
+  password: z.string().min(6, {
+    message: "Password must be at least 6 characters long",
+  }),
+  confirmPassword: z.string().min(6, {
+    message: "Password must be at least 6 characters long",
+  }),
+});
