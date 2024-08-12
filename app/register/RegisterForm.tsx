@@ -1,5 +1,6 @@
 "use client";
 
+import { State } from "@/types";
 import { createUser } from "@/utils/serverActions";
 import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
@@ -27,7 +28,8 @@ const Button = () => {
 };
 
 const RegisterForm = () => {
-  const [errorMessage, formAction] = useFormState(createUser, undefined);
+  const initialState: State = { message: null, errors: {} };
+  const [errorMessage, formAction] = useFormState(createUser, initialState);
 
   return (
     <form action={formAction} className="space-y-3">

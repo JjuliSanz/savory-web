@@ -34,9 +34,9 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
     <form
       ref={ref}
       action={formAction}
-      className={`w-[600px] h-full overflow-auto overscroll-contain bg-blanco-oscuro rounded relative text-marron-claro mx-auto`}
+      className={`w-[600px] h-full overflow-auto overscroll-contain bg-blanco-oscuro rounded relative text-marron-claro mx-auto flex flex-col gap-4`}
     >
-      <div className="flex space-x-4 mb-4">
+      <div className="flex space-x-4 ">
         <div className="w-1/3">
           <label
             htmlFor="id"
@@ -54,10 +54,10 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
             readOnly
           />
         </div>
-        <div id="id-error" aria-live="polite" aria-atomic="true">
+        <div id="id-error" aria-live="polite" aria-atomic="true" className="">
           {state.errors?.id &&
             state.errors.id.map((error: any) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
+              <p className="text-base font-medium text-red-500" key={error}>
                 {error}
               </p>
             ))}
@@ -91,16 +91,16 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
             <option value="Heladeria">Heladería</option>
           </select>
         </div>
-        <div id="category-error" aria-live="polite" aria-atomic="true">
+        <div id="category-error" aria-live="polite" aria-atomic="true" className="">
           {state.errors?.category &&
             state.errors.category.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
+              <p className="text-base font-medium text-red-500" key={error}>
                 {error}
               </p>
             ))}
         </div>
       </div>
-      <div className="mb-4">
+      <div className="">
         <label
           htmlFor="title"
           className="block text-sm font-bold mb-2 text-marron"
@@ -115,15 +115,15 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
           aria-describedby="title-error"
         />
       </div>
-      <div id="title-error" aria-live="polite" aria-atomic="true">
+      <div id="title-error" aria-live="polite" aria-atomic="true" className="">
         {state.errors?.title &&
           state.errors.title.map((error: string) => (
-            <p className="mt-2 text-sm text-red-500" key={error}>
+            <p className="text-base font-medium text-red-500" key={error}>
               {error}
             </p>
           ))}
       </div>
-      <div className="mb-4">
+      <div className="">
         <label
           htmlFor="description"
           className="block text-sm font-bold mb-2 text-marron"
@@ -137,15 +137,15 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
           aria-describedby="description-error"
         />
       </div>
-      <div id="description-error" aria-live="polite" aria-atomic="true">
+      <div id="description-error" aria-live="polite" aria-atomic="true" className="">
         {state.errors?.description &&
           state.errors.description.map((error: string) => (
-            <p className="mt-2 text-sm text-red-500" key={error}>
+            <p className="text-base font-medium text-red-500" key={error}>
               {error}
             </p>
           ))}
       </div>
-      <div className="mb-4">
+      <div className="">
         <label
           htmlFor="imageSrc"
           className="block text-sm font-bold mb-2 text-marron"
@@ -160,15 +160,15 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
           aria-describedby="imageSrc-error"
         />
       </div>
-      <div id="imageSrc-error" aria-live="polite" aria-atomic="true">
-          {state.errors?.imageSrc &&
-            state.errors.imageSrc.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
-                {error}
-              </p>
-            ))}
-        </div>
-      <div className="mb-4">
+      <div id="imageSrc-error" aria-live="polite" aria-atomic="true" className="">
+        {state.errors?.imageSrc &&
+          state.errors.imageSrc.map((error: string) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <div className="">
         <label
           htmlFor="price"
           className="block text-sm font-bold mb-2 text-marron"
@@ -184,13 +184,13 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
         />
       </div>
       <div id="price-error" aria-live="polite" aria-atomic="true">
-          {state.errors?.price &&
-            state.errors.price.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
-                {error}
-              </p>
-            ))}
-        </div>
+        {state.errors?.price &&
+          state.errors.price.map((error: string) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
       <Button />
     </form>
   );

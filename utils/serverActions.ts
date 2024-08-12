@@ -1,15 +1,15 @@
 "use server";
 
 import MenuDB from "@/models/MenuModel";
-import { MenuItem, State } from "@/types";
+import { MenuItem, State, User } from "@/types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { connectDB } from "./mongoose";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
-import User from "@/models/UsersModel";
 import bcrypt from "bcrypt";
+import Users from "@/models/UsersModel";
 
 export const getMenuItemById = async (id: string): Promise<MenuItem> => {
   try {
@@ -30,11 +30,19 @@ const FormSchema = z.object({
   id: z.coerce.number({
     invalid_type_error: "El id ya existe",
   }),
-  category: z.string({ invalid_type_error: "Ingrese una categoria valida" }),
-  title: z.string({ invalid_type_error: "Ingrese un titulo valido" }),
-  description: z.string(),
-  imageSrc: z.string({ invalid_type_error: "La imagen es obligatoria" }),
-  price: z.string({ invalid_type_error: "El precio no puede ser 0" }),
+  category: z.string().min(1, { message: "Ingrese una categoría válida" }),
+  title: z
+    .string()
+    .min(1, { message: "Ingrese un título válido" })
+    .max(60, { message: "El titulo no puede exeder los 60 caracteres" }),
+  description: z.string().optional(), // Descripción opcional
+  imageSrc: z.string().min(1, { message: "La imagen es obligatoria" }), // Imagen obligatoria
+  price: z
+    .string()
+    .min(1, { message: "El precio no puede estar vacío" })
+    .regex(/^\d+(\.\d{1,2})?$/, {
+      message: "El precio debe ser un número válido",
+    }),
 });
 
 const CreateMenuItem = FormSchema.omit({ _id: true });
@@ -106,6 +114,7 @@ export const updateMenuItem = async (
 ) => {
   await connectDB();
 
+  // Validar los campos del formulario
   const validatedFields = FormSchema.safeParse({
     id: formData.get("id"),
     category: formData.get("category"),
@@ -115,17 +124,27 @@ export const updateMenuItem = async (
     price: formData.get("price"),
   });
 
-  // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Menu Item.",
+      message: "Missing Fields. Failed to Update Menu Item.",
     };
   }
 
   const { id, category, title, description, imageSrc, price } =
     validatedFields.data;
+
   try {
+    // Verificar si el id ya está en uso por otro documento
+    const existingItem = await MenuDB.findOne({ id });
+    if (existingItem && existingItem._id.toString() !== _id) {
+      return {
+        errors: { id: ["El ID ya está en uso por otro ítem."] },
+        message: "ID Conflict",
+      };
+    }
+
+    // Actualizar el documento en la base de datos
     await MenuDB.findByIdAndUpdate(
       _id,
       {
@@ -140,7 +159,7 @@ export const updateMenuItem = async (
     );
   } catch (error) {
     return {
-      message: "Database Error: Failed to Create Menu Item.",
+      message: "Database Error: Failed to Update Menu Item.",
     };
   }
 
@@ -190,7 +209,6 @@ export async function createUser(prevState: any, formData: FormData) {
   });
 
   if (!validatedFields.success) {
-    
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Missing Fields. Failed to Create User.",
@@ -204,7 +222,7 @@ export async function createUser(prevState: any, formData: FormData) {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     await connectDB();
-    await User.create({
+    await Users.create({
       email,
       name,
       password: hashedPassword,
@@ -245,3 +263,26 @@ export async function authenticate(prevState: any, formData: FormData) {
     message: "Menu Item Created Successfully.",
   };
 }
+
+export const getUsers = async (): Promise<User[]> => {
+  try {
+    await connectDB();
+    const usersList = await Users.find();
+    console.log(usersList)
+    return usersList;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw error;
+  }
+};
+
+export const deleteUser = async (_id: string) => {
+  try {
+    await connectDB();
+    await Users.findByIdAndDelete(_id);
+    revalidatePath("/dashboard/usuarios");
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    throw error;
+  }
+};

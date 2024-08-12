@@ -3,14 +3,14 @@ import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { connectDB } from "./utils/mongoose";
-import MenuDB from "./models/MenuModel";
 import { User } from "./types";
 import bcrypt from "bcrypt";
+import Users from "./models/UsersModel";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
     await connectDB();
-    const user = await MenuDB.findOne({ email });
+    const user = await Users.findOne({ email });
     return user || undefined;
   } catch (error) {
     console.error("Failed to fetch user:", error);

@@ -1,11 +1,11 @@
-"use client";
+
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import { signOut } from "@/auth";
 
 const Sidebar: React.FC = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   return (
     <div className="min-h-screen w-56 bg-marron flex flex-col fixed">
@@ -17,11 +17,12 @@ const Sidebar: React.FC = () => {
       <nav className="flex-1 p-4">
         <ul>
           <li
-            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-              pathname === "/dashboard/usuarios"
-                ? "bg-blanco-oscuro text-marron"
-                : "text-blanco-oscuro"
-            }`}
+            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
+            //   pathname === "/dashboard/usuarios"
+            //     ? "bg-blanco-oscuro text-marron"
+            //     : "text-blanco-oscuro"
+            // }`}
+            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
           >
             <Link
               href="/dashboard/usuarios"
@@ -31,11 +32,12 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
           <li
-            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-              pathname === "/dashboard"
-                ? "bg-blanco-oscuro text-marron"
-                : "text-blanco-oscuro"
-            }`}
+            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
+            //   pathname === "/dashboard"
+            //     ? "bg-blanco-oscuro text-marron"
+            //     : "text-blanco-oscuro"
+            // }`}
+            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
           >
             <Link
               href="/dashboard"
@@ -45,11 +47,12 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
           <li
-            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-              pathname === "/dashboard/secciones"
-                ? "bg-blanco-oscuro text-marron"
-                : "text-blanco-oscuro"
-            }`}
+            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
+            //   pathname === "/dashboard/secciones"
+            //     ? "bg-blanco-oscuro text-marron"
+            //     : "text-blanco-oscuro"
+            // }`}
+            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
           >
             <Link
               href="/dashboard/secciones"
@@ -59,11 +62,12 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
           <li
-            className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-              pathname === "/dashboard/addProduct"
-                ? "bg-blanco-oscuro text-marron"
-                : "text-blanco-oscuro"
-            }`}
+            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
+            //   pathname === "/dashboard/addProduct"
+            //     ? "bg-blanco-oscuro text-marron"
+            //     : "text-blanco-oscuro"
+            // }`}
+            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
           >
             <Link
               href="/dashboard/addProduct"
@@ -75,7 +79,7 @@ const Sidebar: React.FC = () => {
         </ul>
         <form
           action={async () => {
-            'use server';
+            "use server";
             await signOut();
           }}
         >

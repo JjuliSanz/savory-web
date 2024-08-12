@@ -38,11 +38,6 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
     setIsDrawerOpen(false);
   };
 
-  const handleEdit = async (formData: FormData) => {
-    await formAction(formData);
-    handleCloseDrawer();
-  };
-
   return (
     <>
       <button
@@ -68,8 +63,8 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                 <CloseIcon className="" />
               </button>
             </div>
-            <form ref={ref} action={handleEdit} className="">
-              <div className="mb-4">
+            <form ref={ref} action={formAction} className="flex flex-col gap-4">
+              <div className="">
                 <label
                   htmlFor="id"
                   className="block text-lg font-bold mb-2 text-marron"
@@ -84,13 +79,24 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   required
                   defaultValue={selectedItem.id}
                 />
+                <div id="id-error" aria-live="polite" aria-atomic="true">
+                  {state.errors?.id &&
+                    state.errors.id.map((error: string) => (
+                      <p
+                        className="text-base font-medium text-red-500"
+                        key={error}
+                      >
+                        {error}
+                      </p>
+                    ))}
+                </div>
               </div>
-              <div className="mb-4">
+              <div className="">
                 <label
-                  htmlFor="CATEGORY"
+                  htmlFor="category"
                   className="block text-lg font-bold mb-2 text-marron"
                 >
-                  CATEGORY
+                  CATEGORÍA
                 </label>
                 <select
                   id="category"
@@ -100,7 +106,7 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   defaultValue={selectedItem.category}
                 >
                   <option value="" disabled>
-                    Select a category
+                    Selecciona una categoría
                   </option>
                   <option value="Promociones">Promociones</option>
                   <option value="Cafeteria">Cafetería</option>
@@ -114,8 +120,19 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   <option value="Postres_Helados">Postres Helados</option>
                   <option value="Heladeria">Heladería</option>
                 </select>
+                <div id="category-error" aria-live="polite" aria-atomic="true">
+                  {state.errors?.category &&
+                    state.errors.category.map((error: string) => (
+                      <p
+                        className="text-base font-medium text-red-500"
+                        key={error}
+                      >
+                        {error}
+                      </p>
+                    ))}
+                </div>
               </div>
-              <div className="mb-4">
+              <div className="">
                 <label
                   htmlFor="title"
                   className="block text-lg font-bold mb-2 text-marron"
@@ -130,8 +147,19 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   required
                   defaultValue={selectedItem.title}
                 />
+                <div id="title-error" aria-live="polite" aria-atomic="true">
+                  {state.errors?.title &&
+                    state.errors.title.map((error: string) => (
+                      <p
+                        className="text-base font-medium text-red-500"
+                        key={error}
+                      >
+                        {error}
+                      </p>
+                    ))}
+                </div>
               </div>
-              <div className="mb-4">
+              <div className="">
                 <label
                   htmlFor="description"
                   className="block text-lg font-bold mb-2 text-marron"
@@ -142,10 +170,25 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   id="description"
                   name="description"
                   className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-                  defaultValue={selectedItem.description}
+                  defaultValue={selectedItem.description || ""}
                 />
+                <div
+                  id="description-error"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  {state.errors?.description &&
+                    state.errors.description.map((error: string) => (
+                      <p
+                        className="text-base font-medium text-red-500"
+                        key={error}
+                      >
+                        {error}
+                      </p>
+                    ))}
+                </div>
               </div>
-              <div className="mb-4">
+              <div className="">
                 <label
                   htmlFor="imageSrc"
                   className="block text-lg font-bold mb-2 text-marron"
@@ -160,8 +203,19 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   required
                   defaultValue={selectedItem.imageSrc}
                 />
+                <div id="imageSrc-error" aria-live="polite" aria-atomic="true">
+                  {state.errors?.imageSrc &&
+                    state.errors.imageSrc.map((error: string) => (
+                      <p
+                        className="text-base font-medium text-red-500"
+                        key={error}
+                      >
+                        {error}
+                      </p>
+                    ))}
+                </div>
               </div>
-              <div className="mb-4">
+              <div className="">
                 <label
                   htmlFor="price"
                   className="block text-lg font-bold mb-2 text-marron"
@@ -176,6 +230,17 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   required
                   defaultValue={selectedItem.price}
                 />
+                <div id="price-error" aria-live="polite" aria-atomic="true">
+                  {state.errors?.price &&
+                    state.errors.price.map((error: string) => (
+                      <p
+                        className="text-base font-medium text-red-500"
+                        key={error}
+                      >
+                        {error}
+                      </p>
+                    ))}
+                </div>
               </div>
               <Button />
             </form>
