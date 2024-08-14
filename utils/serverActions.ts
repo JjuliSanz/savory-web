@@ -245,17 +245,11 @@ export async function createUser(prevState: any, formData: FormData) {
 
 export async function authenticate(prevState: any, formData: FormData) {
   try {
-    await signIn("credentials", formData);
+    await signIn("google", formData, { redirect: "/dashboard" });
   } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return "Invalid credentials.";
-        default:
-          return "Something went wrong.";
-      }
-    }
-    throw error;
+    return {
+      message: "Database Error: Failed to Create Menu Item.",
+    };
   }
 
   return {
@@ -268,7 +262,6 @@ export const getUsers = async (): Promise<User[]> => {
   try {
     await connectDB();
     const usersList = await Users.find();
-    console.log(usersList)
     return usersList;
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -276,13 +269,37 @@ export const getUsers = async (): Promise<User[]> => {
   }
 };
 
+export async function getUser(email: string): Promise<User | undefined> {
+  try {
+    await connectDB();
+    const user = await Users.findOne({ email });
+    return user || undefined;
+  } catch (error) {
+    console.error("Failed to fetch user:", error);
+    throw new Error("Failed to fetch user.");
+  }
+}
+
 export const deleteUser = async (_id: string) => {
   try {
     await connectDB();
     await Users.findByIdAndDelete(_id);
     revalidatePath("/dashboard/usuarios");
+    redirect("/dashboard/usuarios");
   } catch (error) {
     console.error("Error deleting user:", error);
     throw error;
   }
 };
+
+const signInSchema = z.object({
+  email: z
+    .string({ required_error: "Email is required" })
+    .min(1, "Email is required")
+    .email("Invalid email"),
+  password: z
+    .string({ required_error: "Password is required" })
+    .min(1, "Password is required")
+    .min(8, "Password must be more than 8 characters")
+    .max(32, "Password must be less than 32 characters"),
+});

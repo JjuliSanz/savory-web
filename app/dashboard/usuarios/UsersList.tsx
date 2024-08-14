@@ -2,10 +2,10 @@ import { getUsers } from "@/utils/serverActions";
 import Image from "next/image";
 import React from "react";
 import DeleteUserButton from "./DeleteUserButton";
+// import { getUser } from "@/auth";
 
-const UsersList = ({ query }: { query: string }) => {
-  const usersList = getUsers();
-  console.log(usersList);
+const UsersList = async ({ query }: { query: string }) => {
+  const usersList = await getUsers();
 
   const normalizeString = (str: string) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -13,7 +13,7 @@ const UsersList = ({ query }: { query: string }) => {
 
   const filteredUsers = Array.isArray(usersList)
     ? usersList.filter((user) => {
-        return normalizeString(user.title)
+        return normalizeString(user.name)
           .toLowerCase()
           .includes(normalizeString(query).toLowerCase());
       })
@@ -22,7 +22,7 @@ const UsersList = ({ query }: { query: string }) => {
     <>
       <div>
         {Array.isArray(usersList) && usersList.length === 0 && (
-          <p>No se encontraron produyctos </p>
+          <p className="text-xl font-semibold text-marron px-6 py-4">No se encontraron usuarios </p>
         )}
       </div>
       {Array.isArray(usersList) &&
@@ -32,13 +32,13 @@ const UsersList = ({ query }: { query: string }) => {
             className="w-full grid grid-cols-6 gap-2 px-6 py-4 border-b border-marron-clarito text-marron"
           >
             <div className="col-span-1 ">
-              <Image
+              {/* <Image
                 src={user.imageSrc}
                 alt={user.name}
                 width={100}
                 height={50}
                 className="rounded-sm object-cover w-[100px]"
-              />
+              /> */}
             </div>
             <div className="col-span-1 text-xl font-semibold">{user.name}</div>
             <div className="col-span-2 text-lg font-medium">{user.email}</div>

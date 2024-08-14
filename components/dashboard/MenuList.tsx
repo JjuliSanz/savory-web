@@ -28,7 +28,7 @@ const MenuList = async ({
     <>
       <div>
         {Array.isArray(menuItems) && menuItems.length === 0 && (
-          <p>No se encontraron produyctos </p>
+          <p className="text-xl font-semibold text-marron px-6 py-4">No se encontraron productos </p>
         )}
       </div>
       {Array.isArray(menuItems) &&

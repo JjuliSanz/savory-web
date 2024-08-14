@@ -3,7 +3,7 @@ import RegisterForm from "./RegisterForm";
 
 const Register = () => {
   return (
-    <main className="flex items-center justify-center md:h-screen">
+    <main className="min-h-screen py-10 flex items-center justify-center bg-marron-clarito">
       <RegisterForm />
     </main>
   );

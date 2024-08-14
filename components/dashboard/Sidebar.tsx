@@ -1,11 +1,9 @@
-
-import React from "react";
 import Link from "next/link";
-// import { usePathname } from "next/navigation";
-import { signOut } from "@/auth";
+import SideLinks from "./SideLinks";
+import { auth, signIn, signOut } from "@/auth";
 
-const Sidebar: React.FC = () => {
-  // const pathname = usePathname();
+const Sidebar = async () => {
+  const session = await auth();
 
   return (
     <div className="min-h-screen w-56 bg-marron flex flex-col fixed">
@@ -14,80 +12,29 @@ const Sidebar: React.FC = () => {
           <h1 className="text-3xl text-blanco-oscuro font-bold">SAVORY</h1>
         </Link>
       </div>
-      <nav className="flex-1 p-4">
-        <ul>
-          <li
-            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-            //   pathname === "/dashboard/usuarios"
-            //     ? "bg-blanco-oscuro text-marron"
-            //     : "text-blanco-oscuro"
-            // }`}
-            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
+      <nav className="flex-1 p-4 flex flex-col justify-between">
+        <SideLinks />
+        {session?.user ? (
+          <form
+            action={async () => {
+              "use server";
+              await signOut();
+            }}
           >
+            <button className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 text-blanco-oscuro">
+              <div className="block py-2 px-4 text-xl font-medium">
+                Cerrar Sesión
+              </div>
+            </button>
+          </form>
+        ) : (
+          <button className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 text-blanco-oscuro">
             <Link
-              href="/dashboard/usuarios"
+              href={"/login"}
               className="block py-2 px-4 text-xl font-medium"
-            >
-              Usuarios
-            </Link>
-          </li>
-          <li
-            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-            //   pathname === "/dashboard"
-            //     ? "bg-blanco-oscuro text-marron"
-            //     : "text-blanco-oscuro"
-            // }`}
-            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
-          >
-            <Link
-              href="/dashboard"
-              className="block py-2 px-4 text-xl font-medium"
-            >
-              Menu
-            </Link>
-          </li>
-          <li
-            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-            //   pathname === "/dashboard/secciones"
-            //     ? "bg-blanco-oscuro text-marron"
-            //     : "text-blanco-oscuro"
-            // }`}
-            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
-          >
-            <Link
-              href="/dashboard/secciones"
-              className="block py-2 px-4 text-xl font-medium"
-            >
-              Secciones
-            </Link>
-          </li>
-          <li
-            // className={`mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 ${
-            //   pathname === "/dashboard/addProduct"
-            //     ? "bg-blanco-oscuro text-marron"
-            //     : "text-blanco-oscuro"
-            // }`}
-            className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron"
-          >
-            <Link
-              href="/dashboard/addProduct"
-              className="block py-2 px-4 text-xl font-medium"
-            >
-              Agregar Producto
-            </Link>
-          </li>
-        </ul>
-        <form
-          action={async () => {
-            "use server";
-            await signOut();
-          }}
-        >
-          <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
-            {/* <PowerIcon className="w-6" /> */}
-            <div className="hidden md:block">Sign Out</div>
+            >Iniciar Sesión</Link>
           </button>
-        </form>
+        )}
       </nav>
     </div>
   );
