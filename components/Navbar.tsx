@@ -8,15 +8,9 @@ import {
 } from "framer-motion";
 import { PhoneIcon } from "@/assets/icons/PhoneIcon";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
 // import { ContactButton } from "../components/ui/ContactButton";
 
 const Navbar = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const hash = searchParams.get("value") || "";
-
-
   const { scrollY } = useScroll();
 
   const [hidden, setHidden] = useState(false);
@@ -47,46 +41,36 @@ const Navbar = () => {
         {/* HOME */}
         <Link
           href="/"
-          className={`hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 ${
-            pathname === "/" ? "underline" : ""
-          }`}
+          className={`hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 `}
         >
           {/* <LogoIcon className="py-1 w-[40px] md:w-[50px] h-[40px] md:h-[50px] stroke-[5px] stroke-rojo-claro" /> */}
           SAVORY
         </Link>
         {/* DESKTOP MENU */}
         <Link
-          href="/menu?category=Promociones"
-          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 ${
-            pathname === "/menu" ? "underline" : ""
-          }`}
+          href="#menu"
+          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 `}
         >
           MENÚ
         </Link>
         {/* ABOUT US */}
         <Link
           href="#nosotros"
-          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 ${
-            pathname === "/" && hash === "nosotros" ? "underline" : ""
-          }`}
+          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 `}
         >
           NOSOTROS
         </Link>
         {/* CONTACT */}
         <Link
           href="#info"
-          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 ${
-            pathname === "/" && hash === "info" ? "underline" : ""
-          }`}
+          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 `}
         >
           CONTACTO
         </Link>
         {/* GALLERY */}
         <Link
           href="#galeria"
-          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70 ${
-            pathname === "/" && hash === "galeria" ? "underline" : ""
-          }`}
+          className={`hidden sm:block hover:scale-95 motion-safe:transition ease-in-out duration-300 hover:opacity-70`}
         >
           GALERÍA
         </Link>

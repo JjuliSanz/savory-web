@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import { ClockIcon } from "@/assets/icons/ClockIcon";
 import { DeliveryIcon } from "@/assets/icons/DeliveryIcon";
 import { FacebookIcon } from "@/assets/icons/FacebookIcon";
@@ -10,16 +12,28 @@ import React from "react";
 
 const Info = () => {
   return (
-    <section id="info"
-      className="relative min-h-screen bg-fixed bg-center bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20"
-      style={{ backgroundImage: "url(/food/torta-oreo.jpg)" }}
+    <section
+      id="info"
+      className="relative w-full min-h-screen bg-fixed bg-top bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden"
+      style={{ backgroundImage: "url(/fondoContact.jpg)" }}
     >
-      <div className="absolute inset-0 bg-marron opacity-70 z-0"></div>
+      <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
       <div className="md:w-1/2 w-full flex flex-col md:text-left text-center z-10">
-        <h2 className="text-4xl md:text-6xl font-bold text-blanco mb-10">
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.5,
+              ease: "easeIn",
+            },
+          }}
+          className="text-4xl md:text-6xl font-bold text-blanco mb-10"
+        >
           Ven a Conocernos
-        </h2>
-        <ul className="text-lg md:text-2xl font-medium text-blanco-oscuro space-y-4">
+        </motion.h2>
+        <ul className="text-lg md:text-3xl font-semibold text-blanco-oscuro space-y-4">
           <li className="flex items-center gap-2 w-fit">
             <PinIcon /> Lugones 395, Remedios de Escalada
           </li>
@@ -30,7 +44,6 @@ const Info = () => {
             <Link
               href="https://api.whatsapp.com/send?phone=541137852214"
               target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center gap-2 motion-safe:transition ease-in-out duration-100 hover:scale-[0.97] hover:opacity-70"
             >
               <WhatsIcon />
@@ -41,7 +54,6 @@ const Info = () => {
             <Link
               href="https://www.instagram.com/savoryheladoscafe/"
               target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center gap-2 motion-safe:transition ease-in-out duration-100 hover:scale-[0.97] hover:opacity-70"
             >
               <InstagramIcon />
@@ -49,27 +61,25 @@ const Info = () => {
             </Link>{" "}
           </li>
           <li className="w-fit">
-            <a
+            <Link
               href="https://www.facebook.com/SavoryHeladosYCafe/"
-              target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center gap-2 transition ease-in-out duration-100 hover:scale-[0.97] hover:opacity-70"
+              target="_blank"
             >
               <FacebookIcon />
               Savory Helados Y Café
-            </a>{" "}
+            </Link>{" "}
           </li>
 
           <li className="w-fit">
-            <a
+            <Link
               href="https://www.pedidosya.com.ar/restaurantes/lanus/savory-helados-y-cafe-323e50f5-b78e-4a0a-b741-ffd23745539b-menu?"
               target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center gap-2 motion-safe:transition ease-in-out duration-100 hover:scale-[0.97] hover:opacity-70"
             >
               <DeliveryIcon />
               Pedidos ya
-            </a>
+            </Link>
           </li>
           <li className="flex items-center gap-2 w-fit">
             <ClockIcon /> Estamos abiertos:
@@ -82,7 +92,17 @@ const Info = () => {
         </ul>
       </div>
       <div className="md:w-1/2 w-full flex justify-center items-center md:mt-0 mt-6 z-10">
-        <iframe
+        <motion.iframe
+          initial={{ opacity: 0, x: 50 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 1,
+              duration: 0.5,
+              ease: "easeIn",
+            },
+          }}
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d354.7877555140993!2d-58.40091272671757!3d-34.72435262311919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccd6b3d13e9b5%3A0x277dec533f08507e!2sSavory!5e0!3m2!1sen!2sar!4v1721487437433!5m2!1sen!2sar"
           width="100%"
           height="450"
@@ -91,7 +111,7 @@ const Info = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           className="rounded-lg opacity-80 border-8 border-blanco-oscuro"
-        ></iframe>
+        ></motion.iframe>
       </div>
     </section>
   );

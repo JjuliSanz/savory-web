@@ -121,11 +121,25 @@ const MenuCards = () => {
   return (
     // <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg-marron.jpg')] bg-fixed bg-cover relative">
     // <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-marron bg-fixed bg-cover relative">
-    <section className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg.jpg')] bg-fixed bg-cover relative">
+    <section
+      id="menu"
+      className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg.jpg')] bg-fixed bg-cover relative"
+    >
       <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
-      <h2 className="relative text-blanco font-bold text-5xl text-center z-20">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.5,
+            ease: "easeIn",
+          },
+        }}
+        className="relative text-blanco font-bold text-5xl text-center z-20"
+      >
         Nosotros Servimos!
-      </h2>
+      </motion.h2>
       {/* <h2 className="text-5xl text-center">Descubre Nuestro Menu!</h2> */}
       <Swiper
         grabCursor={true}
@@ -146,28 +160,62 @@ const MenuCards = () => {
         className="w-full relative bg-transparent mt-20 z-10"
       >
         {cards.map((card) => (
-          <SwiperSlide key={card.title} style={{ width: "auto" }}>
-            <Card
-              videoSrc={card.videoSrc}
-              imageSrc={card.imageSrc}
-              title={card.title}
-            />
-            <Link
-              href={`/menu/?category=${card.value}`}
-              className="block w-fit mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out text-lg font-bold border-4 border-blanco-oscuro text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron bg-marron "
+          <SwiperSlide key={card.title} style={{ width: "280px" }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  duration: 1,
+                  ease: "easeIn",
+                },
+              }}
             >
-              {card.title}
-            </Link>
+              <Card
+                videoSrc={card.videoSrc}
+                imageSrc={card.imageSrc}
+                title={card.title}
+              />
+              <Link
+                href={`/menu/?category=${card.value}`}
+                className="block w-fit mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out text-lg font-bold border-4 border-blanco-oscuro text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron bg-marron "
+              >
+                {card.title}
+              </Link>
+            </motion.div>
           </SwiperSlide>
         ))}
       </Swiper>
       <div className="custom-pagination relative z-20 mt-4"></div>
-      <div className="z-10 custom-prev absolute left-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
+      <motion.div
+        initial={{ x: -100 }}
+        animate={{
+          x: 0,
+          transition: {
+            delay: 1.5,
+            duration: 0.5,
+            ease: "easeIn",
+          },
+        }}
+        className="z-10 custom-prev absolute left-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out"
+      >
         &#10094;
-      </div>
-      <div className="z-10 custom-next absolute right-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out">
+      </motion.div>
+      <motion.div
+        initial={{ x: 100 }}
+        animate={{
+          x: 0,
+          transition: {
+            delay: 1.5,
+            duration: 0.5,
+            ease: "easeIn",
+          },
+        }}
+        className="z-10 custom-next absolute right-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out"
+      >
         &#10095;
-      </div>
+      </motion.div>
     </section>
   );
 };

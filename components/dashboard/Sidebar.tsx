@@ -18,7 +18,7 @@ const Sidebar = async () => {
           <form
             action={async () => {
               "use server";
-              await signOut();
+              await signOut({ redirectTo: "/login" });
             }}
           >
             <button className="mb-4 rounded hover:bg-blanco-oscuro hover:text-marron transition-colors duration-300 text-blanco-oscuro">
@@ -32,7 +32,9 @@ const Sidebar = async () => {
             <Link
               href={"/login"}
               className="block py-2 px-4 text-xl font-medium"
-            >Iniciar Sesión</Link>
+            >
+              Iniciar Sesión
+            </Link>
           </button>
         )}
       </nav>
