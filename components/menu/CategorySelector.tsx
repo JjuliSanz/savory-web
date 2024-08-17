@@ -60,7 +60,7 @@ const CategorySelector = ({
 }) => {
   const router = useRouter();
   const handleCategoryChange = (category: string) => {
-    router.push(`/dashboard?category=${category}`);
+    router.push(`/menu?category=${category}`);
   };
   return (
     <nav className="w-fit max-w-3xl mx-auto flex justify-center p-4 bg-marron rounded">

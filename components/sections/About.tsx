@@ -75,7 +75,7 @@ const About = () => {
         <div className="relative w-full md:w-1/2">
           <motion.div
             variants={leftItem}
-            className="rounded-lg w-full h-[400px]"
+            className="rounded-lg w-full h-[300px] md:h-[400px]"
           >
             <Image
               src="/savory/savory.jpeg"
@@ -87,16 +87,16 @@ const About = () => {
           </motion.div>
         </div>
 
-        <div className="md:w-1/2 w-full text-center">
+        <div className="md:w-1/2 w-full text-center flex flex-col gap-4">
           <motion.h2
             variants={rightItem}
-            className="w-full text-3xl md:text-4xl font-bold text-marron mb-4"
+            className="w-full text-3xl md:text-4xl font-bold text-marron "
           >
             Bienvenidos a Savory
           </motion.h2>
           <motion.p
             variants={rightItem}
-            className="text-2xl font-medium text-marron-claro mb-4"
+            className="text-2xl font-medium text-marron-claro "
           >
             En Savory, no solo ofrecemos los mejores helados y cafés, sino que
             también te brindamos una experiencia única. Estamos abiertos todos
@@ -138,7 +138,7 @@ const About = () => {
         <div className="relative w-full md:w-1/2">
           <motion.div
             variants={rightItem}
-            className="rounded-lg w-full h-[400px]"
+            className="rounded-lg w-full h-[300px] md:h-[400px]"
           >
             <Image
               src="/savory/fuera.jpeg"

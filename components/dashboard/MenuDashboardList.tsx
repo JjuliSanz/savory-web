@@ -4,7 +4,7 @@ import Image from "next/image";
 import DeleteButton from "./DeleteButton";
 import { Drawer } from "@/components/dashboard/Drawer";
 import { PreviewModal } from "@/components/dashboard/PreviewModal";
-const MenuList = async ({
+const MenuDashboardList = async ({
   query,
   selectedCategory,
 }: {
@@ -64,4 +64,4 @@ const MenuList = async ({
   );
 };
 
-export default MenuList;
+export default MenuDashboardList;

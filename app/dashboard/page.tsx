@@ -6,9 +6,9 @@ import { Suspense } from "react";
 import LoadingSkeleton from "@/components/dashboard/LoadingSkeleton";
 
 
-import CategorySelector from "@/components/dashboard/CategorySelector";
+import CategoryDashboardSelector from "@/components/dashboard/CategoryDashboardSelector";
 import ToTopButton from "@/components/dashboard/ToTopButton";
-import MenuList from "../../components/dashboard/MenuList";
+import MenuDashboardList from "../../components/dashboard/MenuDashboardList";
 import SearchBar from "@/components/dashboard/SearchBar";
 import Link from "next/link";
 
@@ -23,7 +23,7 @@ export default async function Dashboard({
 
   return (
     <main className={`flex-1 ml-56 p-8 bg-blanco-oscuro`}>
-      <CategorySelector selectedCategory={selectedCategory} />
+      <CategoryDashboardSelector selectedCategory={selectedCategory} />
       <header className="items-center justify-between block sm:flex mt-10">
         <SearchBar placeholder="Buscar productos por su titulo" />
 
@@ -41,7 +41,7 @@ export default async function Dashboard({
           <div className="col-span-1 ">Acciones</div>
         </div>
         <Suspense fallback={<LoadingSkeleton />}>
-          <MenuList selectedCategory={selectedCategory} query={query} />
+          <MenuDashboardList selectedCategory={selectedCategory} query={query} />
         </Suspense>
       </div>
       <ToTopButton />

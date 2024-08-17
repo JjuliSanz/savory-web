@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { Navigation, Pagination, Parallax } from "swiper/modules";
+import { ArrowRight } from "@/assets/icons/ArrowRight";
+import { ArrowLeft } from "@/assets/icons/ArrowLeft";
 const Card = ({
   videoSrc,
   imageSrc,
@@ -143,9 +145,23 @@ const MenuCards = () => {
       {/* <h2 className="text-5xl text-center">Descubre Nuestro Menu!</h2> */}
       <Swiper
         grabCursor={true}
-        slidesPerView={4}
+        slidesPerView={1}
         centeredSlides={false}
         spaceBetween={30}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          // 1024: {
+          //   slidesPerView: 5,
+          //   spaceBetween: 50,
+          // },
+        }}
         slidesOffsetBefore={0}
         pagination={{
           clickable: true,
@@ -179,7 +195,9 @@ const MenuCards = () => {
               />
               <Link
                 href={`/menu/?category=${card.value}`}
-                className="block w-fit mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out text-lg font-bold border-4 border-blanco-oscuro text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron bg-marron "
+                className="block w-fit mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out text-lg font-bold border-4 border-blanco-oscuro bg-marron text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron  
+                active:scale-95 active:bg-blanco-oscuro active:text-marron
+                "
               >
                 {card.title}
               </Link>
@@ -188,8 +206,9 @@ const MenuCards = () => {
         ))}
       </Swiper>
       <div className="custom-pagination relative z-20 mt-4"></div>
+      {/* LEFT ARROW */}
       <motion.div
-        initial={{ x: -100 }}
+        initial={{ x: 0 }}
         animate={{
           x: 0,
           transition: {
@@ -198,12 +217,13 @@ const MenuCards = () => {
             ease: "easeIn",
           },
         }}
-        className="z-10 custom-prev absolute left-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out"
+        className="z-10 custom-prev absolute left-[0%] top-[20%] cursor-pointer "
       >
-        &#10094;
+        <ArrowLeft className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
+      {/* RIGHT ARROW */}
       <motion.div
-        initial={{ x: 100 }}
+        initial={{ x: 0 }}
         animate={{
           x: 0,
           transition: {
@@ -212,9 +232,9 @@ const MenuCards = () => {
             ease: "easeIn",
           },
         }}
-        className="z-10 custom-next absolute right-10 top-[10%] bg-transparent text-blanco-oscuro text-8xl p-2 rounded-full cursor-pointer hover:opacity-80 hover:scale-90 transition duration-300 ease-in-out"
+        className="z-10 custom-next absolute right-[-0%] top-[20%] cursor-pointer "
       >
-        &#10095;
+        <ArrowRight className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
     </section>
   );

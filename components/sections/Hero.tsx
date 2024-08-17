@@ -30,7 +30,7 @@ const Hero = () => {
         </video>
       </div>
 
-      <h1 className="text-9xl font-bold text-blanco font-serif z-10 row-span-1">
+      <h1 className="text-2xl md:text-9xl font-bold text-blanco font-serif z-10 row-span-1">
         SAVORY
       </h1>
 

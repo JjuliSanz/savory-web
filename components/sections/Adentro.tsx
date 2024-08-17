@@ -52,7 +52,7 @@ const Adentro = () => {
       initial="hidden"
       animate={isInView && "visible"}
       variants={container}
-      className="min-h-screen relative flex flex-col items-center justify-center py-20 px-40  bg-marron"
+      className="min-h-screen relative flex flex-col items-center justify-center py-20 px-10  bg-marron"
     >
       <div className="absolute inset-0">
         <video
@@ -68,27 +68,36 @@ const Adentro = () => {
         <div className="absolute inset-0 bg-marron opacity-70"></div>
       </div>
       {/* Texto */}
-      <div className="relative z-10 text-center">
+      <div className="w-full relative z-10 text-center flex flex-col gap-4">
         <motion.h2
           variants={upItem}
-          className="text-4xl md:text-5xl font-bold text-blanco mb-4"
+          className="w-full text-3xl md:text-5xl font-bold text-blanco "
         >
-          Espacios de Disfrute y Diversión en Savory
+          Espacios de Disfrute y Diversión
         </motion.h2>
-        <motion.p variants={upItem} className="text-lg text-blanco-oscuro mb-4">
+        <motion.p
+          variants={upItem}
+          className="text-2xl font-medium text-blanco-oscuro "
+        >
           Contamos con diversas áreas diseñadas para que los clientes puedan
           disfrutar de sus productos en un ambiente cómodo y acogedor. Dentro
           hay una amplia sección con mesas y sillas, ideal para aquellos que
           buscan un lugar climatizado para relajarse y disfrutar de su helado o
           café.
         </motion.p>
-        <motion.p variants={upItem} className="text-lg text-blanco-oscuro mb-4">
+        <motion.p
+          variants={upItem}
+          className="text-2xl font-medium text-blanco-oscuro "
+        >
           También tenemos un sector al aire libre ubicado en la vereda alrededor
           del establecimiento. Este espacio está diseñado para que los clientes
           puedan disfrutar de sus helados y cafés en un ambiente fresco y
           relajado, disfrutando de un momento agradable al exterior.
         </motion.p>
-        <motion.p variants={upItem} className="text-lg text-blanco-oscuro">
+        <motion.p
+          variants={upItem}
+          className="text-2xl font-medium text-blanco-oscuro"
+        >
           Además, hemos dedicado un sector especial para los más pequeños, donde
           los niños pueden jugar y divertirse mientras los adultos se relajan.
           Este espacio infantil está equipado con juegos seguros y apropiados
@@ -97,29 +106,32 @@ const Adentro = () => {
         </motion.p>
       </div>
       {/* Imagenes */}
-      <div className="w-full relative z-10 flex flex-wrap justify-between mt-10">
+      <div className="w-full relative z-10 flex flex-col md:flex-row flex-wrap max-md:gap-4 max-md:items-center md:justify-between mt-10">
         <motion.div variants={imageItem} className="w-64 h-64 relative">
           <Image
             src="/savory/vereda.jpeg" // Reemplaza esta ruta con la imagen real de Savory
             alt="Savory Heladería y Cafetería 1"
-            fill
-            className="rounded-lg object-cover"
+            width={500}
+            height={500}
+            className="w-full h-full rounded-lg object-cover"
           />
         </motion.div>
         <motion.div variants={imageItem} className="w-64 h-64 relative">
           <Image
             src="/savory/sillones.jpg" // Reemplaza esta ruta con la imagen real de Savory
             alt="Savory Heladería y Cafetería 2"
-            fill
-            className="rounded-lg object-cover"
+            width={500}
+            height={500}
+            className="w-full h-full rounded-lg object-cover"
           />
         </motion.div>
         <motion.div variants={imageItem} className="w-64 h-64 relative">
           <Image
             src="/savory/savory-dentro.jpg" // Reemplaza esta ruta con la imagen real de Savory
             alt="Savory Heladería y Cafetería 3"
-            fill
-            className="rounded-lg object-cover"
+            width={500}
+            height={500}
+            className="w-full h-full rounded-lg object-cover"
           />
         </motion.div>
       </div>

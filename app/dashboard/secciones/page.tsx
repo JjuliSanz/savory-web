@@ -1,5 +1,5 @@
 import SearchBar from "@/components/dashboard/SearchBar";
-import MenuList from "../../../components/dashboard/MenuList";
+import MenuDashboardList from "../../../components/dashboard/MenuDashboardList";
 
 const Secciones = ({
   searchParams,
@@ -30,7 +30,7 @@ const Secciones = ({
             Acciones
           </div>
         </div>
-        <MenuList query={query} selectedCategory={selectedCategory} />
+        <MenuDashboardList query={query} selectedCategory={selectedCategory} />
       </div>
     </main>
   );
