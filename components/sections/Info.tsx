@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ClockIcon } from "@/assets/icons/ClockIcon";
 import { DeliveryIcon } from "@/assets/icons/DeliveryIcon";
 import { FacebookIcon } from "@/assets/icons/FacebookIcon";
@@ -8,11 +8,33 @@ import { PhoneIcon } from "@/assets/icons/PhoneIcon";
 import { PinIcon } from "@/assets/icons/PinIcon";
 import { WhatsIcon } from "@/assets/icons/WhatsIcon";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 
+const list = {
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.4,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+const listItem = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: "spring", damping: "10", mass: 1, stiffness: 150 },
+  },
+  hidden: { opacity: 0, x: -100 },
+};
 const Info = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
   return (
     <section
+      ref={ref}
       id="info"
       className="relative w-full min-h-screen bg-fixed bg-top bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden"
       style={{ backgroundImage: "url(/fondoContact.jpg)" }}
@@ -21,26 +43,39 @@ const Info = () => {
       <div className="md:w-1/2 w-full flex flex-col md:text-left text-center z-10">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.5,
-              ease: "easeIn",
-            },
-          }}
+          animate={
+            isInView && {
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.5,
+                ease: "easeIn",
+              },
+            }
+          }
           className="text-4xl md:text-6xl font-bold text-blanco mb-10"
         >
           Ven a Conocernos
         </motion.h2>
-        <ul className="text-lg md:text-3xl font-semibold text-blanco-oscuro space-y-4">
-          <li className="flex items-center gap-2 w-fit">
+        <motion.ul
+          initial="hidden"
+          animate={isInView && "visible"}
+          variants={list}
+          className="text-lg md:text-3xl font-semibold text-blanco-oscuro space-y-4"
+        >
+          <motion.li
+            variants={listItem}
+            className="flex items-center gap-2 w-fit"
+          >
             <PinIcon /> Lugones 395, Remedios de Escalada
-          </li>
-          <li className="flex items-center gap-2 w-fit">
+          </motion.li>
+          <motion.li
+            variants={listItem}
+            className="flex items-center gap-2 w-fit"
+          >
             <PhoneIcon /> 4516-0691
-          </li>
-          <li className="w-fit">
+          </motion.li>
+          <motion.li variants={listItem} className="w-fit">
             <Link
               href="https://api.whatsapp.com/send?phone=541137852214"
               target="_blank"
@@ -49,8 +84,8 @@ const Info = () => {
               <WhatsIcon />
               11 3785-2214
             </Link>
-          </li>
-          <li className="w-fit">
+          </motion.li>
+          <motion.li variants={listItem} className="w-fit">
             <Link
               href="https://www.instagram.com/savoryheladoscafe/"
               target="_blank"
@@ -59,8 +94,8 @@ const Info = () => {
               <InstagramIcon />
               SavoryHeladosCafe
             </Link>{" "}
-          </li>
-          <li className="w-fit">
+          </motion.li>
+          <motion.li variants={listItem} className="w-fit">
             <Link
               href="https://www.facebook.com/SavoryHeladosYCafe/"
               className="flex items-center gap-2 transition ease-in-out duration-100 hover:scale-[0.97] hover:opacity-70"
@@ -69,9 +104,9 @@ const Info = () => {
               <FacebookIcon />
               Savory Helados Y Café
             </Link>{" "}
-          </li>
+          </motion.li>
 
-          <li className="w-fit">
+          <motion.li variants={listItem} className="w-fit">
             <Link
               href="https://www.pedidosya.com.ar/restaurantes/lanus/savory-helados-y-cafe-323e50f5-b78e-4a0a-b741-ffd23745539b-menu?"
               target="_blank"
@@ -80,23 +115,29 @@ const Info = () => {
               <DeliveryIcon />
               Pedidos ya
             </Link>
-          </li>
-          <li className="flex items-center gap-2 w-fit">
+          </motion.li>
+          <motion.li
+            variants={listItem}
+            className="flex items-center gap-2 w-fit"
+          >
             <ClockIcon /> Estamos abiertos:
-          </li>
-          <ul className="ml-6 list-disc list-inside text-xl w-fit">
+          </motion.li>
+          <motion.ul
+            variants={listItem}
+            className="ml-6 list-disc list-inside text-xl w-fit"
+          >
             <li>Lunes a Viernes: 10am - 12am</li>
             <li>Sábados: 11am - 1:30am</li>
             <li>Domingos: 11am - 12am</li>
-          </ul>
-        </ul>
+          </motion.ul>
+        </motion.ul>
       </div>
       <div className="md:w-1/2 w-full flex justify-center items-center md:mt-0 mt-6 z-10">
         <motion.iframe
           initial={{ opacity: 0, x: 50 }}
           animate={{
             opacity: 1,
-            y: 0,
+            x: 0,
             transition: {
               delay: 1,
               duration: 0.5,
