@@ -1,9 +1,6 @@
-import MenuList from "@/components/menu/MenuList";
 import CategorySelector from "@/components/menu/CategorySelector";
 
-
-
-export default function Menu({
+export default function Prueba({
   searchParams,
 }: {
   searchParams?: { category?: string; query?: string };
@@ -16,13 +13,9 @@ export default function Menu({
       <CategorySelector selectedCategory={selectedCategory} />
       <section
         key={selectedCategory}
-        className="p-8 grid grid-cols-1 500:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        className="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
       >
-        <MenuList
-          selectedCategory={selectedCategory}
-          query={query}
-          
-        />
+        
       </section>
     </main>
   );

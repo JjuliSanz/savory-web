@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='custom-scroll'>{children}</body>
+      <body className='custom-scroll min-h-screen w-full overflow-x-hidden relative'>{children}</body>
     </html>
   );
 }

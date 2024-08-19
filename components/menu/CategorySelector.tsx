@@ -63,7 +63,7 @@ const CategorySelector = ({
     router.push(`/menu?category=${category}`);
   };
   return (
-    <nav className="w-fit max-w-3xl mx-auto flex justify-center p-4 bg-marron rounded">
+    <nav className="w-full max-w-[80%] mx-auto flex justify-center p-4 bg-marron rounded">
       <ul className="flex flex-wrap justify-center gap-4">
         {menuTabs.map((category) => (
           <motion.li
@@ -76,6 +76,13 @@ const CategorySelector = ({
             }`}
             onClick={() => handleCategoryChange(category.value)}
           >
+            {category.value === selectedCategory && (
+              <motion.div
+                className="underline"
+                layoutId="underline"
+                style={{ backgroundColor: '#ffff' }}
+              />
+            )}
             {category.title.charAt(0).toUpperCase() + category.title.slice(1)}
           </motion.li>
         ))}

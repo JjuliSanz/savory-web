@@ -30,20 +30,50 @@ const upItem = {
   },
 };
 
-const imageItem = {
-  hidden: { opacity: 0, scale: 0.7 },
+const leftImageItem = {
+  hidden: {
+    opacity: 0,
+    scale: 0.7,
+    rotate: -160, // Empezar con una rotación hacia la izquierda
+    x: -100, // Empezar fuera del contenedor a la izquierda
+    y: -10,
+  },
   visible: {
     opacity: 1,
     scale: 1,
+    rotate: -5, // Terminar sin rotación
+    x: 0, // Terminar en la posición original
+    y: 0,
     transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.5,
+      type: "tween", // Especifica que el tipo de animación es tween
+      ease: "easeInOut", // El easing más cercano a easeIn
+      duration: 0.5, // Duración de la animación en segundos
     },
   },
 };
+
+const rightImageItem = {
+  hidden: {
+    opacity: 0,
+    scale: 0.7,
+    rotate: 160, // Empezar con una rotación hacia la izquierda
+    x: 100, // Empezar fuera del contenedor a la izquierda
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 5, // Terminar sin rotación
+    x: 0, // Terminar en la posición original
+    y: 0,
+    transition: {
+      type: "tween", // Especifica que el tipo de animación es tween
+      ease: "easeInOut", // El easing más cercano a easeIn
+      duration: 0.5, // Duración de la animación en segundos
+    },
+  },
+};
+
 const Galeria = () => {
   const images = [
     {
@@ -111,21 +141,46 @@ const Galeria = () => {
           Nuestra Galería
         </motion.h2>
 
-        <div className="w-full grid grid-cols-2 gap-4">
-          {images.map((image, index) => (
-            <motion.div
-              variants={imageItem}
-              className="relative w-full h-full bg-blanco-oscuro rounded-lg overflow-hidden"
-              key={index}
+        <div className="w-full grid grid-cols-2 place-items-center gap-4">
+          {images.slice(0, 4).map((image) => (
+            <div
+              key={image.id}
+              className="w-full max-w-[350px] h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px] bg-marron border-4 border-marron-clarito rounded "
             >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={1000}
-                height={1000}
-                className="w-full h-[200px] object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </motion.div>
+              <motion.div
+                variants={image.id % 2 === 0 ? rightImageItem : leftImageItem}
+                className="relative w-full h-full rounded"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={1000}
+                  height={1000}
+                  className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px] object-cover rounded "
+                />
+              </motion.div>
+            </div>
+          ))}
+        </div>
+        <div className="w-full hidden 900:grid grid-cols-2 place-items-center gap-4">
+          {images.slice(4, 6).map((image) => (
+            <div
+              key={image.id}
+              className="w-full max-w-[350px] h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px] bg-marron border-4 border-marron-clarito rounded "
+            >
+              <motion.div
+                variants={image.id % 2 === 0 ? rightImageItem : leftImageItem}
+                className="relative w-full h-full rounded"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={1000}
+                  height={1000}
+                  className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px] object-cover rounded "
+                />
+              </motion.div>
+            </div>
           ))}
         </div>
         <motion.button

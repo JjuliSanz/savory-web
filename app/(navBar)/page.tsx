@@ -10,7 +10,7 @@ import About from "@/components/sections/About";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full flex flex-col pt-[50px]">
+    <main className="relative min-h-screen w-full flex flex-col ">
       <Hero/>
       <MenuCards/>
       <About/>
