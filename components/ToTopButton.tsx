@@ -7,8 +7,9 @@ import {
 } from "framer-motion";
 import { useState } from "react";
 import { ArrowTop } from "@/assets/icons/ArrowTop";
+import { cn } from "@/utils/cn";
 
-const ToTopButton = () => {
+const ToTopButton = ({ extraClass }: { extraClass?: string }) => {
   const { scrollY } = useScroll();
   const [visible, setVisible] = useState(false);
 
@@ -28,7 +29,10 @@ const ToTopButton = () => {
       {visible && (
         <motion.button
           onClick={handleClick}
-          className={`bg-marron text-blanco p-3 rounded-full fixed bottom-5 right-3`}
+          className={cn(
+            `bg-marron text-blanco p-3 rounded-full fixed bottom-5 right-3`,
+            extraClass
+          )}
           initial={{ opacity: 0, bottom: 50 }}
           animate={{ opacity: 1, bottom: 20 }}
           exit={{ opacity: 0, bottom: 50 }}

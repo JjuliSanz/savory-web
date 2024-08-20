@@ -1,5 +1,6 @@
 import MenuList from "@/components/menu/MenuList";
 import CategorySelector from "@/components/menu/CategorySelector";
+import ToTopButton from "@/components/ToTopButton";
 
 
 
@@ -12,7 +13,7 @@ export default function Menu({
   const query = searchParams?.query || "";
 
   return (
-    <main className="mt-[50px] pt-10 min-h-screen bg-blanco-oscuro">
+    <main className="pt-10 min-h-screen bg-blanco-oscuro">
       <CategorySelector selectedCategory={selectedCategory} />
       <section
         key={selectedCategory}
@@ -24,6 +25,7 @@ export default function Menu({
           
         />
       </section>
+      <ToTopButton extraClass="lg:hidden" />
     </main>
   );
 }

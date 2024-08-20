@@ -9,7 +9,7 @@ const Hero = () => {
     videoRef.current?.play();
   }, []);
   return (
-    <section id="inicio" className="relative min-h-[calc(100vh-50px)] h-[calc(100vh-50px)] w-full flex flex-col items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative min-h-[calc(100vh-44px)] h-[calc(100vh-44px)] w-full flex flex-col items-center justify-center overflow-hidden">
       {/* <div className="absolute inset-0  z-0 ">
         <Image
           src="/entrada.jpeg"

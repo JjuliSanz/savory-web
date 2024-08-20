@@ -7,19 +7,22 @@ import Hero from "@/components/sections/Hero";
 import Info from "@/components/sections/Info";
 import MenuCards from "@/components/sections/MenuCards";
 import About from "@/components/sections/About";
+import ToTopButton from "@/components/ToTopButton";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen w-full flex flex-col ">
-      <Hero/>
-      <MenuCards/>
-      <About/>
-      <Adentro/>
-      <Heladeria/>
-      <FilaImagenes/>
-      <Cafeteria/>
-      <Info/>
-      <Galeria/>
+      <Hero />
+      <MenuCards />
+      <About />
+      <Adentro />
+      <Heladeria />
+      <FilaImagenes />
+      <Cafeteria />
+      <Info />
+      <Galeria />
+
+      <ToTopButton extraClass="lg:hidden" />
     </main>
   );
 }

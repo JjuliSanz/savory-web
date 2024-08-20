@@ -7,7 +7,7 @@ import LoadingSkeleton from "@/components/dashboard/LoadingSkeleton";
 
 
 import CategoryDashboardSelector from "@/components/dashboard/CategoryDashboardSelector";
-import ToTopButton from "@/components/dashboard/ToTopButton";
+import ToTopButton from "@/components/ToTopButton";
 import MenuDashboardList from "../../components/dashboard/MenuDashboardList";
 import SearchBar from "@/components/dashboard/SearchBar";
 import Link from "next/link";

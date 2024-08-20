@@ -141,11 +141,11 @@ const Galeria = () => {
           Nuestra Galería
         </motion.h2>
 
-        <div className="w-full grid grid-cols-2 place-items-center gap-4">
+        <div className="w-full grid grid-cols-2 xl:grid-cols-3 place-items-center gap-6">
           {images.slice(0, 4).map((image) => (
             <div
               key={image.id}
-              className="w-full max-w-[350px] h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px] bg-marron border-4 border-marron-clarito rounded "
+              className="w-full h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px]  bg-marron border-4 border-marron-clarito rounded "
             >
               <motion.div
                 variants={image.id % 2 === 0 ? rightImageItem : leftImageItem}
@@ -156,33 +156,34 @@ const Galeria = () => {
                   alt={image.alt}
                   width={1000}
                   height={1000}
-                  className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px] object-cover rounded "
+                  className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px]  object-cover rounded "
                 />
               </motion.div>
             </div>
           ))}
-        </div>
-        <div className="w-full hidden 900:grid grid-cols-2 place-items-center gap-4">
-          {images.slice(4, 6).map((image) => (
-            <div
-              key={image.id}
-              className="w-full max-w-[350px] h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px] bg-marron border-4 border-marron-clarito rounded "
-            >
-              <motion.div
-                variants={image.id % 2 === 0 ? rightImageItem : leftImageItem}
-                className="relative w-full h-full rounded"
+          <div className="w-full hidden 900:flex place-items-center 900:col-span-2 gap-6 ">
+            {images.slice(4, 6).map((image) => (
+              <div
+                key={image.id}
+                className="w-full h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px]  bg-marron border-4 border-marron-clarito rounded "
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={1000}
-                  height={1000}
-                  className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px] object-cover rounded "
-                />
-              </motion.div>
-            </div>
-          ))}
+                <motion.div
+                  variants={image.id % 2 === 0 ? rightImageItem : leftImageItem}
+                  className="relative w-full h-full rounded"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={1000}
+                    height={1000}
+                    className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px]  object-cover rounded "
+                  />
+                </motion.div>
+              </div>
+            ))}
+          </div>
         </div>
+
         <motion.button
           variants={upItem}
           className="px-4 py-2 w-fit mx-auto border-4 border-marron text-marron text-xl font-bold rounded hover:scale-95 transition duration-150 ease-in-out hover:bg-marron hover:text-blanco-oscuro bg-blanco-oscuro"

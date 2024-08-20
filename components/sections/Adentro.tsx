@@ -106,8 +106,8 @@ const Adentro = () => {
         </motion.p>
       </div>
       {/* Imagenes */}
-      <div className="w-full relative z-10 flex flex-col md:flex-row flex-wrap max-md:gap-4 max-md:items-center md:justify-between mt-10">
-        <motion.div variants={imageItem} className="w-64 h-64 relative">
+      <div className="w-full relative z-10 flex flex-row flex-wrap max-md:gap-4 items-center justify-center mt-10">
+        <motion.div variants={imageItem} className="w-32 md:w-64 h-32 md:h-64 relative">
           <Image
             src="/savory/vereda.jpeg" // Reemplaza esta ruta con la imagen real de Savory
             alt="Savory Heladería y Cafetería 1"
@@ -116,7 +116,7 @@ const Adentro = () => {
             className="w-full h-full rounded-lg object-cover"
           />
         </motion.div>
-        <motion.div variants={imageItem} className="w-64 h-64 relative">
+        <motion.div variants={imageItem} className="w-32 md:w-64 h-32 md:h-64 relative">
           <Image
             src="/savory/sillones.jpg" // Reemplaza esta ruta con la imagen real de Savory
             alt="Savory Heladería y Cafetería 2"
@@ -125,7 +125,7 @@ const Adentro = () => {
             className="w-full h-full rounded-lg object-cover"
           />
         </motion.div>
-        <motion.div variants={imageItem} className="w-64 h-64 relative">
+        <motion.div variants={imageItem} className="w-32 md:w-64 h-32 md:h-64 relative">
           <Image
             src="/savory/savory-dentro.jpg" // Reemplaza esta ruta con la imagen real de Savory
             alt="Savory Heladería y Cafetería 3"

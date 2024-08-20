@@ -34,9 +34,9 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
       initial="hidden"
       animate="visible"
       variants={itemVariants}
-      className="bg-marron rounded-lg flex flex-col h-[400px]"
+      className="bg-marron rounded-lg flex flex-col "
     >
-      <div className="relative w-full h-60">
+      <div className="relative w-full min-h-60 max-h-60">
         <Image
           src={item.imageSrc}
           alt={item.title}
@@ -46,16 +46,16 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
           className="object-cover w-full h-full rounded-t-lg"
         />
       </div>
-      <div className="w-full flex flex-col grow justify-between gap-4 p-4">
+      <div className="w-full flex flex-col grow justify-between gap-4 p-4 min-h-[150px]">
         <div className="flex flex-col gap-2">
-          <h3 className="text-blanco text-lg font-bold">{item.title}</h3>
+          <h3 className="text-blanco text-xl md:text-lg lg:text-xl font-bold">{item.title}</h3>
           {item.description && (
-            <p className="text-blanco-oscuro font-bold text-sm">
+            <p className="text-blanco-oscuro font-bold text-base md:text-sm lg:text-base">
               {item.description}
             </p>
           )}
         </div>
-        <p className="text-end text-blanco-oscuro font-bold text-base">
+        <p className="text-end text-blanco-oscuro font-bold text-lg md:text-base lg:text-lg">
           {item.price} $
         </p>
       </div>
