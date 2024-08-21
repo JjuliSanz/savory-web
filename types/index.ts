@@ -8,6 +8,8 @@ export type MenuItem = {
   title: string;
   description?: string;
   price: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
 
 export type MenuType = {

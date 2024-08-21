@@ -1,13 +1,13 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useDrawer } from "@/hooks/useDrawer";
+
 import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { MenuItem, State } from "@/types";
-import { editMenuItem } from "@/utils/actions";
-import { useRouter } from "next/navigation";
 import { updateMenuItem } from "@/utils/serverActions";
 import { useFormState, useFormStatus } from "react-dom";
+import { revalidatePath } from "next/cache";
+import { redirect, useRouter } from "next/navigation";
 
 const Button = () => {
   const { pending } = useFormStatus();
@@ -30,6 +30,7 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
   const initialState: State = { message: null, errors: {} };
   const updatedMenuItem = updateMenuItem.bind(null, selectedItem._id!);
   const [state, formAction] = useFormState(updatedMenuItem, initialState);
+  const router = useRouter();
 
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
@@ -37,6 +38,14 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
   };
+
+  useEffect(() => {
+    if (state?.message) {
+      // Ejecutar la redirección y revalidación solo si hay un mensaje de éxito
+      router.refresh();
+      setIsDrawerOpen(false)
+    }
+  }, [state?.message, router]);
 
   return (
     <>
@@ -76,7 +85,6 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   id="id"
                   name="id"
                   className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-                  required
                   defaultValue={selectedItem.id}
                 />
                 <div id="id-error" aria-live="polite" aria-atomic="true">
@@ -102,7 +110,6 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   id="category"
                   name="category"
                   className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-                  required
                   defaultValue={selectedItem.category}
                 >
                   <option value="" disabled>
@@ -144,7 +151,6 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   id="title"
                   name="title"
                   className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-                  required
                   defaultValue={selectedItem.title}
                 />
                 <div id="title-error" aria-live="polite" aria-atomic="true">
@@ -200,7 +206,6 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   id="imageSrc"
                   name="imageSrc"
                   className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-                  required
                   defaultValue={selectedItem.imageSrc}
                 />
                 <div id="imageSrc-error" aria-live="polite" aria-atomic="true">
@@ -227,7 +232,6 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   id="price"
                   name="price"
                   className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
-                  required
                   defaultValue={selectedItem.price}
                 />
                 <div id="price-error" aria-live="polite" aria-atomic="true">

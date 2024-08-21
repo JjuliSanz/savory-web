@@ -53,7 +53,7 @@ const ImageCard = ({
   return (
     <motion.div
       variants={imageItem}
-      className="w-32 md:w-64 h-32 md:h-64 lg:w-h-72 lg:h-72 relative"
+      className="w-32 500:w-48 sm:w-60 md:w-64 lg:w-72 xl:w-80 h-32 500:h-48 sm:h-60 md:h-64 lg:h-72 xl:h-80 relative"
     >
       <Image
         src={imageSrc}

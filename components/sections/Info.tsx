@@ -38,7 +38,7 @@ const Info = () => {
       animate={isInView && "visible"}
       variants={list}
       ref={ref}
-      id="info"
+      id="contacto"
       className="relative w-full min-h-screen bg-fixed bg-top bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden"
       style={{ backgroundImage: "url(/fondoContact.jpg)" }}
     >

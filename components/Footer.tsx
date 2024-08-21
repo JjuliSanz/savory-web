@@ -35,7 +35,7 @@ const Footer = () => {
           </li>
           <li>
             <Link
-              href="/#info"
+              href="/#contacto"
               className="transition ease-in duration-150 hover:scale-95 hover:opacity-70"
             >
               Contacto

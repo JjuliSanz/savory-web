@@ -113,9 +113,15 @@ export const updateMenuItem = async (
   formData: FormData
 ) => {
   await connectDB();
-
+  // Obtener y mostrar todos los datos de FormData
+  // console.log(_id);
+  // console.log("FormData entries:");
+  // formData.forEach((value, key) => {
+  //   console.log(`${key}: ${value}`);
+  // });
   // Validar los campos del formulario
   const validatedFields = FormSchema.safeParse({
+    _id,
     id: formData.get("id"),
     category: formData.get("category"),
     title: formData.get("title"),
@@ -125,8 +131,12 @@ export const updateMenuItem = async (
   });
 
   if (!validatedFields.success) {
+    console.log("Validation failed:", validatedFields.error);
+    const errorDetails = validatedFields.error.flatten();
+    console.log("Field errors:", errorDetails.fieldErrors);
+
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
+      errors: errorDetails.fieldErrors,
       message: "Missing Fields. Failed to Update Menu Item.",
     };
   }
@@ -134,17 +144,17 @@ export const updateMenuItem = async (
   const { id, category, title, description, imageSrc, price } =
     validatedFields.data;
 
-  try {
-    // Verificar si el id ya está en uso por otro documento
-    const existingItem = await MenuDB.findOne({ id });
-    if (existingItem && existingItem._id.toString() !== _id) {
-      return {
-        errors: { id: ["El ID ya está en uso por otro ítem."] },
-        message: "ID Conflict",
-      };
-    }
+  // Verificar si el id ya está en uso por otro documento
+  const existingItem = await MenuDB.findOne({ id });
+  if (existingItem && existingItem._id.toString() !== _id) {
+    console.log("Id ya esta en uso");
+    return {
+      errors: { id: ["El ID ya está en uso por otro ítem."] },
+      message: "ID Conflict",
+    };
+  }
 
-    // Actualizar el documento en la base de datos
+  try {
     await MenuDB.findByIdAndUpdate(
       _id,
       {
@@ -157,18 +167,16 @@ export const updateMenuItem = async (
       },
       { new: true }
     );
+    return {
+      ...prevState,
+      message: "Menu Item Updated Successfully.",
+    };
   } catch (error) {
     return {
       message: "Database Error: Failed to Update Menu Item.",
     };
   }
-
   revalidatePath("/dashboard");
-  redirect(`/dashboard?category=${category}`);
-  return {
-    ...prevState,
-    message: "Menu Item Updated Successfully.",
-  };
 };
 
 export const deleteMenuItem = async (_id: string) => {

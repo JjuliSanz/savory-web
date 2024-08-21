@@ -4,6 +4,7 @@ import Image from "next/image";
 import DeleteButton from "./DeleteButton";
 import { Drawer } from "@/components/dashboard/Drawer";
 import { PreviewModal } from "@/components/dashboard/PreviewModal";
+import Link from "next/link";
 const MenuDashboardList = async ({
   query,
   selectedCategory,
@@ -28,7 +29,9 @@ const MenuDashboardList = async ({
     <>
       <div>
         {Array.isArray(menuItems) && menuItems.length === 0 && (
-          <p className="text-xl font-semibold text-marron px-6 py-4">No se encontraron productos </p>
+          <p className="text-xl font-semibold text-marron px-6 py-4">
+            No se encontraron productos{" "}
+          </p>
         )}
       </div>
       {Array.isArray(menuItems) &&
@@ -54,7 +57,13 @@ const MenuDashboardList = async ({
               {item.price}$
             </div>
             <div className="col-span-1 flex flex-col gap-2">
-              <Drawer selectedItem={item} />
+              {/* <Link
+                href={`/dashboard/${item._id}`}
+                className="text-blue-500 hover:text-blue-700 font-bold text-start rounded"
+              >
+                EDITAR
+              </Link> */}
+              <Drawer selectedItem={item}/>
               <DeleteButton id={item._id} title={item.title} />
               <PreviewModal selectedItem={item} />
             </div>

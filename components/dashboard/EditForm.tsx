@@ -3,7 +3,8 @@ import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { MenuItem } from "@/types";
 import { updateMenuItem } from "@/utils/serverActions";
 import React, { useRef } from "react";
-import { useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
+import { State } from "@/types";
 
 const Button = () => {
   const { pending } = useFormStatus();
@@ -28,19 +29,22 @@ const Button = () => {
 };
 
 const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
-  const updatedMenuItem = updateMenuItem.bind(null, menuItem._id!);
   const ref = useRef<HTMLFormElement>(null);
+  const initialState: State = { message: null, errors: {} };
+  const updatedMenuItem = updateMenuItem.bind(null, menuItem._id!);
+  const [state, formAction] = useFormState(updatedMenuItem, initialState);
+
   return (
     <form
       ref={ref}
-      action={updatedMenuItem}
-      className={`w-[400px] h-full overflow-auto overscroll-contain bg-blanco-oscuro p-6 rounded relative text-marron-claro`}
+      action={formAction}
+      className={`w-[600px] h-full overflow-auto overscroll-contain bg-blanco-oscuro rounded relative text-marron-claro mx-auto flex flex-col gap-4`}
     >
       <button className="absolute top-0 right-0 text-marron w-8 hover:opacity-70 hover:scale-95 transition duration-300 ease-in-out">
         <CloseIcon />
       </button>
 
-      <div className="mb-4">
+      <div className="">
         <label
           htmlFor="id"
           className="block text-sm font-bold mb-2 text-marron"
@@ -52,11 +56,18 @@ const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
           id="id"
           name="id"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium cursor-not-allowed"
-          required
-          value={menuItem.id}
+          defaultValue={menuItem.id}
         />
       </div>
-      <div className="mb-4">
+      <div id="id-error" aria-live="polite" aria-atomic="true" className="">
+        {state.errors?.id &&
+          state.errors.id.map((error: any) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <div className="">
         <label
           htmlFor="CATEGORY"
           className="block text-sm font-bold mb-2 text-marron"
@@ -67,8 +78,7 @@ const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
           id="category"
           name="category"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
-          required
-          value={menuItem.category}
+          defaultValue={menuItem.category}
         >
           <option value="" disabled>
             Select a category
@@ -86,7 +96,20 @@ const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
           <option value="Heladeria">Heladería</option>
         </select>
       </div>
-      <div className="mb-4">
+      <div
+        id="category-error"
+        aria-live="polite"
+        aria-atomic="true"
+        className=""
+      >
+        {state.errors?.category &&
+          state.errors.category.map((error: string) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <div className="">
         <label
           htmlFor="title"
           className="block text-sm font-bold mb-2 text-marron"
@@ -98,11 +121,19 @@ const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
           id="title"
           name="title"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
-          required
-          value={menuItem.title}
+          aria-describedby="title-error"
+          defaultValue={menuItem.title}
         />
       </div>
-      <div className="mb-4">
+      <div id="title-error" aria-live="polite" aria-atomic="true" className="">
+        {state.errors?.title &&
+          state.errors.title.map((error: any) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <div className="">
         <label
           htmlFor="description"
           className="block text-sm font-bold mb-2 text-marron"
@@ -113,10 +144,23 @@ const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
           id="description"
           name="description"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
-          value={menuItem.description}
+          defaultValue={menuItem.description}
         />
       </div>
-      <div className="mb-4">
+      <div
+        id="description-error"
+        aria-live="polite"
+        aria-atomic="true"
+        className=""
+      >
+        {state.errors?.description &&
+          state.errors.description.map((error: string) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <div className="">
         <label
           htmlFor="imageSrc"
           className="block text-sm font-bold mb-2 text-marron"
@@ -128,11 +172,23 @@ const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
           id="imageSrc"
           name="imageSrc"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
-          required
-          value={menuItem.imageSrc}
+          defaultValue={menuItem.imageSrc}
         />
       </div>
-      <div className="mb-4">
+      <div
+        id="imageSrc-error"
+        aria-live="polite"
+        aria-atomic="true"
+        className=""
+      >
+        {state.errors?.imageSrc &&
+          state.errors.imageSrc.map((error: string) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <div className="">
         <label
           htmlFor="price"
           className="block text-sm font-bold mb-2 text-marron"
@@ -144,9 +200,16 @@ const EditForm = ({ menuItem }: { menuItem: MenuItem }) => {
           id="price"
           name="price"
           className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-base font-medium"
-          required
-          value={menuItem.price}
+          defaultValue={menuItem.price}
         />
+      </div>
+      <div id="price-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.price &&
+          state.errors.price.map((error: string) => (
+            <p className="text-base font-medium text-red-500" key={error}>
+              {error}
+            </p>
+          ))}
       </div>
       <Button />
     </form>

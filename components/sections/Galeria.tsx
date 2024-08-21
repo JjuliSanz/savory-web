@@ -80,49 +80,50 @@ const Galeria = () => {
     {
       src: "/barritas.jpeg",
       alt: "Barritas heladas",
-      width: 1440,
-      height: 1440,
       id: 1,
     },
-    { src: "/tortas01.jpg", alt: "Tortas", width: 1080, height: 1080, id: 2 },
+    {
+      src: "/tortas01.jpg",
+      alt: "Tortas",
+      id: 2,
+    },
     {
       src: "/cubatones.jpeg",
       alt: "Cubatones",
-      width: 1440,
-      height: 1440,
       id: 3,
     },
-    { src: "/pote.jpeg", alt: "Pote", width: 1440, height: 1800, id: 4 },
-    { src: "/ensalada.jpg", alt: "Ensalada", width: 1080, height: 1080, id: 5 },
+    {
+      src: "/food/sandwiches/sandwiches.jpeg",
+      alt: "Sandwiches",
+      id: 4,
+    },
+    {
+      src: "/food/torta-oreo.jpg",
+      alt: "Ensalada",
+      id: 5,
+    },
     {
       src: "/tostadosjyq.jpeg",
       alt: "Tostados jamon y queso",
-      width: 1200,
-      height: 1200,
       id: 6,
     },
     {
       src: "/food/conito-noche.jpeg",
       alt: "Conito noche",
-      width: 440,
-      height: 800,
       id: 7,
     },
     {
       src: "/food/yogurts.jpeg",
       alt: "Yogurts",
-      width: 1440,
-      height: 1080,
       id: 8,
     },
     {
       src: "/food/sandwiches/sandwiches.jpeg",
       alt: "Sandwiches",
-      width: 1440,
-      height: 1080,
       id: 9,
     },
   ];
+
   const ref = useRef(null);
   const isInView = useInView(ref);
   return (
