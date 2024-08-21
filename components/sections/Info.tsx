@@ -130,6 +130,7 @@ const Info = () => {
           </motion.ul>
         </motion.ul>
       </div>
+      {/* MAP */}
       <div className="md:w-1/2 w-full flex justify-center items-center md:mt-0 mt-6 z-10">
         <motion.iframe
           variants={listItem}

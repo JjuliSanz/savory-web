@@ -195,8 +195,8 @@ const MenuCards = () => {
               />
               <Link
                 href={`/menu/?category=${card.value}`}
-                className="block w-fit mx-auto mt-6 px-4 rounded py-2 transition duration-150 ease-in-out text-lg font-bold border-4 border-blanco-oscuro bg-marron text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron  
-                active:scale-95 active:bg-blanco-oscuro active:text-marron
+                className="flex w-fit mx-auto my-6 px-4 rounded py-2 transition duration-300 ease-in-out text-lg font-bold border-4 border-blanco-oscuro bg-marron text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron  
+                active:scale-95 active:bg-blanco-oscuro active:text-marron brownButtonShadow
                 "
               >
                 {card.title}

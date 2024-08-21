@@ -43,6 +43,29 @@ const imageItem = {
   },
 };
 
+const ImageCard = ({
+  imageSrc,
+  imageAlt,
+}: {
+  imageSrc: string;
+  imageAlt: string;
+}) => {
+  return (
+    <motion.div
+      variants={imageItem}
+      className="w-32 md:w-64 h-32 md:h-64 lg:w-h-72 lg:h-72 relative"
+    >
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        width={500}
+        height={500}
+        className="w-full h-full rounded-lg object-cover"
+      />
+    </motion.div>
+  );
+};
+
 const Adentro = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -106,34 +129,19 @@ const Adentro = () => {
         </motion.p>
       </div>
       {/* Imagenes */}
-      <div className="w-full relative z-10 flex flex-row flex-wrap max-md:gap-4 items-center justify-center mt-10">
-        <motion.div variants={imageItem} className="w-32 md:w-64 h-32 md:h-64 relative">
-          <Image
-            src="/savory/vereda.jpeg" // Reemplaza esta ruta con la imagen real de Savory
-            alt="Savory Heladería y Cafetería 1"
-            width={500}
-            height={500}
-            className="w-full h-full rounded-lg object-cover"
-          />
-        </motion.div>
-        <motion.div variants={imageItem} className="w-32 md:w-64 h-32 md:h-64 relative">
-          <Image
-            src="/savory/sillones.jpg" // Reemplaza esta ruta con la imagen real de Savory
-            alt="Savory Heladería y Cafetería 2"
-            width={500}
-            height={500}
-            className="w-full h-full rounded-lg object-cover"
-          />
-        </motion.div>
-        <motion.div variants={imageItem} className="w-32 md:w-64 h-32 md:h-64 relative">
-          <Image
-            src="/savory/savory-dentro.jpg" // Reemplaza esta ruta con la imagen real de Savory
-            alt="Savory Heladería y Cafetería 3"
-            width={500}
-            height={500}
-            className="w-full h-full rounded-lg object-cover"
-          />
-        </motion.div>
+      <div className="w-full relative z-10 flex flex-row flex-wrap gap-4 md:gap-6 items-center justify-center mt-10">
+        <ImageCard
+          imageSrc="/savory/vereda.jpeg"
+          imageAlt="Sector en la vereda"
+        />
+        <ImageCard
+          imageSrc="/savory/sillones.jpg"
+          imageAlt="Sector con sillones"
+        />
+        <ImageCard
+          imageSrc="/savory/savory-dentro.jpg"
+          imageAlt="Sector sillas, mesas y juegos"
+        />
       </div>
     </motion.section>
   );

@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
+import WhiteButton from "../ui/WhiteButton";
 
 const container = {
   hidden: { opacity: 0 },
@@ -147,16 +148,7 @@ const Cafeteria = () => {
           Delicias de la Cafetería en Savory
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, y: -50 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              delay: 1,
-              duration: 0.5,
-              ease: "easeIn",
-            },
-          }}
+          variants={upItem}
           className="text-xl font-medium text-marron-claro  "
         >
           Savory no solo es reconocida por sus deliciosos helados, sino también
@@ -184,12 +176,7 @@ const Cafeteria = () => {
           una opción fresca y ligera, perfecta para cualquier momento del día.
         </motion.p>
 
-        <motion.button
-          variants={upItem}
-          className="px-4 py-2 border-4 border-marron text-marron text-xl font-bold rounded hover:scale-95 transition duration-150 ease-in-out hover:bg-marron hover:text-blanco-oscuro bg-blanco-oscuro"
-        >
-          <Link href="/menu">Menu</Link>
-        </motion.button>
+        <WhiteButton text="Menu" href="/menu" classNameProps="px-4 py-2"/>
       </div>
     </motion.section>
   );

@@ -1,4 +1,3 @@
-// import { motion, useInView, Variants } from "framer-motion";
 import { fetchMenuItems } from "@/utils/actions";
 import Image from "next/image";
 import React from "react";

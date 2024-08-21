@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
+import BrownButton from "../ui/BrownButton";
 
 const container = {
   hidden: { opacity: 0 },
@@ -112,12 +113,7 @@ const Heladeria = () => {
           el compromiso de proporcionar lo mejor a nuestros clientes.
         </motion.p>
 
-        <motion.button
-          variants={upItem}
-          className="px-4 py-2 border-4 border-blanco-oscuro text-blanco-oscuro text-xl font-bold rounded hover:scale-95 transition duration-150 ease-in-out hover:bg-blanco-oscuro hover:text-marron bg-marron"
-        >
-          <Link href="/menu">Menu</Link>
-        </motion.button>
+        <BrownButton href="/menu" text="Menu" classNameProps="px-4 py-2"/>
       </div>
       {/* Imagenes */}
       <div className="md:w-1/2 w-full mt-6 md:mt-0 flex flex-row gap-4">

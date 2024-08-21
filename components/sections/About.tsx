@@ -1,7 +1,10 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
+import Button from "../Button";
+import WhiteButton from "../ui/WhiteButton";
 
 const container = {
   hidden: { opacity: 0 },
@@ -43,6 +46,8 @@ const upItem = {
   },
 };
 
+
+
 const rightItem = {
   hidden: { opacity: 0, x: 100 },
   visible: {
@@ -80,8 +85,8 @@ const About = () => {
             <Image
               src="/savory/savory.jpeg"
               alt="Ambiente acogedor de Savory"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
               className="rounded-lg object-cover w-full h-full"
             />
           </motion.div>
@@ -98,10 +103,10 @@ const About = () => {
             variants={rightItem}
             className="text-2xl font-medium text-marron-claro "
           >
-            En Savory, no solo ofrecemos los mejores helados y cafés, sino que
-            también te brindamos una experiencia única. Estamos abiertos todos
-            los días, asegurando que siempre puedas disfrutar de nuestras
-            delicias en cualquier momento que lo desees.
+            Desde la calidad de nuestros productos hasta el ambiente acogedor,
+            en Savory, cada detalle cuenta. Estamos abiertos todos los días,
+            asegurando que siempre puedas disfrutar de nuestras delicias en
+            cualquier momento que lo desees.
           </motion.p>
           <motion.p
             variants={rightItem}
@@ -111,6 +116,13 @@ const About = () => {
             clientes, Savory es el lugar ideal para compartir momentos
             inolvidables con amigos y familiares en un ambiente cálido y
             acogedor.
+          </motion.p>
+          <motion.p
+            variants={rightItem}
+            className="text-2xl font-medium text-marron-claro"
+          >
+            ¡Ven y comprueba por ti mismo por qué somos la mejor heladería en la
+            ciudad!
           </motion.p>
         </div>
       </div>
@@ -122,17 +134,33 @@ const About = () => {
             variants={leftItem}
             className="w-full text-3xl md:text-4xl font-bold text-marron mb-4"
           >
-            Nuestra Promesa
+            Pedidos Fáciles y Convenientes
           </motion.h2>
           <motion.p
             variants={leftItem}
             className="text-2xl font-medium text-marron-claro mb-4"
           >
-            Cada día, nos esforzamos por ofrecer una experiencia excepcional.
-            Desde la calidad de nuestros productos hasta el ambiente acogedor,
-            en Savory, cada detalle cuenta. ¡Ven y comprueba por ti mismo por
-            qué somos la mejor heladería en la ciudad!
+            En Savory, nos aseguramos de que puedas disfrutar de tus productos
+            favoritos de manera fácil y conveniente. Tomamos pedidos a través de
+            WhatsApp, celular, o teléfono, para que puedas hacer tu pedido desde
+            la comodidad de tu hogar o donde te encuentres.
           </motion.p>
+
+          <motion.p
+            variants={leftItem}
+            className="text-2xl font-medium text-marron-claro mb-4"
+          >
+            Además, también estamos disponibles en la plataforma de Pedidos Ya,
+            facilitando aún más el proceso de ordenar nuestros helados, cafés, y
+            todas las delicias de nuestra cafetería. Ya sea que prefieras
+            recoger tu pedido en el local o recibirlo directamente en tu puerta,
+            en Savory estamos listos para atenderte.
+          </motion.p>
+          <WhiteButton
+            classNameProps="px-4 py-2"
+            text="Contacto"
+            href="/#contacto"
+          />
         </div>
 
         <div className="relative w-full md:w-1/2">
@@ -143,8 +171,8 @@ const About = () => {
             <Image
               src="/savory/fuera.jpeg"
               alt="Deliciosos helados y cafés de Savory"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
               className="rounded-lg object-cover w-full h-full"
             />
           </motion.div>

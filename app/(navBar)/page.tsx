@@ -22,7 +22,7 @@ export default function Home() {
       <Info />
       <Galeria />
 
-      <ToTopButton extraClass="lg:hidden" />
+      <ToTopButton extraClass="" />
     </main>
   );
 }

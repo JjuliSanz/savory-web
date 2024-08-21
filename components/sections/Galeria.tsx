@@ -4,6 +4,7 @@ import GalleryImage from "../GalleryImage";
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
+import WhiteButton from "../ui/WhiteButton";
 
 const container = {
   hidden: { opacity: 0 },
@@ -184,17 +185,12 @@ const Galeria = () => {
           </div>
         </div>
 
-        <motion.button
-          variants={upItem}
-          className="px-4 py-2 w-fit mx-auto border-4 border-marron text-marron text-xl font-bold rounded hover:scale-95 transition duration-150 ease-in-out hover:bg-marron hover:text-blanco-oscuro bg-blanco-oscuro"
-        >
-          <Link
-            href="https://www.instagram.com/savoryheladoscafe/"
-            target="_blank"
-          >
-            Seguinos en nuestro Instagram!
-          </Link>
-        </motion.button>
+        <WhiteButton
+          href="https://www.instagram.com/savoryheladoscafe/"
+          text="Seguinos en nuestro Instagram!"
+          target="_blank"
+          classNameProps="px-4 py-2"
+        />
       </div>
     </motion.section>
   );
