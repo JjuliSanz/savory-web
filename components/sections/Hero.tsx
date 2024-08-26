@@ -1,22 +1,8 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Button from "../Button";
-import Image from "next/image";
-import WhiteButton from "../ui/WhiteButton";
+
 import BrownButton from "../ui/BrownButton";
 
-const buttonVariants = {
-  initial: { opacity: 0, y: 10 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 1.5,
-      duration: 0.5,
-      ease: "easeIn",
-    },
-  }
-}
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -45,13 +31,14 @@ const Hero = () => {
         </video>
       </div>
 
-      <h1 className="text-2xl md:text-9xl font-bold text-blanco font-serif z-10 row-span-1">
-        SAVORY
+      <h1 className="text-2xl md:text-9xl font-bold text-blanco  z-10 row-span-1">
+        Savory
       </h1>
 
       <p className="text-4xl font-sans text-blanco-oscuro">HELADERIA & CAFETERIA</p>
 
-      <BrownButton href="/menu" text="Menu" classNameProps="px-6 py-3"/>
+      <BrownButton href="/menu" text="Menú" classNameProps="px-6 py-3 "/>
+      
     </section>
   );
 };

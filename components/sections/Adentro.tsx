@@ -2,46 +2,9 @@
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
-
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3, // Orquesta las animaciones con un retraso de 0.5 segundos entre cada elemento
-    },
-  },
-};
-
-const upItem = {
-  hidden: { opacity: 0, y: -100 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.5,
-    },
-  },
-};
-
-const imageItem = {
-  hidden: { opacity: 0, scale: 0.7 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.5,
-    },
-  },
-};
+import Paragraph from "../Paragraph";
+import { container, imageItem, upItem } from "@/variants";
+import Title from "../Title";
 
 const ImageCard = ({
   imageSrc,
@@ -92,41 +55,37 @@ const Adentro = () => {
       </div>
       {/* Texto */}
       <div className="w-full relative z-10 text-center flex flex-col gap-4">
-        <motion.h2
+        <Title
           variants={upItem}
-          className="w-full text-3xl md:text-5xl font-bold text-blanco "
-        >
-          Espacios de Disfrute y Diversión
-        </motion.h2>
-        <motion.p
+          title="Espacios de Disfrute y Diversión"
+          classNameProps="text-blanco"
+        />
+        <Paragraph
           variants={upItem}
-          className="text-2xl font-medium text-blanco-oscuro "
-        >
-          Contamos con diversas áreas diseñadas para que los clientes puedan
+          text="Contamos con diversas áreas diseñadas para que los clientes puedan
           disfrutar de sus productos en un ambiente cómodo y acogedor. Dentro
           hay una amplia sección con mesas y sillas, ideal para aquellos que
           buscan un lugar climatizado para relajarse y disfrutar de su helado o
-          café.
-        </motion.p>
-        <motion.p
+          café."
+          classNameProps="text-blanco-oscuro"
+        />
+        <Paragraph
           variants={upItem}
-          className="text-2xl font-medium text-blanco-oscuro "
-        >
-          También tenemos un sector al aire libre ubicado en la vereda alrededor
+          text="También tenemos un sector al aire libre ubicado en la vereda alrededor
           del establecimiento. Este espacio está diseñado para que los clientes
           puedan disfrutar de sus helados y cafés en un ambiente fresco y
-          relajado, disfrutando de un momento agradable al exterior.
-        </motion.p>
-        <motion.p
+          relajado, disfrutando de un momento agradable al exterior."
+          classNameProps="text-blanco-oscuro"
+        />
+        <Paragraph
           variants={upItem}
-          className="text-2xl font-medium text-blanco-oscuro"
-        >
-          Además, hemos dedicado un sector especial para los más pequeños, donde
+          text="Además, hemos dedicado un sector especial para los más pequeños, donde
           los niños pueden jugar y divertirse mientras los adultos se relajan.
           Este espacio infantil está equipado con juegos seguros y apropiados
           para diferentes edades, haciendo de Savory un destino perfecto para
-          visitas familiares.
-        </motion.p>
+          visitas familiares."
+          classNameProps="text-blanco-oscuro"
+        />
       </div>
       {/* Imagenes */}
       <div className="w-full relative z-10 flex flex-row flex-wrap gap-4 md:gap-6 items-center justify-center mt-10">

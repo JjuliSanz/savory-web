@@ -39,7 +39,7 @@ const WhiteButton = ({
     >
       <Link
         href={href}
-        className={cn("flex motion-safe:transition duration-300 ease-in-out font-bold text-xl rounded bg-blanco-oscuro border-4 border-marron text-marron outline-none focus:outline-none  hover:bg-marron hover:text-blanco-oscuro hover:scale-95 whiteButtonShadow", classNameProps)}
+        className={cn("flex motion-safe:transition duration-300 ease-in-out text-3xl font-medium rounded bg-blanco-oscuro border-4 border-marron text-marron outline-none focus:outline-none  hover:bg-marron hover:text-blanco-oscuro hover:scale-95 whiteButtonShadow", classNameProps)}
         target={target}
         // active:bg-marron active:text-blanco-oscuro
       >

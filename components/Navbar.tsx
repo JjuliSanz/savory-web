@@ -7,59 +7,73 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import Link from "next/link";
+import { cn } from "@/utils/cn";
+
+const ListItem = ({
+  href,
+  title,
+  classNameProp,
+}: {
+  href: string;
+  title: string;
+  classNameProp?: string;
+}) => {
+  return (
+    <li>
+      <Link
+        href={href}
+        className={cn(
+          `w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70`,
+          classNameProp
+        )}
+      >
+        {title}
+      </Link>
+    </li>
+  );
+};
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <AnimatePresence mode="sync">
-      <nav className="w-full h-fit bg-negro  z-50 overflow-x-hidden py-2 px-2 sm:px-4">
-        <ul className="w-full max-w-full px-2 h-full flex justify-between text-xl font-bold bedaFont text-blanco relative">
+      <nav className="w-full h-fit bg-negro relative z-50 overflow-x-hidden py-2 px-2 sm:px-4">
+        <ul className="w-full max-w-full px-2 h-full flex justify-between text-2xl font-medium text-blanco relative">
           {/* HOME */}
-          <li>
+          {/* <li>
             <Link
               href="/"
               className="w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70"
             >
               SAVORY
             </Link>
-          </li>
+          </li> */}
+          <ListItem href="/" title="SAVORY" />
           {/* DESKTOP MENU */}
-          <li>
-            <Link
-              href="/menu?category=Promociones"
-              className="w-fit hidden sm:block hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70"
-            >
-              MENÚ
-            </Link>
-          </li>
+          <ListItem
+            href="/menu?category=Promociones"
+            title="Menú"
+            classNameProp="hidden sm:block"
+          />
           {/* ABOUT US */}
-          <li>
-            <Link
-              href="/#nosotros"
-              className="w-fit hidden sm:block hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70"
-            >
-              NOSOTROS
-            </Link>
-          </li>
+          <ListItem
+            href="/#nosotros"
+            title="Nosotros"
+            classNameProp="hidden sm:block"
+          />
           {/* CONTACT */}
-          <li>
-            <Link
-              href="/#info"
-              className="w-fit hidden sm:block hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70"
-            >
-              CONTACTO
-            </Link>
-          </li>
+          <ListItem
+            href="/#contacto"
+            title="Contacto"
+            classNameProp="hidden sm:block"
+          />
           {/* GALLERY */}
-          <li>
-            <Link
-              href="/#galeria"
-              className="w-fit hidden sm:block hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70"
-            >
-              GALERÍA
-            </Link>
-          </li>
+          <ListItem
+            href="/#galeria"
+            title="Galería"
+            classNameProp="hidden sm:block"
+          />
           {/* MOBILE MENU ICON */}
           <li className="sm:hidden">
             <svg
@@ -78,7 +92,8 @@ const Navbar = () => {
             </svg>
           </li>
         </ul>
-        <hr className="absolute left-0 bottom-0 h-[2px] w-full border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blanco to-transparent bg-center" />
+        {/* <hr className="absolute left-0 bottom-0 h-[2px] w-full border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blanco to-transparent bg-center" /> */}
+        <hr className="absolute left-0 bottom-0 h-[2px] w-full bg-blanco bg-center" />
 
         {/* MOBILE MENU */}
         {showMenu && (
@@ -89,38 +104,10 @@ const Navbar = () => {
             className="w-fit absolute inset-x-0 z-50 mx-auto px-3 py-1 rounded-xl border border-blanco bg-negro/60 backdrop-blur-md "
           >
             <ul className="flex items-center  gap-4 text-base md:text-xl text-center text-blanco">
-              <li>
-                <Link
-                  href="/menu?category=Promociones"
-                  className="w-fit hover:scale-110 motion-safe:transition hover:opacity-70 ease-in-out duration-300"
-                >
-                  MENÚ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#nosotros"
-                  className="w-fit hover:scale-110 motion-safe:transition hover:opacity-70 ease-in-out duration-300"
-                >
-                  NOSOTROS
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#contacto"
-                  className="w-fit hover:scale-110 motion-safe:transition hover:opacity-70 ease-in-out duration-300"
-                >
-                  CONTACTO
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#galeria"
-                  className="w-fit hover:scale-110 motion-safe:transition hover:opacity-70 ease-in-out duration-300"
-                >
-                  GALERÍA
-                </Link>
-              </li>
+              <ListItem href="/menu?category=Promociones" title="Menú" />
+              <ListItem href="/#nosotros" title="Nosotros" />
+              <ListItem href="/#contacto" title="Contacto" />
+              <ListItem href="/#galeria" title="Galería" />
             </ul>
           </motion.div>
         )}

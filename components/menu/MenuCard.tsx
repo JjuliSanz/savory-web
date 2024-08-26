@@ -5,16 +5,6 @@ import { MenuItem } from "@/types";
 import Image from "next/image";
 import React from "react";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
-};
-
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -48,7 +38,9 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
       </div>
       <div className="w-full flex flex-col grow justify-between gap-4 p-4 min-h-[150px]">
         <div className="flex flex-col gap-2">
-          <h3 className="text-blanco text-xl md:text-lg lg:text-xl font-bold">{item.title}</h3>
+          <h3 className="text-blanco text-xl md:text-lg lg:text-xl font-bold">
+            {item.title}
+          </h3>
           {item.description && (
             <p className="text-blanco-oscuro font-bold text-base md:text-sm lg:text-base">
               {item.description}

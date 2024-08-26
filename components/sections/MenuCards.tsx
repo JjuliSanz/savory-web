@@ -77,45 +77,45 @@ const MenuCards = () => {
     {
       videoSrc: "/Coffe1.mp4",
       imageSrc: "/capuccino-edit.jpg",
-      title: "CAFETERIA",
+      title: "Cafetería",
       value: "Cafeteria",
     },
-    { imageSrc: "/milkshake-varios.jpg", title: "FRIOS", value: "frios" },
+    { imageSrc: "/milkshake-varios.jpg", title: "Fríos", value: "frios" },
     {
       videoSrc: "/tortas01.mp4",
       imageSrc: "/tortas01.jpg",
-      title: "TORTAS Y DELICIAS",
+      title: "Tortas y Delicias",
       value: "Tortas_Delicias",
     },
     {
       videoSrc: "/tostados.mp4",
       imageSrc: "/tostadosjyq.jpeg",
-      title: "SALADOS CLASICOS",
+      title: "Salados",
       value: "Salados_Clasicos",
     },
     {
       videoSrc: "/tostones.mp4",
       imageSrc: "/tostones-jugos.webp",
-      title: "TOSTONES",
+      title: "Tostones",
       value: "Tostones",
     },
     {
       videoSrc: "/sandwich.mp4",
       imageSrc: "/sandwichpollo.jpeg",
-      title: "SANDWICHES",
+      title: "Sandwiches",
       value: "Sandwiches",
     },
-    { imageSrc: "/ensalada.jpg", title: "ENSALADAS", value: "Ensaladas" },
+    { imageSrc: "/ensalada.jpg", title: "Ensaladas", value: "Ensaladas" },
     {
       videoSrc: "/pote.mp4",
       imageSrc: "/pote.jpeg",
-      title: "HELADERIA",
+      title: "Heladería",
       value: "Heladeria",
     },
     {
       videoSrc: "/cubatones.mp4",
       imageSrc: "/cubatones.jpeg",
-      title: "POSTRES HELADOS",
+      title: "Postres Helados",
       value: "Postres_Helados",
     },
   ];
@@ -138,7 +138,7 @@ const MenuCards = () => {
             ease: "easeIn",
           },
         }}
-        className="relative text-blanco font-bold text-5xl text-center z-20"
+        className="relative text-blanco text-4xl md:text-5xl font-bold text-center z-20"
       >
         Nosotros Servimos!
       </motion.h2>
@@ -195,7 +195,7 @@ const MenuCards = () => {
               />
               <Link
                 href={`/menu/?category=${card.value}`}
-                className="flex w-fit mx-auto my-6 px-4 rounded py-2 transition duration-300 ease-in-out text-lg font-bold border-4 border-blanco-oscuro bg-marron text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron  
+                className="flex w-fit mx-auto my-6 px-4 rounded py-2 transition duration-300 ease-in-out text-3xl font-medium border-4 border-blanco-oscuro bg-marron text-blanco-oscuro hover:scale-95 hover:bg-blanco-oscuro hover:text-marron  
                 active:scale-95 active:bg-blanco-oscuro active:text-marron brownButtonShadow
                 "
               >

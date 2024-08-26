@@ -1,67 +1,12 @@
 "use client";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import Button from "../Button";
 import WhiteButton from "../ui/WhiteButton";
-
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3, // Orquesta las animaciones con un retraso de 0.5 segundos entre cada elemento
-    },
-  },
-};
-
-const leftItem = {
-  hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.3,
-    },
-  },
-};
-
-const upItem = {
-  hidden: { opacity: 0, y: -100 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.5,
-    },
-  },
-};
-
-
-
-const rightItem = {
-  hidden: { opacity: 0, x: 100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.3,
-    },
-  },
-};
+import Paragraph from "../Paragraph";
+import { container, leftItem, rightItem } from "@/variants";
+import Title from "../Title";
 
 const About = () => {
   const ref = useRef(null);
@@ -93,69 +38,61 @@ const About = () => {
         </div>
 
         <div className="md:w-1/2 w-full text-center flex flex-col gap-4">
-          <motion.h2
+          <Title
             variants={rightItem}
-            className="w-full text-3xl md:text-4xl font-bold text-marron "
-          >
-            Bienvenidos a Savory
-          </motion.h2>
-          <motion.p
+            title="Bienvenidos a Savory"
+            classNameProps="text-marron"
+          />
+          <Paragraph
             variants={rightItem}
-            className="text-2xl font-medium text-marron-claro "
-          >
-            Desde la calidad de nuestros productos hasta el ambiente acogedor,
+            text="Desde la calidad de nuestros productos hasta el ambiente acogedor,
             en Savory, cada detalle cuenta. Estamos abiertos todos los días,
             asegurando que siempre puedas disfrutar de nuestras delicias en
-            cualquier momento que lo desees.
-          </motion.p>
-          <motion.p
+            cualquier momento que lo desees."
+            classNameProps="text-marron-claro"
+          />
+          <Paragraph
             variants={rightItem}
-            className="text-2xl font-medium text-marron-claro"
-          >
-            Con una reputación impecable y opiniones entusiastas de nuestros
+            text="Con una reputación impecable y opiniones entusiastas de nuestros
             clientes, Savory es el lugar ideal para compartir momentos
             inolvidables con amigos y familiares en un ambiente cálido y
-            acogedor.
-          </motion.p>
-          <motion.p
+            acogedor."
+            classNameProps="text-marron-claro"
+          />
+          <Paragraph
             variants={rightItem}
-            className="text-2xl font-medium text-marron-claro"
-          >
-            ¡Ven y comprueba por ti mismo por qué somos la mejor heladería en la
-            ciudad!
-          </motion.p>
+            text="¡Ven y comprueba por ti mismo por qué somos la mejor heladería en la
+            ciudad!"
+            classNameProps="text-marron-claro"
+          />
         </div>
       </div>
 
       {/* Segunda fila: Texto a la izquierda, imagen a la derecha */}
       <div className="flex flex-col md:flex-row gap-6 items-center">
-        <div className="md:w-1/2 w-full text-center">
-          <motion.h2
+        <div className="md:w-1/2 w-full text-center flex flex-col gap-4">
+          <Title
             variants={leftItem}
-            className="w-full text-3xl md:text-4xl font-bold text-marron mb-4"
-          >
-            Pedidos Fáciles y Convenientes
-          </motion.h2>
-          <motion.p
+            title="Pedidos Fáciles y Convenientes"
+            classNameProps="text-marron"
+          />
+          <Paragraph
             variants={leftItem}
-            className="text-2xl font-medium text-marron-claro mb-4"
-          >
-            En Savory, nos aseguramos de que puedas disfrutar de tus productos
+            text="En Savory, nos aseguramos de que puedas disfrutar de tus productos
             favoritos de manera fácil y conveniente. Tomamos pedidos a través de
             WhatsApp, celular, o teléfono, para que puedas hacer tu pedido desde
-            la comodidad de tu hogar o donde te encuentres.
-          </motion.p>
-
-          <motion.p
+            la comodidad de tu hogar o donde te encuentres."
+            classNameProps="text-marron-claro"
+          />
+          <Paragraph
             variants={leftItem}
-            className="text-2xl font-medium text-marron-claro mb-4"
-          >
-            Además, también estamos disponibles en la plataforma de Pedidos Ya,
+            text="Además, también estamos disponibles en la plataforma de Pedidos Ya,
             facilitando aún más el proceso de ordenar nuestros helados, cafés, y
             todas las delicias de nuestra cafetería. Ya sea que prefieras
             recoger tu pedido en el local o recibirlo directamente en tu puerta,
-            en Savory estamos listos para atenderte.
-          </motion.p>
+            en Savory estamos listos para atenderte."
+            classNameProps="text-marron-claro"
+          />
           <WhiteButton
             classNameProps="px-4 py-2"
             text="Contacto"

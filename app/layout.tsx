@@ -3,8 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Carattere } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const carattere = Carattere({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Savory",
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='custom-scroll min-h-screen w-full overflow-x-hidden relative'>{children}</body>
+      <body className={`custom-scroll min-h-screen w-full overflow-x-hidden relative ${carattere.className}`}>
+        {children}
+      </body>
     </html>
   );
 }

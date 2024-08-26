@@ -4,75 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 import WhiteButton from "../ui/WhiteButton";
+import Paragraph from "../Paragraph";
+import { container, leftItem, rightItem, upItem } from "@/variants";
+import Title from "../Title";
 
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3, // Orquesta las animaciones con un retraso de 0.5 segundos entre cada elemento
-    },
-  },
-};
-
-const upItem = {
-  hidden: { opacity: 0, y: -100 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.5,
-    },
-  },
-};
-
-const leftItem = {
-  hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.3,
-    },
-  },
-};
-const rightItem = {
-  hidden: { opacity: 0, x: 100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.3,
-    },
-  },
-};
-
-const imageItem = {
-  hidden: { opacity: 0, scale: 0.7 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.5,
-    },
-  },
-};
 const Cafeteria = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -141,42 +76,37 @@ const Cafeteria = () => {
         </div>
       </div>
       <div className="md:w-1/2 w-full flex flex-col items-center gap-4">
-        <motion.h2
+        <Title
           variants={upItem}
-          className="w-full text-3xl md:text-4xl font-bold text-marron "
-        >
-          Delicias de la Cafetería en Savory
-        </motion.h2>
-        <motion.p
+          title="Delicias de la Cafetería en Savory"
+          classNameProps="text-marron"
+        />
+        <Paragraph
           variants={upItem}
-          className="text-xl font-medium text-marron-claro  "
-        >
-          Savory no solo es reconocida por sus deliciosos helados, sino también
+          text="Savory no solo es reconocida por sus deliciosos helados, sino también
           por su variada y exquisita oferta de comidas y bebidas en su
           cafetería. Los clientes pueden disfrutar de una amplia selección de
-          tortas y pasteles, perfectos para acompañar con una taza de café o té.
-        </motion.p>
-        <motion.p
+          tortas y pasteles, perfectos para acompañar con una taza de café o té."
+          classNameProps="text-marron-claro"
+        />
+        <Paragraph
           variants={upItem}
-          className="text-xl font-medium text-marron-claro  "
-        >
-          Además ofrecemos una variedad de sándwiches, tanto fríos como
+          text="Además ofrecemos una variedad de sándwiches, tanto fríos como
           calientes, que son ideales para un almuerzo rápido o una merienda
           sustanciosa. Entre las opciones de bebidas, los clientes pueden elegir
           entre cafés fríos y calientes, preparados con los mejores granos para
-          satisfacer los gustos más exigentes.
-        </motion.p>
-        <motion.p
+          satisfacer los gustos más exigentes."
+          classNameProps="text-marron-claro"
+        />
+        <Paragraph
           variants={upItem}
-          className="text-xl font-medium text-marron-claro "
-        >
-          Para aquellos con antojos más dulces, contamos con una deliciosa
+          text="Para aquellos con antojos más dulces, contamos con una deliciosa
           selección de panqueques, medialunas, alfajores, budines y muffins,
           todos preparados con ingredientes de alta calidad. O quizás los wraps,
-          una opción fresca y ligera, perfecta para cualquier momento del día.
-        </motion.p>
-
-        <WhiteButton text="Menu" href="/menu" classNameProps="px-4 py-2"/>
+          una opción fresca y ligera, perfecta para cualquier momento del día."
+          classNameProps="text-marron-claro"
+        />
+        <WhiteButton text="Menú" href="/menu" classNameProps="px-4 py-2" />
       </div>
     </motion.section>
   );

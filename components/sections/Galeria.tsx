@@ -5,31 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
 import WhiteButton from "../ui/WhiteButton";
-
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3, // Orquesta las animaciones con un retraso de 0.5 segundos entre cada elemento
-    },
-  },
-};
-
-const upItem = {
-  hidden: { opacity: 0, y: -100 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 10,
-      mass: 1,
-      stiffness: 150,
-      duration: 0.5,
-    },
-  },
-};
+import { container, upItem } from "@/variants";
+import Title from "../Title";
 
 const leftImageItem = {
   hidden: {
@@ -136,13 +113,11 @@ const Galeria = () => {
       className="min-h-screen py-20 bg-blanco-oscuro"
     >
       <div className="container mx-auto px-4 flex flex-col gap-10">
-        <motion.h2
+        <Title
           variants={upItem}
-          className="text-4xl font-bold text-marron text-center"
-        >
-          Nuestra Galería
-        </motion.h2>
-
+          title="Nuestra Galería"
+          classNameProps="text-marron text-center"
+        />
         <div className="w-full grid grid-cols-2 xl:grid-cols-3 place-items-center gap-6">
           {images.slice(0, 4).map((image) => (
             <div
