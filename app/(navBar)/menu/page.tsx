@@ -2,8 +2,6 @@ import MenuList from "@/components/menu/MenuList";
 import CategorySelector from "@/components/menu/CategorySelector";
 import ToTopButton from "@/components/ToTopButton";
 
-
-
 export default function Menu({
   searchParams,
 }: {
@@ -17,13 +15,9 @@ export default function Menu({
       <CategorySelector selectedCategory={selectedCategory} />
       <section
         key={selectedCategory}
-        className="p-8 grid grid-cols-1 500:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        className="p-8 grid grid-cols-1 600:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
       >
-        <MenuList
-          selectedCategory={selectedCategory}
-          query={query}
-          
-        />
+        <MenuList selectedCategory={selectedCategory} query={query} />
       </section>
       <ToTopButton extraClass="lg:hidden" />
     </main>

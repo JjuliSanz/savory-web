@@ -1,19 +1,14 @@
-import { fetchMenuItems } from "@/utils/actions";
-import Image from "next/image";
-import React from "react";
 import MenuCard from "./MenuCard";
+import { getMenuItems } from "@/utils/serverActions";
 
 const MenuList = async ({
   query,
   selectedCategory,
-  
 }: {
   query: string;
   selectedCategory: string;
-  
 }) => {
-  const menuItems = await fetchMenuItems(selectedCategory);
-
+  const menuItems = await getMenuItems(selectedCategory);
   const normalizeString = (str: string) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
@@ -35,9 +30,7 @@ const MenuList = async ({
         </div>
       )}
       {Array.isArray(menuItems) &&
-        filteredMenuItems.map((item) => (
-          <MenuCard item={item} key={item.id} />
-        ))}
+        filteredMenuItems.map((item) => <MenuCard item={item} key={item.id} />)}
     </>
   );
 };

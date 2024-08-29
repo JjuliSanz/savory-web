@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
+import { usePathname } from "next/navigation";
 
 const ListItem = ({
   href,
@@ -18,13 +19,17 @@ const ListItem = ({
   title: string;
   classNameProp?: string;
 }) => {
+  const pathname = usePathname();
+
+  const isActive = pathname === href;
   return (
     <li>
       <Link
         href={href}
         className={cn(
           `w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70`,
-          classNameProp
+          classNameProp,
+          isActive ? "underline" : ""
         )}
       >
         {title}
@@ -58,19 +63,19 @@ const Navbar = () => {
           />
           {/* ABOUT US */}
           <ListItem
-            href="/#nosotros"
+            href="/nosotros"
             title="Nosotros"
             classNameProp="hidden sm:block"
           />
           {/* CONTACT */}
           <ListItem
-            href="/#contacto"
+            href="/contacto"
             title="Contacto"
             classNameProp="hidden sm:block"
           />
           {/* GALLERY */}
           <ListItem
-            href="/#galeria"
+            href="/galeria"
             title="Galería"
             classNameProp="hidden sm:block"
           />
@@ -93,7 +98,7 @@ const Navbar = () => {
           </li>
         </ul>
         {/* <hr className="absolute left-0 bottom-0 h-[2px] w-full border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blanco to-transparent bg-center" /> */}
-        <hr className="absolute left-0 bottom-0 h-[2px] w-full bg-blanco bg-center" />
+        {/* <hr className="absolute left-0 bottom-0 h-[2px] w-full bg-blanco bg-center" /> */}
 
         {/* MOBILE MENU */}
         {showMenu && (
@@ -105,9 +110,9 @@ const Navbar = () => {
           >
             <ul className="flex items-center  gap-4 text-base md:text-xl text-center text-blanco">
               <ListItem href="/menu?category=Promociones" title="Menú" />
-              <ListItem href="/#nosotros" title="Nosotros" />
-              <ListItem href="/#contacto" title="Contacto" />
-              <ListItem href="/#galeria" title="Galería" />
+              <ListItem href="/nosotros" title="Nosotros" />
+              <ListItem href="/contacto" title="Contacto" />
+              <ListItem href="/galeria" title="Galería" />
             </ul>
           </motion.div>
         )}

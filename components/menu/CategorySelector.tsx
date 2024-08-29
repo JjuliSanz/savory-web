@@ -76,13 +76,6 @@ const CategorySelector = ({
             }`}
             onClick={() => handleCategoryChange(category.value)}
           >
-            {category.value === selectedCategory && (
-              <motion.div
-                className="underline"
-                layoutId="underline"
-                style={{ backgroundColor: "#ffff" }}
-              />
-            )}
             {category.title.charAt(0).toUpperCase() + category.title.slice(1)}
           </motion.li>
         ))}

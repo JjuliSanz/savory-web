@@ -11,6 +11,24 @@ import { AuthError } from "next-auth";
 import bcrypt from "bcrypt";
 import Users from "@/models/UsersModel";
 
+export const getMenuItems = async (category: string) => {
+  try {
+    await connectDB();
+    // Filtra los elementos del menú por la categoría proporcionada
+    const menuItems = await MenuDB.find({ category: category }).sort({ id: 1 });
+    const formattedMenuItems = menuItems.map((item) => ({
+      ...item.toObject(), // Convierte el documento de Mongoose a un objeto simple
+      createdAt: item.createdAt.toISOString(), // Convierte `createdAt` a string
+      updatedAt: item.updatedAt.toISOString(), // Convierte `updatedAt` a string
+    }));
+
+    return formattedMenuItems;
+  } catch (error) {
+    console.error("Error fetching menu items:", error);
+    throw new Error("Failed to fetch menu items");
+  }
+};
+
 export const getMenuItemById = async (id: string): Promise<MenuItem> => {
   try {
     await connectDB();

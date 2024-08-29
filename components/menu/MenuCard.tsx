@@ -38,16 +38,16 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
       </div>
       <div className="w-full flex flex-col grow justify-between gap-4 p-4 min-h-[150px]">
         <div className="flex flex-col gap-2">
-          <h3 className="text-blanco text-xl md:text-lg lg:text-xl font-bold">
+          <h3 className="text-blanco text-3xl md:text-2xl lg:text-3xl font-semibold">
             {item.title}
           </h3>
           {item.description && (
-            <p className="text-blanco-oscuro font-bold text-base md:text-sm lg:text-base">
+            <p className="text-blanco-oscuro font-medium text-2xl md:text-xl lg:text-2xl">
               {item.description}
             </p>
           )}
         </div>
-        <p className="text-end text-blanco-oscuro font-bold text-lg md:text-base lg:text-lg">
+        <p className="text-end text-blanco-oscuro font-semibold text-2xl md:text-xl lg:text-2xl">
           {item.price} $
         </p>
       </div>

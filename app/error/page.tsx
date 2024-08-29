@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 enum Error {
   Configuration = "Configuration",
@@ -14,14 +15,11 @@ const errorMap = {
   [Error.Configuration]: (
     <>
       <p className="text-marron-clarito text-3xl font-medium">
-        Hubo un problema con la configuración de la autenticación. Por favor,
-        contacta con jjulisanz@gmail.com si este error persiste.
+        Hubo un problema con la configuración de la autenticación.
       </p>
       <p className="text-xl font-medium text-marron-clarito">
         Código de error único:{" "}
-        <code className="text-lg bg-blanco p-1 rounded-sm">
-          Configuration
-        </code>
+        <code className="text-lg bg-blanco p-1 rounded-sm">Configuration</code>
       </p>
     </>
   ),
@@ -29,38 +27,31 @@ const errorMap = {
     <>
       <p className="text-marron-clarito text-3xl font-medium">
         Acceso denegado. Puede que no tengas los permisos necesarios para
-        acceder a esta página. Por favor, contacta con jjulisanz@gmail.com si
-        este problema persiste.
+        acceder a esta página.
       </p>
       <p className="text-xl font-medium text-marron-clarito">
         Código de error único:{" "}
-        <code className="text-lg bg-blanco p-1 rounded-sm">
-          AccessDenied
-        </code>
+        <code className="text-lg bg-blanco p-1 rounded-sm">AccessDenied</code>
       </p>
     </>
   ),
   [Error.Verification]: (
     <>
       <p className="text-marron-clarito text-3xl font-medium">
-        Hubo un problema al verificar tu cuenta. Por favor, intenta nuevamente o
-        contacta con jjulisanz@gmail.com si el problema persiste.
+        Hubo un problema al verificar tu cuenta.
       </p>
       <p className="text-xl font-medium text-marron-clarito">
         Código de error único:{" "}
-        <code className="text-lg bg-blanco p-1 rounded-sm">
-          Verification
-        </code>
+        <code className="text-lg bg-blanco p-1 rounded-sm">Verification</code>
       </p>
     </>
   ),
   [Error.Default]: (
     <>
       <p className="text-marron-clarito text-3xl font-medium">
-        Se produjo un error inesperado durante la autenticación. Por favor,
-        contacta con jjulisanz@gmail.com si este error persiste.
+        Se produjo un error inesperado durante la autenticación.
       </p>
-      <p className="text-xl font-medium text-marron-clarito">
+      <p className="text-2xl font-medium text-marron-clarito">
         Código de error único:{" "}
         <code className="text-lg bg-blanco p-1 rounded-sm">Default</code>
       </p>
@@ -68,7 +59,7 @@ const errorMap = {
   ),
 };
 
-export default function AuthErrorPage() {
+function AuthErrorComponent() {
   const search = useSearchParams();
   const error = search.get("error") as Error;
 
@@ -80,15 +71,29 @@ export default function AuthErrorPage() {
         </h5>
 
         {errorMap[error] ||
-          "Por favor, envía un correo a jjulisanz@gmail.com si el error persiste."}
+          "Por favor, contacta a un asistente si el error persiste."}
 
         <Link
           href={"/login"}
-          className="text-blue-500 underline text-lg font-medium"
+          className="text-blue-500 underline text-2xl font-medium"
         >
           Regresa a la página de inicio de sesión
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function AuthErrorPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="text-blanco-oscuro text-3xl font-medium">
+          Loading...
+        </div>
+      }
+    >
+      <AuthErrorComponent />
+    </Suspense>
   );
 }

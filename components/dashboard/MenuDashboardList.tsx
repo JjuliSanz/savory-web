@@ -1,10 +1,8 @@
-import React from "react";
-import { fetchMenuItems } from "@/utils/actions";
 import Image from "next/image";
 import DeleteButton from "./DeleteButton";
 import { Drawer } from "@/components/dashboard/Drawer";
 import { PreviewModal } from "@/components/dashboard/PreviewModal";
-import Link from "next/link";
+import { getMenuItems } from "@/utils/serverActions";
 const MenuDashboardList = async ({
   query,
   selectedCategory,
@@ -12,7 +10,7 @@ const MenuDashboardList = async ({
   query: string;
   selectedCategory: string;
 }) => {
-  const menuItems = await fetchMenuItems(selectedCategory);
+  const menuItems = await getMenuItems(selectedCategory);
 
   const normalizeString = (str: string) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -63,7 +61,7 @@ const MenuDashboardList = async ({
               >
                 EDITAR
               </Link> */}
-              <Drawer selectedItem={item}/>
+              <Drawer selectedItem={item} />
               <DeleteButton id={item._id} title={item.title} />
               <PreviewModal selectedItem={item} />
             </div>
