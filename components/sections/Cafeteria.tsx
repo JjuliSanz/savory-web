@@ -27,7 +27,7 @@ const Cafeteria = () => {
             className="relative w-full h-48 md:h-72 "
           >
             <Image
-              src="/tostadosjyq.jpeg" // Reemplaza esta ruta con la imagen real de Savory
+              src="/tostadosjyq.jpeg" 
               alt="Savory Heladería y Cafetería 1"
               width={500}
               height={500}
@@ -39,7 +39,7 @@ const Cafeteria = () => {
             className="relative w-full h-48 md:h-72 "
           >
             <Image
-              src="/milkshake-varios.jpg" // Reemplaza esta ruta con la imagen real de Savory
+              src="/milkshake-varios.jpg" 
               alt="Savory Heladería y Cafetería 2"
               width={500}
               height={500}
@@ -54,7 +54,7 @@ const Cafeteria = () => {
             className="relative w-full h-48 md:h-72 "
           >
             <Image
-              src="/tostones-jugos.webp" // Reemplaza esta ruta con la imagen real de Savory
+              src="/tostones-jugos.webp" 
               alt="Savory Heladería y Cafetería 3"
               width={500}
               height={500}
@@ -66,7 +66,7 @@ const Cafeteria = () => {
             className="relative w-full h-48 md:h-72 "
           >
             <Image
-              src="/tortas01.jpg" // Reemplaza esta ruta con la imagen real de Savory
+              src="/tortas01.jpg" 
               alt="Savory Heladería y Cafetería 4"
               width={500}
               height={500}
@@ -78,12 +78,12 @@ const Cafeteria = () => {
       <div className="md:w-1/2 w-full flex flex-col items-center gap-4">
         <Title
           variants={upItem}
-          title="Delicias de la Cafetería en Savory"
+          title="Delicias de la Cafetería en Sávory"
           classNameProps="text-marron"
         />
         <Paragraph
           variants={upItem}
-          text="Savory no solo es reconocida por sus deliciosos helados, sino también
+          text="Sávory no solo es reconocida por sus deliciosos helados, sino también
           por su variada y exquisita oferta de comidas y bebidas en su
           cafetería. Los clientes pueden disfrutar de una amplia selección de
           tortas y pasteles, perfectos para acompañar con una taza de café o té."

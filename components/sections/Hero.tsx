@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 
 import BrownButton from "../ui/BrownButton";
-
+import SavoryLogo from "@/assets/SavoryLogo";
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -10,7 +10,10 @@ const Hero = () => {
     videoRef.current?.play();
   }, []);
   return (
-    <section id="inicio" className="relative min-h-[calc(100vh-44px)] h-[calc(100vh-44px)] w-full flex flex-col items-center justify-center overflow-hidden">
+    <section
+      id="inicio"
+      className="relative min-h-[calc(100vh-44px)] h-[calc(100vh-44px)] w-full flex flex-col items-center justify-center overflow-hidden"
+    >
       {/* <div className="absolute inset-0  z-0 ">
         <Image
           src="/entrada.jpeg"
@@ -31,14 +34,18 @@ const Hero = () => {
         </video>
       </div>
 
-      <h1 className="text-2xl md:text-9xl font-bold text-blanco  z-10 row-span-1">
-        Savory
-      </h1>
+      {/* <h1 className="text-2xl md:text-9xl font-bold text-blanco  z-10 row-span-1">
+        Sávory
+      </h1> */}
+      <div className="flex text-blanco z-10">
+        <SavoryLogo />
+      </div>
 
-      <p className="text-4xl font-sans text-blanco-oscuro">HELADERIA & CAFETERIA</p>
+      <p className="text-4xl font-sans text-blanco-oscuro">
+        HELADERIA & CAFETERIA
+      </p>
 
-      <BrownButton href="/menu" text="Menú" classNameProps="px-6 py-3 "/>
-      
+      <BrownButton href="/menu" text="Menú" classNameProps="px-6 py-3 " />
     </section>
   );
 };

@@ -14,7 +14,7 @@ const Paragraph = ({
   return (
     <motion.p
       variants={variants}
-      className={cn(`text-3xl font-medium`, classNameProps)}
+      className={cn(`text-3xl xl:text-4xl font-medium`, classNameProps)}
     >
       {text}
     </motion.p>

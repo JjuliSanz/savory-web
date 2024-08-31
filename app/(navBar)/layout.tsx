@@ -11,7 +11,6 @@ export default function NavBarLayout({
     <>
       <Navbar />
       {children}
-      <Footer />
     </>
   );
 }

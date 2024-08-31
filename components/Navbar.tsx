@@ -54,10 +54,10 @@ const Navbar = () => {
               SAVORY
             </Link>
           </li> */}
-          <ListItem href="/" title="SAVORY" />
+          <ListItem href="/" title="Sávory" />
           {/* DESKTOP MENU */}
           <ListItem
-            href="/menu?category=Promociones"
+            href="/menu"
             title="Menú"
             classNameProp="hidden sm:block"
           />

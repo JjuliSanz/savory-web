@@ -10,7 +10,7 @@ const Sidebar = async () => {
     <div className="min-h-screen w-56 bg-marron flex flex-col fixed">
       <div className="flex items-center justify-center h-20 border-b border-blanco-oscuro">
         <Link href="/">
-          <h1 className="text-3xl text-blanco-oscuro font-bold">SAVORY</h1>
+          <h1 className="text-3xl text-blanco-oscuro font-bold">Sávory</h1>
         </Link>
       </div>
       <nav className="flex-1 p-4 flex flex-col justify-between">

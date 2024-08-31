@@ -8,7 +8,7 @@ import { Carattere } from "next/font/google";
 const carattere = Carattere({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Savory",
+  title: "Sávory",
   description: "Heladeria & Cafeteria",
 };
 

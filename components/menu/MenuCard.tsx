@@ -24,7 +24,7 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
       initial="hidden"
       animate="visible"
       variants={itemVariants}
-      className="bg-marron rounded-lg flex flex-col "
+      className="bg-marron rounded-lg flex flex-col"
     >
       <div className="relative w-full min-h-60 max-h-60">
         <Image

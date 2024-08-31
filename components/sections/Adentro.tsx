@@ -63,27 +63,24 @@ const Adentro = () => {
         <Paragraph
           variants={upItem}
           text="Contamos con diversas áreas diseñadas para que los clientes puedan
-          disfrutar de sus productos en un ambiente cómodo y acogedor. Dentro
-          hay una amplia sección con mesas y sillas, ideal para aquellos que
+          disfrutar de sus productos en un ambiente cómodo y acogedor."
+          classNameProps="text-blanco-oscuro"
+        />
+        <Paragraph
+          variants={upItem}
+          text="Dentro hay una amplia sección con mesas y sillas, ideal para aquellos que
           buscan un lugar climatizado para relajarse y disfrutar de su helado o
           café."
           classNameProps="text-blanco-oscuro"
         />
         <Paragraph
           variants={upItem}
-          text="También tenemos un sector al aire libre ubicado en la vereda alrededor
-          del establecimiento. Este espacio está diseñado para que los clientes
-          puedan disfrutar de sus helados y cafés en un ambiente fresco y
-          relajado, disfrutando de un momento agradable al exterior."
+          text="También tenemos un sector al aire libre ubicado en la vereda alrededor del establecimiento diseñado para que los clientes puedan disfrutar en un ambiente fresco y relajado, disfrutando de un momento agradable al exterior."
           classNameProps="text-blanco-oscuro"
         />
         <Paragraph
           variants={upItem}
-          text="Además, hemos dedicado un sector especial para los más pequeños, donde
-          los niños pueden jugar y divertirse mientras los adultos se relajan.
-          Este espacio infantil está equipado con juegos seguros y apropiados
-          para diferentes edades, haciendo de Savory un destino perfecto para
-          visitas familiares."
+          text="Además, hemos dedicado un sector especial para los más pequeños, donde los niños pueden jugar y divertirse mientras los adultos se relajan, haciendo de Sávory un destino perfecto para visitas familiares."
           classNameProps="text-blanco-oscuro"
         />
       </div>

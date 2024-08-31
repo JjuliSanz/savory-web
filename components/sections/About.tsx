@@ -40,13 +40,13 @@ const About = () => {
         <div className="md:w-1/2 w-full text-center flex flex-col gap-4">
           <Title
             variants={rightItem}
-            title="Bienvenidos a Savory"
+            title="Bienvenidos a Sávory"
             classNameProps="text-marron"
           />
           <Paragraph
             variants={rightItem}
             text="Desde la calidad de nuestros productos hasta el ambiente acogedor,
-            en Savory, cada detalle cuenta. Estamos abiertos todos los días,
+            en Sávory, cada detalle cuenta. Estamos abiertos todos los días,
             asegurando que siempre puedas disfrutar de nuestras delicias en
             cualquier momento que lo desees."
             classNameProps="text-marron-claro"
@@ -54,7 +54,7 @@ const About = () => {
           <Paragraph
             variants={rightItem}
             text="Con una reputación impecable y opiniones entusiastas de nuestros
-            clientes, Savory es el lugar ideal para compartir momentos
+            clientes, Sávory es el lugar ideal para compartir momentos
             inolvidables con amigos y familiares en un ambiente cálido y
             acogedor."
             classNameProps="text-marron-claro"
@@ -78,7 +78,7 @@ const About = () => {
           />
           <Paragraph
             variants={leftItem}
-            text="En Savory, nos aseguramos de que puedas disfrutar de tus productos
+            text="En Sávory, nos aseguramos de que puedas disfrutar de tus productos
             favoritos de manera fácil y conveniente. Tomamos pedidos a través de
             WhatsApp, celular, o teléfono, para que puedas hacer tu pedido desde
             la comodidad de tu hogar o donde te encuentres."
@@ -90,7 +90,7 @@ const About = () => {
             facilitando aún más el proceso de ordenar nuestros helados, cafés, y
             todas las delicias de nuestra cafetería. Ya sea que prefieras
             recoger tu pedido en el local o recibirlo directamente en tu puerta,
-            en Savory estamos listos para atenderte."
+            en Sávory estamos listos para atenderte."
             classNameProps="text-marron-claro"
           />
           <WhiteButton

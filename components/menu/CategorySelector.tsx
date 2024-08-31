@@ -63,8 +63,8 @@ const CategorySelector = ({
     router.push(`/menu?category=${category}`);
   };
   return (
-    <nav className="w-full max-w-[80%] mx-auto flex justify-center p-4 bg-marron rounded">
-      <ul className="flex flex-wrap justify-center gap-4">
+    <nav className="w-full max-w-[80%] mx-auto flex justify-center p-4 bg-marron rounded relative z-20">
+      <ul className="flex flex-wrap justify-center gap-4 z-20">
         {menuTabs.map((category) => (
           <motion.li
             key={category.value}

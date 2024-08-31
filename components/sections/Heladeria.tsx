@@ -52,7 +52,7 @@ const Heladeria = () => {
             className="relative w-full h-48 md:h-72 bg-marron"
           >
             <Image
-              src="/sabores.jpeg" // Reemplaza esta ruta con la imagen real de Savory
+              src="/sabores.jpeg" 
               alt="Savory Heladería y Cafetería 1"
               width={500}
               height={500}
@@ -64,7 +64,7 @@ const Heladeria = () => {
             className="relative w-full h-48 md:h-72 bg-marron"
           >
             <Image
-              src="/food/helado.jpeg" // Reemplaza esta ruta con la imagen real de Savory
+              src="/food/helado.jpeg" 
               alt="Savory Heladería y Cafetería 2"
               width={500}
               height={500}

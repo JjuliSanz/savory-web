@@ -15,11 +15,11 @@ const Contacto = () => {
       variants={container}
       ref={ref}
       id="contacto"
-      className="relative w-full min-h-screen bg-fixed bg-top bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden"
-      style={{ backgroundImage: "url(/fondoContact.jpg)" }}
+      className="relative w-full min-h-screen flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden z-20"
+      
     >
-      <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
-      <div className="md:w-1/2 w-full flex flex-col md:text-left text-center z-10">
+      
+      <div className="md:w-1/2 w-full flex flex-col md:text-left text-center">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={
@@ -98,7 +98,7 @@ const Contacto = () => {
           </motion.li>
           <motion.ul
             variants={leftItem}
-            className="ml-6 list-disc list-inside text-xl w-fit"
+            className="ml-6 list-disc list-inside text-3xl font-semibold w-fit"
           >
             <li>Lunes a Viernes: 10am - 12am</li>
             <li>Sábados: 11am - 1:30am</li>
