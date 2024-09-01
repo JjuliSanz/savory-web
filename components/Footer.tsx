@@ -1,4 +1,5 @@
 import { InstagramIcon, WhatsIcon } from "@/assets/icons";
+import SavoryLogo from "@/assets/SavoryLogo";
 import Link from "next/link";
 import React from "react";
 
@@ -29,9 +30,9 @@ const Footer = () => {
           Sávory
         </Link>
         <ul className="flex flex-wrap items-center gap-4 text-xl sm:text-2xl font-medium text-blanco-oscuro ">
-          <ListItem href="/#nosotros" text="Nosotros" />
+          <ListItem href="/nosotros" text="Nosotros" />
           <ListItem href="/menu?category=Promociones" text="Menú" />
-          <ListItem href="/#contacto" text="Contacto" />
+          <ListItem href="/contacto" text="Contacto" />
           {/* Whatsapp */}
           <li>
             <Link
@@ -56,7 +57,7 @@ const Footer = () => {
       </div>
       <hr className="my-2 border-blanco-oscuro mx-auto lg:my-4 " />
       <span className="block text-lg font-medium text-blanco-oscuro text-center ">
-        © 2024 Sávory . All Rights Reserved.
+        © 2024 Sávory. All Rights Reserved.
       </span>
     </footer>
   );

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 import { cn } from "../../utils/cn";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -13,6 +13,8 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Parallax } from "swiper/modules";
 import { ArrowRight } from "@/assets/icons/ArrowRight";
 import { ArrowLeft } from "@/assets/icons/ArrowLeft";
+import Footer from "../Footer";
+import { container, leftItem, rightItem, upItem } from "@/variants";
 
 const Card = ({
   videoSrc,
@@ -121,23 +123,20 @@ const MenuCards = () => {
       value: "Postres_Helados",
     },
   ];
-
+  const ref = useRef(null);
+  const isInView = useInView(ref);
   return (
-    <section
+    <motion.section
       id="menu"
-      className="min-h-screen w-full px-10 py-20 overflow-hidden bg-[url('/bg.jpg')] bg-fixed bg-cover relative"
+      ref={ref}
+      initial="hidden"
+      animate={isInView && "visible"}
+      variants={container}
+      className="min-h-screen w-full px-10 pt-20 pb-4 overflow-hidden bg-[url('/bg.jpg')] bg-fixed bg-cover relative"
     >
       <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
       <motion.h2
-        initial={{ opacity: 0, y: -100 }}
-        animate={{
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.5,
-            ease: "easeIn",
-          },
-        }}
+        variants={upItem}
         className="relative text-blanco text-4xl md:text-5xl font-bold text-center z-20"
       >
         Nosotros Servimos!
@@ -160,11 +159,11 @@ const MenuCards = () => {
         slidesOffsetBefore={0}
         pagination={{
           clickable: true,
-          el: ".custom-pagination", 
+          el: ".custom-pagination",
         }}
         navigation={{
-          nextEl: ".custom-next", 
-          prevEl: ".custom-prev", 
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
         }}
         parallax={true}
         modules={[Pagination, Navigation, Parallax]}
@@ -173,15 +172,17 @@ const MenuCards = () => {
         {cards.map((card) => (
           <SwiperSlide key={card.title} style={{ width: "280px" }}>
             <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                transition: {
-                  duration: 1,
-                  ease: "easeIn",
-                },
-              }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={
+                isInView && {
+                  opacity: 1,
+                  scale: 1,
+                  transition: {
+                    duration: 1,
+                    ease: "easeInOut",
+                  },
+                }
+              }
             >
               <Card
                 videoSrc={card.videoSrc}
@@ -203,35 +204,20 @@ const MenuCards = () => {
       <div className="custom-pagination relative z-20 mt-4"></div>
       {/* LEFT ARROW */}
       <motion.div
-        initial={{ x: -100 }}
-        animate={{
-          x: 0,
-          transition: {
-            delay: 1.5,
-            duration: 0.5,
-            ease: "easeIn",
-          },
-        }}
+        variants={leftItem}
         className="z-10 custom-prev absolute left-[0%] top-[15%] cursor-pointer "
       >
         <ArrowLeft className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
       {/* RIGHT ARROW */}
       <motion.div
-        initial={{ x: 100 }}
-        animate={{
-          x: 0,
-          transition: {
-            delay: 1.5,
-            duration: 0.5,
-            ease: "easeIn",
-          },
-        }}
+        variants={rightItem}
         className="z-10 custom-next absolute right-[-0%] top-[15%] cursor-pointer "
       >
         <ArrowRight className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
-    </section>
+      <Footer />
+    </motion.section>
   );
 };
 

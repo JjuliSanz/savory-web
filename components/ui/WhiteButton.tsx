@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
+import { upItem } from "@/variants";
 
 type WhiteButtonProps = {
   classNameProps?: string;
@@ -34,7 +35,7 @@ const WhiteButton = ({
 }: WhiteButtonProps) => {
   return (
     <motion.button
-      variants={buttomAnimation}
+      variants={upItem}
       className="w-fit mx-auto relative"
     >
       <Link

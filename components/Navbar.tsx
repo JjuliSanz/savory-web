@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/utils/cn";
 import { usePathname } from "next/navigation";
+import { libre } from "@/app/fonts";
 
 const ListItem = ({
   href,
@@ -46,14 +47,6 @@ const Navbar = () => {
       <nav className="w-full h-fit bg-negro relative z-50 overflow-x-hidden py-2 px-2 sm:px-4">
         <ul className="w-full max-w-full px-2 h-full flex justify-between text-2xl font-medium text-blanco relative">
           {/* HOME */}
-          {/* <li>
-            <Link
-              href="/"
-              className="w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70"
-            >
-              SAVORY
-            </Link>
-          </li> */}
           <ListItem href="/" title="Sávory" />
           {/* DESKTOP MENU */}
           <ListItem

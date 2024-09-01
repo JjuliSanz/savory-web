@@ -13,15 +13,20 @@ const About = () => {
   const isInView = useInView(ref);
   return (
     <motion.section
-      ref={ref}
-      initial="hidden"
-      animate={isInView && "visible"}
-      variants={container}
+      // ref={ref}
+      // initial="hidden"
+      // animate={isInView && "visible"}
+      // variants={container}
       id="nosotros"
       className="min-h-screen flex flex-col gap-6 items-center justify-between px-10 py-20 bg-blanco-oscuro overflow-hidden"
     >
       {/* Primera fila: Imagen a la izquierda, texto a la derecha */}
-      <div className="flex flex-col md:flex-row gap-6 items-center">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={container}
+        className="flex flex-col md:flex-row gap-6 items-center"
+      >
         <div className="relative w-full md:w-1/2">
           <motion.div
             variants={leftItem}
@@ -66,10 +71,16 @@ const About = () => {
             classNameProps="text-marron-claro"
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Segunda fila: Texto a la izquierda, imagen a la derecha */}
-      <div className="flex flex-col md:flex-row gap-6 items-center">
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={isInView && "visible"}
+        variants={container}
+        className="flex flex-col md:flex-row gap-6 items-center"
+      >
         <div className="md:w-1/2 w-full text-center flex flex-col gap-4">
           <Title
             variants={leftItem}
@@ -114,7 +125,7 @@ const About = () => {
             />
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 };
