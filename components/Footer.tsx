@@ -19,7 +19,7 @@ const ListItem = ({ href, text }: { href: string; text: string }) => {
 const Footer = () => {
   return (
     <footer
-      className="relative bg-negro rounded-lg mt-10 w-full max-w-lg mx-auto p-4 md:py-8 z-20"
+      className="relative bg-negro rounded-lg mt-10 w-full max-w-lg mx-auto p-4 pb-0 md:pt-8 z-20"
       style={{ boxShadow: "0px 0px 10px 6px var(--marron)" }}
     >
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 items-center justify-between ">
@@ -58,6 +58,16 @@ const Footer = () => {
       <hr className="my-2 border-blanco-oscuro mx-auto lg:my-4 " />
       <span className="block text-lg font-medium text-blanco-oscuro text-center ">
         © 2024 Sávory. All Rights Reserved.
+      </span>
+      <span className="block mt-2 text-base font-medium text-blanco-oscuro text-center">
+        Hecho por{" "}
+        <Link
+          href="https://www.linkedin.com/in/julian-sanz-ba4270240/"
+          target="_blank"
+          className="underline"
+        >
+          Julian Sanz
+        </Link>
       </span>
     </footer>
   );

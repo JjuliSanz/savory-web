@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { carattere } from "./fonts";
-
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://savory-heladeria.vercel.app"),
   title: "Sávory",
   description: "Heladeria & Cafeteria",
+  keywords: ["heladeria", "cafeteria", "Sávory", "postres", "café"],
+  alternates: {
+    canonical: "/",
+  },
+  creator: "Julian Sanz",
+  publisher: 'Julian Sanz',
+  authors: { name: 'Julian', url: 'https://www.linkedin.com/in/julian-sanz-ba4270240/' },
 };
 
 export default function RootLayout({
@@ -18,9 +23,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`custom-scroll min-h-screen w-full overflow-x-hidden relative ${carattere.className}`}>
+      <body
+        className={`custom-scroll min-h-screen w-full overflow-x-hidden relative ${carattere.className}`}
+      >
         {children}
+        <Analytics />
       </body>
     </html>
   );
+}
+
+{
+  /* <motion.div
+        className="box"
+        initial={{ offsetDistance: "0%", scale: 2.5 }}
+        animate={{ offsetDistance: "100%", scale: 1 }}
+        transition={transition}
+      /> */
 }

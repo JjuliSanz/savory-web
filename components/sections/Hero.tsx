@@ -6,9 +6,19 @@ import { container, upItem } from "@/variants";
 import Link from "next/link";
 
 const Hero = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+  const video3Ref = useRef<HTMLVideoElement>(null);
   useEffect(() => {
-    videoRef.current?.play();
+    video1Ref.current?.play();
+    if (video2Ref.current) {
+      video2Ref.current.play();
+      video2Ref.current.playbackRate = 1.25;
+    }
+    if (video3Ref.current) {
+      video3Ref.current.play();
+      video3Ref.current.playbackRate = 1.25;
+    }
   }, []);
   return (
     <motion.section
@@ -18,15 +28,33 @@ const Hero = () => {
       id="inicio"
       className="relative min-h-[calc(100vh-44px)] h-[calc(100vh-44px)] w-full flex flex-col items-center justify-center overflow-hidden gap-6"
     >
-      <div className="blur absolute top-0 left-0 w-full h-full brightness-[.3]">
+      <div className="blur absolute top-0 left-0 w-full h-full brightness-[.3] flex">
         <video
-          className="w-full h-full object-cover object-center "
-          ref={videoRef}
+          className="w-full md:w-1/3 h-full object-cover object-center "
+          ref={video1Ref}
           loop
           controls={false}
           muted
         >
-          <source src="/video.mp4" type="video/mp4" />
+          <source src="/heroVideo.mp4" type="video/mp4" />
+        </video>
+        <video
+          className="hidden md:block w-1/3 h-full object-cover object-center "
+          ref={video2Ref}
+          loop
+          controls={false}
+          muted
+        >
+          <source src="/heroVideo2.mp4" type="video/mp4" />
+        </video>
+        <video
+          className="hidden md:block w-1/3 h-full object-cover object-center "
+          ref={video3Ref}
+          loop
+          controls={false}
+          muted
+        >
+          <source src="/heroVideo3.mp4" type="video/mp4" />
         </video>
       </div>
 
