@@ -13,7 +13,7 @@ export default function Menu({
 
   return (
     <main
-      className="pt-10 pb-4 min-h-screen relative bg-[url('/bg.jpg')] bg-fixed bg-cover"
+      className="pt-10 pb-4 min-h-screen relative bg-[url('/bg.webp')] bg-fixed bg-cover"
       
     >
       <div className="absolute inset-0 bg-marron opacity-80 z-10"></div>

@@ -133,7 +133,7 @@ const MenuCards = () => {
       initial="hidden"
       animate={isInView && "visible"}
       variants={container}
-      className="min-h-screen w-full px-10 pt-20 pb-4 overflow-hidden bg-[url('/bg.jpg')] bg-fixed bg-cover relative"
+      className="min-h-screen w-full px-10 pt-20 pb-4 overflow-hidden bg-[url('/bg.webp')] bg-fixed bg-cover relative"
     >
       <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
       <motion.h2
@@ -168,7 +168,7 @@ const MenuCards = () => {
         }}
         parallax={true}
         modules={[Pagination, Navigation, Parallax]}
-        className="w-full relative bg-transparent mt-20 z-10"
+        className="w-full relative bg-transparent mt-20 z-20"
       >
         {cards.map((card) => (
           <SwiperSlide key={card.title} style={{ width: "280px" }}>
@@ -206,14 +206,14 @@ const MenuCards = () => {
       {/* LEFT ARROW */}
       <motion.div
         variants={leftItem}
-        className="z-10 custom-prev absolute left-[0%] top-[15%] cursor-pointer "
+        className="z-10 custom-prev absolute left-[0%] top-[10%] cursor-pointer "
       >
         <ArrowLeft className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
       {/* RIGHT ARROW */}
       <motion.div
         variants={rightItem}
-        className="z-10 custom-next absolute right-[-0%] top-[15%] cursor-pointer "
+        className="z-10 custom-next absolute right-[-0%] top-[10%] cursor-pointer "
       >
         <ArrowRight className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
