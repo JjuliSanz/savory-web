@@ -1,7 +1,7 @@
 import MenuList from "@/components/menu/MenuList";
 import CategorySelector from "@/components/menu/CategorySelector";
 import ToTopButton from "@/components/ToTopButton";
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/Footer";
 
 export default function Menu({
   searchParams,

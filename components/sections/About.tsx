@@ -37,6 +37,7 @@ const About = () => {
               alt="Ambiente acogedor de Savory"
               width={1000}
               height={1000}
+              sizes="(max-width: 500), 500px, 1000px"
               className="rounded-lg object-cover w-full h-full"
             />
           </motion.div>
@@ -121,6 +122,7 @@ const About = () => {
               alt="Deliciosos helados y cafés de Savory"
               width={1000}
               height={1000}
+              sizes="(max-width: 500), 500px, 1000px"
               className="rounded-lg object-cover w-full h-full"
             />
           </motion.div>

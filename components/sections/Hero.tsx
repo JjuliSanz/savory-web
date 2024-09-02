@@ -58,7 +58,7 @@ const Hero = () => {
         </video>
       </div>
 
-      <div className="flex items-center justify-center z-20 w-[600px]">
+      <div className="flex items-center justify-center z-20 w-[300px] sm:w-[600px]">
         <Logo />
       </div>
 

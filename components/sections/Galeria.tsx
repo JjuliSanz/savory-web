@@ -1,6 +1,6 @@
 "use client";
 import { motion, useInView } from "framer-motion";
-import GalleryImage from "../GalleryImage";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
@@ -76,7 +76,7 @@ const Galeria = () => {
     },
     {
       src: "/food/torta-oreo.jpg",
-      alt: "Ensalada",
+      alt: "torta de oreo",
       id: 5,
     },
     {
@@ -86,7 +86,7 @@ const Galeria = () => {
     },
     {
       src: "/food/conito-noche.jpeg",
-      alt: "Conito noche",
+      alt: "Conito en la noche",
       id: 7,
     },
     {
@@ -95,9 +95,24 @@ const Galeria = () => {
       id: 8,
     },
     {
-      src: "/food/sandwiches/sandwiches.jpeg",
-      alt: "Sandwiches",
+      src: "/food/helado-pote.jpeg",
+      alt: "pote de helado",
       id: 9,
+    },
+    {
+      src: "/food/tortas/torta-oreo.jpeg",
+      alt: "torta oreo",
+      id: 10,
+    },
+    {
+      src: "/food/cafe-vienes.jpeg",
+      alt: "cafe",
+      id: 11,
+    },
+    {
+      src: "/food/kinder.jpeg",
+      alt: "kinder",
+      id: 12,
     },
   ];
 
@@ -118,11 +133,11 @@ const Galeria = () => {
           title="Nuestra Galería"
           classNameProps="text-marron text-center"
         />
-        <div className="w-full grid grid-cols-2 xl:grid-cols-3 place-items-center gap-6">
-          {images.slice(0, 4).map((image) => (
+        <div className="w-full grid grid-cols-2 md:grid-cols-3 place-items-center gap-6">
+          {images.slice(0, 12).map((image) => (
             <div
               key={image.id}
-              className="w-full h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px]  bg-marron border-4 border-marron-clarito rounded "
+              className="w-full h-[150px] 500:h-[190px] sm:h-[220px] 900:h-[260px] lg:h-[300px]  bg-marron border-4 border-marron-clarito rounded "
             >
               <motion.div
                 variants={image.id % 2 === 0 ? rightImageItem : leftImageItem}
@@ -133,32 +148,12 @@ const Galeria = () => {
                   alt={image.alt}
                   width={1000}
                   height={1000}
-                  className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px]  object-cover rounded "
+                  sizes="(max-width: 500px), 500px, 1000px"
+                  className="w-full h-[140px] 500:h-[180px] sm:h-[210px] 900:h-[250px] lg:h-[290px]  object-cover rounded "
                 />
               </motion.div>
             </div>
           ))}
-          <div className="w-full hidden 900:flex place-items-center 900:col-span-2 gap-6 ">
-            {images.slice(4, 6).map((image) => (
-              <div
-                key={image.id}
-                className="w-full h-[150px] 500:h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px]  bg-marron border-4 border-marron-clarito rounded "
-              >
-                <motion.div
-                  variants={image.id % 2 === 0 ? rightImageItem : leftImageItem}
-                  className="relative w-full h-full rounded"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={1000}
-                    height={1000}
-                    className="w-full h-[140px] 500:h-[180px] sm:h-[210px] md:h-[250px] lg:h-[290px]  object-cover rounded "
-                  />
-                </motion.div>
-              </div>
-            ))}
-          </div>
         </div>
 
         <WhiteButton
@@ -168,6 +163,7 @@ const Galeria = () => {
           classNameProps="px-4 py-2"
         />
       </div>
+      
     </motion.section>
   );
 };

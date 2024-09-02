@@ -29,8 +29,9 @@ const Cafeteria = () => {
             <Image
               src="/tostadosjyq.jpeg" 
               alt="Savory Heladería y Cafetería 1"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 500px), 500px, 1000px"
               className="w-full h-full rounded-lg object-cover"
             />
           </motion.div>
@@ -41,8 +42,9 @@ const Cafeteria = () => {
             <Image
               src="/milkshake-varios.jpg" 
               alt="Savory Heladería y Cafetería 2"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 500px), 500px, 1000px"
               className="w-full h-full rounded-lg object-cover"
             />
           </motion.div>
@@ -56,8 +58,9 @@ const Cafeteria = () => {
             <Image
               src="/tostones-jugos.webp" 
               alt="Savory Heladería y Cafetería 3"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 500px), 500px, 1000px"
               className="w-full h-full rounded-lg object-cover"
             />
           </motion.div>
@@ -68,8 +71,9 @@ const Cafeteria = () => {
             <Image
               src="/tortas01.jpg" 
               alt="Savory Heladería y Cafetería 4"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 500px), 500px, 1000px"
               className="w-full h-full rounded-lg object-cover"
             />
           </motion.div>

@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/Footer";
 import { Contacto } from "@/components/sections";
 
 export default function ContactoPage() {

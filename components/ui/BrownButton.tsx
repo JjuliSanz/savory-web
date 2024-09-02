@@ -17,7 +17,7 @@ const BrownButton = ({ classNameProps, href, text }: BrownButtonProps) => {
       <Link
         href={href}
         className={cn(
-          "flex motion-safe:transition duration-300 ease-in-out text-3xl font-medium rounded bg-marron border-4 border-blanco-oscuro text-blanco-oscuro outline-none focus:outline-none hover:bg-blanco-oscuro hover:text-marron hover:scale-95 brownButtonShadow",
+          "flex motion-safe:transition duration-300 ease-in-out text-3xl font-medium rounded bg-marron border-4 border-blanco-oscuro text-blanco-oscuro outline-none focus:outline-none hover:bg-blanco-oscuro hover:text-marron hover:scale-95 active:scale-95 brownButtonShadow",
           classNameProps
         )}
         // active:bg-marron active:text-blanco-oscuro

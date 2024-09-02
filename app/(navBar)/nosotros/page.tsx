@@ -1,5 +1,5 @@
-import FilaImagenes from "@/components/FilaImagenes";
-import Footer from "@/components/Footer";
+import FilaImagenes from "@/components/ui/FilaImagenes";
+import Footer from "@/components/ui/Footer";
 import { About, Adentro, Cafeteria, Heladeria } from "@/components/sections";
 import ToTopButton from "@/components/ToTopButton";
 

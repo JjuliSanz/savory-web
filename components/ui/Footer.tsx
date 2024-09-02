@@ -8,7 +8,7 @@ const ListItem = ({ href, text }: { href: string; text: string }) => {
     <li>
       <Link
         href={href}
-        className="transition ease-in duration-150 hover:scale-95 hover:opacity-70"
+        className="transition ease-in duration-150 hover:scale-95 hover:opacity-70 active:scale-95 active:opacity-70"
       >
         {text}
       </Link>
@@ -19,7 +19,7 @@ const ListItem = ({ href, text }: { href: string; text: string }) => {
 const Footer = () => {
   return (
     <footer
-      className="relative bg-negro rounded-lg mt-10 w-full max-w-lg mx-auto p-4 pb-0 md:pt-8 z-20"
+      className="relative bg-negro rounded-lg mt-10 w-[90%] max-w-lg mx-auto p-4 pb-0 md:pt-8 z-20"
       style={{ boxShadow: "0px 0px 10px 6px var(--marron)" }}
     >
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 items-center justify-between ">

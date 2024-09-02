@@ -15,20 +15,20 @@ const ListItem = ({
   href,
   title,
   classNameProp,
+  pathname,
 }: {
   href: string;
   title: string;
   classNameProp?: string;
+  pathname?: string;
 }) => {
-  const pathname = usePathname();
-
   const isActive = pathname === href;
   return (
     <li>
       <Link
         href={href}
         className={cn(
-          `w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70`,
+          `w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70`,
           classNameProp,
           isActive ? "underline" : ""
         )}
@@ -41,36 +41,50 @@ const ListItem = ({
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [borderMarron, setBorderMarron] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === "/nosotros" || pathname === "/galeria") {
+      setBorderMarron(true);
+    } else {
+      setBorderMarron(false);
+    }
+  }, [pathname]);
 
   return (
-    <AnimatePresence mode="sync">
+    <AnimatePresence>
       <nav className="w-full h-fit bg-negro relative z-50 overflow-x-hidden py-2 px-2 sm:px-4">
         <ul className="w-full max-w-full px-2 h-full flex justify-between text-2xl font-medium text-blanco relative">
           {/* HOME */}
-          <ListItem href="/" title="Sávory" />
+          <ListItem href="/" title="Sávory" pathname={pathname} />
           {/* DESKTOP MENU */}
           <ListItem
             href="/menu"
             title="Menú"
             classNameProp="hidden sm:block"
+            pathname={pathname}
           />
           {/* ABOUT US */}
           <ListItem
             href="/nosotros"
             title="Nosotros"
             classNameProp="hidden sm:block"
+            pathname={pathname}
           />
           {/* CONTACT */}
           <ListItem
             href="/contacto"
             title="Contacto"
             classNameProp="hidden sm:block"
+            pathname={pathname}
           />
           {/* GALLERY */}
           <ListItem
             href="/galeria"
             title="Galería"
             classNameProp="hidden sm:block"
+            pathname={pathname}
           />
           {/* MOBILE MENU ICON */}
           <li className="sm:hidden">
@@ -92,24 +106,23 @@ const Navbar = () => {
         </ul>
         {/* <hr className="absolute left-0 bottom-0 h-[2px] w-full border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blanco to-transparent bg-center" /> */}
         {/* <hr className="absolute left-0 bottom-0 h-[2px] w-full bg-blanco bg-center" /> */}
-
-        {/* MOBILE MENU */}
-        {showMenu && (
-          <motion.div
-            initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: 1, y: 20 }}
-            exit={{ opacity: 0, y: 0 }}
-            className="w-fit absolute inset-x-0 z-50 mx-auto px-3 py-1 rounded-xl border border-blanco bg-negro/60 backdrop-blur-md "
-          >
-            <ul className="flex items-center  gap-4 text-base md:text-xl text-center text-blanco">
-              <ListItem href="/menu?category=Promociones" title="Menú" />
-              <ListItem href="/nosotros" title="Nosotros" />
-              <ListItem href="/contacto" title="Contacto" />
-              <ListItem href="/galeria" title="Galería" />
-            </ul>
-          </motion.div>
-        )}
       </nav>
+      {/* MOBILE MENU */}
+      {showMenu && (
+        <motion.ul
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: 20 }}
+          exit={{ opacity: 0 }}
+          className={`w-fit absolute inset-x-0 top-10 z-50 mx-auto px-3 py-1 rounded border-2 ${
+            borderMarron ? "border-marron" : "border-blanco"
+          }  bg-negro/60 backdrop-blur-md flex items-center gap-4 text-2xl text-center text-blanco`}
+        >
+          <ListItem href="/menu?category=Promociones" title="Menú" />
+          <ListItem href="/nosotros" title="Nosotros" />
+          <ListItem href="/contacto" title="Contacto" />
+          <ListItem href="/galeria" title="Galería" />
+        </motion.ul>
+      )}
     </AnimatePresence>
   );
 };

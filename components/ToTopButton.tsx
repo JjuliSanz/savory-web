@@ -30,7 +30,7 @@ const ToTopButton = ({ extraClass }: { extraClass?: string }) => {
         <motion.button
           onClick={handleClick}
           className={cn(
-            `bg-marron text-blanco p-3 rounded-full fixed bottom-5 right-3`,
+            `bg-marron text-blanco p-3 rounded-full border border-blanco fixed bottom-5 right-3 z-50`,
             extraClass
           )}
           initial={{ opacity: 0, bottom: 50 }}

@@ -52,10 +52,11 @@ const Heladeria = () => {
             className="relative w-full h-48 md:h-72 bg-marron"
           >
             <Image
-              src="/sabores.jpeg" 
+              src="/sabores.jpeg"
               alt="Savory Heladería y Cafetería 1"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 500px), 500px, 1000px"
               className="rounded-lg object-cover w-full h-full"
             />
           </motion.div>
@@ -64,10 +65,11 @@ const Heladeria = () => {
             className="relative w-full h-48 md:h-72 bg-marron"
           >
             <Image
-              src="/food/helado.jpeg" 
+              src="/food/helado.jpeg"
               alt="Savory Heladería y Cafetería 2"
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 500px), 500px, 1000px"
               className="rounded-lg object-cover w-full h-full"
             />
           </motion.div>

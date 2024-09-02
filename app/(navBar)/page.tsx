@@ -1,4 +1,4 @@
-import FilaImagenes from "@/components/FilaImagenes";
+import FilaImagenes from "@/components/ui/FilaImagenes";
 import { About, Adentro, Cafeteria, Heladeria, Hero, MenuCards } from "@/components/sections";
 
 export default function Home() {

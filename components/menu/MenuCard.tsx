@@ -32,6 +32,7 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
           alt={item.title}
           width={500}
           height={500}
+          sizes="(max-width: 450px) 300px, 500px"
           loading="lazy"
           className="object-cover w-full h-full rounded-t-lg"
         />

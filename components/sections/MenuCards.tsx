@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Parallax } from "swiper/modules";
 import { ArrowRight } from "@/assets/icons/ArrowRight";
 import { ArrowLeft } from "@/assets/icons/ArrowLeft";
-import Footer from "../Footer";
+import Footer from "../ui/Footer";
 import { container, leftItem, rightItem, upItem } from "@/variants";
 
 const Card = ({
@@ -49,7 +49,8 @@ const Card = ({
         src={imageSrc}
         width={500}
         height={500}
-        alt=""
+        alt={title}
+        sizes="(max-width: 450px) 300px, 500px"
         className={cn(
           "absolute w-full h-full object-cover inset-0 transition-transform duration-1000 ease-in-out pointer-events-none",
           {
@@ -84,7 +85,7 @@ const MenuCards = () => {
       title: "Cafetería",
       value: "Cafeteria",
     },
-    { imageSrc: "/milkshake-varios.jpg", title: "Fríos", value: "frios" },
+    { imageSrc: "/milkshake-varios.jpg", title: "Fríos", value: "Frios" },
     {
       videoSrc: "/tortas01.mp4",
       imageSrc: "/tortas01.jpg",
