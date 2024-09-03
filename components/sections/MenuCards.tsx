@@ -19,23 +19,29 @@ import { container, leftItem, rightItem, upItem } from "@/variants";
 const Card = ({
   videoSrc,
   imageSrc,
+  mobileVideoSrc,
   title,
   additionalClass,
 }: {
-  videoSrc?: string; // videoSrc puede ser opcional
+  videoSrc?: string;
+  mobileVideoSrc?: string;
   imageSrc: string;
   title: string;
   additionalClass?: string;
 }) => {
   const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     if (hovered && videoSrc) {
       videoRef.current?.play();
-    } else if (videoRef.current) {
+      mobileVideoRef.current?.play();
+    } else if (videoRef.current && mobileVideoRef.current) {
       videoRef.current?.pause();
       videoRef.current.currentTime = 0;
+
+      mobileVideoRef.current?.pause();
+      mobileVideoRef.current.currentTime = 0;
     }
   }, [hovered, videoSrc]);
 
@@ -50,7 +56,7 @@ const Card = ({
         width={500}
         height={500}
         alt={title}
-        sizes="(max-width: 450px) 300px, 500px"
+        sizes="(max-width: 450px) 200px, 500px"
         className={cn(
           "absolute w-full h-full object-cover inset-0 transition-transform duration-1000 ease-in-out pointer-events-none",
           {
@@ -60,18 +66,32 @@ const Card = ({
         )}
       />
       {videoSrc && (
-        <video
-          className={`absolute block inset-0 w-full h-full object-cover object-center  ${
-            hovered === true ? "opacity-100" : "opacity-0"
-          }  transition-opacity ease-in-out duration-300 pointer-events-none`}
-          ref={videoRef}
-          loop
-          muted
-          disablePictureInPicture
-          disableRemotePlayback
-        >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
+        <>
+          <video
+            className={`absolute hidden sm:block inset-0 w-full h-full object-cover object-center  ${
+              hovered === true ? "opacity-100" : "opacity-0"
+            }  transition-opacity ease-in-out duration-300 pointer-events-none`}
+            ref={videoRef}
+            loop
+            muted
+            disablePictureInPicture
+            disableRemotePlayback
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+          <video
+            className={`absolute block sm:hidden inset-0 w-full h-full object-cover object-center  ${
+              hovered === true ? "opacity-100" : "opacity-0"
+            }  transition-opacity ease-in-out duration-300 pointer-events-none`}
+            ref={mobileVideoRef}
+            loop
+            muted
+            disablePictureInPicture
+            disableRemotePlayback
+          >
+            <source src={mobileVideoSrc} type="video/mp4" />
+          </video>
+        </>
       )}
     </div>
   );
@@ -80,51 +100,58 @@ const Card = ({
 const MenuCards = () => {
   const cards = [
     {
-      videoSrc: "/Coffe1.mp4",
+      videoSrc: "/food/videos/Coffe1.mp4",
+      mobileVieoScr: "/food/videos/Coffe1sm.mp4",
       imageSrc: "/capuccino-edit.jpg",
       title: "Cafetería",
       value: "Cafeteria",
     },
     { imageSrc: "/milkshake-varios.jpg", title: "Fríos", value: "Frios" },
     {
-      videoSrc: "/tortas01.mp4",
+      videoSrc: "/food/videos/tortas01.mp4",
+      mobileVieoScr: "/food/videos/tortas01sm.mp4",
       imageSrc: "/tortas01.jpg",
       title: "Tortas y Delicias",
       value: "Tortas_Delicias",
     },
     {
-      videoSrc: "/tostados.mp4",
+      videoSrc: "/food/videos/tostados.mp4",
       imageSrc: "/tostadosjyq.jpeg",
       title: "Salados",
       value: "Salados_Clasicos",
     },
     {
-      videoSrc: "/tostones.mp4",
+      videoSrc: "/food/videos/tostones.mp4",
       imageSrc: "/tostones-jugos.webp",
       title: "Tostones",
       value: "Tostones",
     },
     {
-      videoSrc: "/sandwich.mp4",
+      videoSrc: "/food/videos/sandwich.mp4",
       imageSrc: "/sandwichpollo.jpeg",
       title: "Sandwiches",
       value: "Sandwiches",
     },
-    { imageSrc: "/ensalada.jpg", title: "Ensaladas", value: "Ensaladas" },
     {
-      videoSrc: "/pote.mp4",
+      imageSrc: "/food/videos/ensalada.jpg",
+      title: "Ensaladas",
+      value: "Ensaladas",
+    },
+    {
+      videoSrc: "/food/videos/pote.mp4",
       imageSrc: "/pote.jpeg",
       title: "Heladería",
       value: "Heladeria",
     },
     {
-      videoSrc: "/cubatones.mp4",
+      videoSrc: "/food/videos/cubatones.mp4",
       imageSrc: "/cubatones.jpeg",
       title: "Postres Helados",
       value: "Postres_Helados",
     },
   ];
   const ref = useRef(null);
+
   const isInView = useInView(ref);
   return (
     <motion.section

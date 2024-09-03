@@ -84,7 +84,7 @@ const Heladeria = () => {
             disablePictureInPicture
             disableRemotePlayback
           >
-            <source src="/video.mp4" type="video/mp4" />
+            <source src="/food/videos/video.mp4" type="video/mp4" />
           </motion.video>
         </motion.div>
       </div>

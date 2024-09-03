@@ -30,22 +30,22 @@ const Hero = () => {
     >
       <div className="blur absolute top-0 left-0 w-full h-full brightness-[.3] flex">
         <video
-          className="w-full md:w-1/3 h-full object-cover object-center "
-          ref={video1Ref}
-          loop
-          controls={false}
-          muted
-        >
-          <source src="/heroVideo.mp4" type="video/mp4" />
-        </video>
-        <video
           className="hidden md:block w-1/3 h-full object-cover object-center "
           ref={video2Ref}
           loop
           controls={false}
           muted
         >
-          <source src="/heroVideo2.mp4" type="video/mp4" />
+          <source src="/heroVideosm.mp4" type="video/mp4" />
+        </video>
+        <video
+          className="w-full md:w-1/3 h-full object-cover object-center "
+          ref={video1Ref}
+          loop
+          controls={false}
+          muted
+        >
+          <source src="/heroVideo2sm.mp4" type="video/mp4" />
         </video>
         <video
           className="hidden md:block w-1/3 h-full object-cover object-center "
@@ -54,7 +54,7 @@ const Hero = () => {
           controls={false}
           muted
         >
-          <source src="/heroVideo3.mp4" type="video/mp4" />
+          <source src="/heroVideo3sm.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -63,10 +63,9 @@ const Hero = () => {
       </div>
 
       <motion.p
-        initial={{ opacity: 0, y: -100 }}
+        initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          y: 0,
           transition: {
             delay: 0.8,
             duration: 0.5,
@@ -79,10 +78,9 @@ const Hero = () => {
       </motion.p>
 
       <motion.button
-        initial={{ opacity: 0, y: -100 }}
+        initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          y: 0,
           transition: {
             delay: 1.6,
             duration: 0.5,
