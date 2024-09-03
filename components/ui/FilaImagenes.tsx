@@ -10,6 +10,7 @@ const FilaImagenes = () => {
           alt="Savory Heladería y Cafetería 5"
           width={500}
           height={500}
+          loading="lazy"
           className="w-full h-full object-cover"
         />
       </div>
@@ -20,6 +21,7 @@ const FilaImagenes = () => {
           alt="Savory Heladería y Cafetería 5"
           width={500}
           height={500}
+          loading="lazy"
           className="w-full h-full object-cover"
         />
       </div>
@@ -30,6 +32,7 @@ const FilaImagenes = () => {
           alt="Savory Heladería y Cafetería 6"
           width={500}
           height={500}
+          loading="lazy"
           className="w-full h-full object-cover"
         />
       </div>

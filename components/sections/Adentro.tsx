@@ -23,6 +23,7 @@ const ImageCard = ({
         alt={imageAlt}
         width={500}
         height={500}
+        loading="lazy"
         sizes="(max-width: 450px) 300px, 500px"
         className="w-full h-full rounded-lg object-cover"
       />

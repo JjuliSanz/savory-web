@@ -1,4 +1,4 @@
-import { InstagramIcon, WhatsIcon } from "@/assets/icons";
+import { ArrowTop, InstagramIcon, WhatsIcon } from "@/assets/icons";
 import SavoryLogo from "@/assets/SavoryLogo";
 import Link from "next/link";
 import React from "react";
@@ -59,14 +59,15 @@ const Footer = () => {
       <span className="block text-lg font-medium text-blanco-oscuro text-center ">
         © 2024 Sávory. All Rights Reserved.
       </span>
-      <span className="block mt-2 text-base font-medium text-blanco-oscuro text-center">
+      <span className="flex gap-2 items-center justify-center mt-2 text-base font-medium text-blanco-oscuro text-center">
         Hecho por{" "}
         <Link
           href="https://www.linkedin.com/in/julian-sanz-ba4270240/"
           target="_blank"
-          className="underline"
+          className="underline flex items-center"
         >
           Julian Sanz
+          <ArrowTop className="rotate-45" width={15}/>
         </Link>
       </span>
     </footer>
