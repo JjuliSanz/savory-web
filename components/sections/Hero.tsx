@@ -31,16 +31,16 @@ const Hero = () => {
       <div className="blur absolute top-0 left-0 w-full h-full brightness-[.3] flex">
         <video
           className="hidden md:block w-1/3 h-full object-cover object-center "
-          ref={video2Ref}
+          ref={video1Ref}
           loop
           controls={false}
           muted
         >
-          <source src="/heroVideosm.mp4" type="video/mp4" />
+          <source src="/heroVideo1sm.mp4" type="video/mp4" />
         </video>
         <video
           className="w-full md:w-1/3 h-full object-cover object-center "
-          ref={video1Ref}
+          ref={video2Ref}
           loop
           controls={false}
           muted

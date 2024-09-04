@@ -19,29 +19,23 @@ import { container, leftItem, rightItem, upItem } from "@/variants";
 const Card = ({
   videoSrc,
   imageSrc,
-  mobileVideoSrc,
   title,
   additionalClass,
 }: {
   videoSrc?: string;
-  mobileVideoSrc?: string;
   imageSrc: string;
   title: string;
   additionalClass?: string;
 }) => {
   const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const mobileVideoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
-    if (hovered && videoSrc) {
+    if (hovered && window.innerWidth >= 640 && videoSrc) {
       videoRef.current?.play();
-      mobileVideoRef.current?.play();
-    } else if (videoRef.current && mobileVideoRef.current) {
+    } else if (videoRef.current) {
       videoRef.current?.pause();
       videoRef.current.currentTime = 0;
-
-      mobileVideoRef.current?.pause();
-      mobileVideoRef.current.currentTime = 0;
     }
   }, [hovered, videoSrc]);
 
@@ -66,42 +60,28 @@ const Card = ({
         )}
       />
       {videoSrc && (
-        <>
-          <video
-            className={`absolute hidden sm:block inset-0 w-full h-full object-cover object-center  ${
-              hovered === true ? "opacity-100" : "opacity-0"
-            }  transition-opacity ease-in-out duration-300 pointer-events-none`}
-            ref={videoRef}
-            loop
-            muted
-            disablePictureInPicture
-            disableRemotePlayback
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
-          <video
-            className={`absolute block sm:hidden inset-0 w-full h-full object-cover object-center  ${
-              hovered === true ? "opacity-100" : "opacity-0"
-            }  transition-opacity ease-in-out duration-300 pointer-events-none`}
-            ref={mobileVideoRef}
-            loop
-            muted
-            disablePictureInPicture
-            disableRemotePlayback
-          >
-            <source src={mobileVideoSrc} type="video/mp4" />
-          </video>
-        </>
+        <video
+          className={`absolute hidden sm:block inset-0 w-full h-full object-cover object-center ${
+            hovered ? "opacity-100" : "opacity-0"
+          } transition-opacity ease-in-out duration-300 pointer-events-none`}
+          ref={videoRef}
+          loop
+          muted
+          disablePictureInPicture
+          disableRemotePlayback
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
       )}
     </div>
   );
 };
 
+
 const MenuCards = () => {
   const cards = [
     {
       videoSrc: "/food/videos/Coffe1.mp4",
-      mobileVieoScr: "/food/videos/Coffe1sm.mp4",
       imageSrc: "/capuccino-edit.jpg",
       title: "Cafetería",
       value: "Cafeteria",
@@ -109,7 +89,6 @@ const MenuCards = () => {
     { imageSrc: "/milkshake-varios.jpg", title: "Fríos", value: "Frios" },
     {
       videoSrc: "/food/videos/tortas01.mp4",
-      mobileVieoScr: "/food/videos/tortas01sm.mp4",
       imageSrc: "/tortas01.jpg",
       title: "Tortas y Delicias",
       value: "Tortas_Delicias",
