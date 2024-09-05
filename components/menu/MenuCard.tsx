@@ -19,7 +19,7 @@ const itemVariants = {
 
 const MenuCard = ({ item }: { item: MenuItem }) => {
   const addToCart = useCartStore((state) => state.addToCart);
-  
+
   const handleAddToCart = () => {
     const cartItem = {
       id: item._id, // or item.id if you prefer to use the numeric id
@@ -27,7 +27,7 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
       price: parseFloat(item.price), // Assuming the price is stored as a string
       imageSrc: item.imageSrc,
       quantity: 1,
-      totalPrice: parseFloat(item.price)
+      totalPrice: parseFloat(item.price),
     };
     addToCart(cartItem);
   };
@@ -60,12 +60,17 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
             </p>
           )}
         </div>
-        <p className="text-end text-blanco-oscuro font-semibold text-2xl md:text-xl lg:text-2xl">
-          {item.price} $
-        </p>
-        <button onClick={handleAddToCart} className="px-6 py-3 w-fit mx-auto flex motion-safe:transition duration-300 ease-in-out text-xl font-medium rounded bg-blanco-oscuro border-4 border-marron text-marron outline-none focus:outline-none hover:bg-marron hover:text-blanco-oscuro hover:scale-95 active:scale-95">
-          Agregar al carrito
-        </button>
+        <div className="w-full flex justify-between items-center">
+          <button
+            onClick={handleAddToCart}
+            className="px-4 py-1 w-fit flex motion-safe:transition duration-300 ease-in-out text-xl font-medium text-blanco-oscuro rounded bg-marron hover:bg-blanco-oscuro border border-blanco-oscuro hover:text-marron outline-none focus:outline-none hover:scale-95 active:scale-95"
+          >
+            Agregar al carrito
+          </button>
+          <p className="text-end text-blanco-oscuro font-semibold text-2xl md:text-xl lg:text-2xl">
+            {item.price} $
+          </p>
+        </div>
       </div>
     </motion.div>
   );

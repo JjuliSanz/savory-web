@@ -1,50 +1,73 @@
 "use client";
 import { CloseIcon } from "@/assets/icons";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { calculateIndividualPrice, calculateTotalPrice, useCartStore } from "@/store/cartStore";
+import {
+  calculateIndividualPrice,
+  calculateTotalItems,
+  calculateTotalPrice,
+  useCartStore,
+} from "@/store/cartStore";
 import { CartIcon } from "@/assets/icons/CartIcon";
-import { useState } from "react";
 import { TrashIcon } from "@/assets/icons/TrashIcon";
 import { PlusIcon } from "@/assets/icons/PlusIcon";
 import { MinusIcon } from "@/assets/icons/MinusIcon";
+import { shallow } from "zustand/shallow";
+import { cn } from "@/utils/cn";
 
-const Cart = () => {
-  const cart = useCartStore((state) => state.cart);
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
-  const addToCart = useCartStore((state) => state.addToCart);
-  const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const handleCartClick = () => {
-    setIsCartOpen(!isCartOpen);
-  };
+const Cart = ({classNameProp} : {classNameProp: string}) => {
+  const { cart, isCartOpen } = useCartStore(
+    (state) => ({
+      cart: state.cart,
+      isCartOpen: state.isCartOpen,
+    }),
+    shallow
+  );
+  const { addToCart, removeFromCart, decreaseQuantity, openCart, closeCart } =
+    useCartStore();
 
   const totalPrice = calculateTotalPrice(cart);
+  const totalItems = calculateTotalItems(cart);
 
   return (
-    <>
-      <CartIcon
-        width={24}
-        height={24}
-        className="text-blanco-oscuro active:scale-95 active:opacity-70 motion-safe:transition ease-in duration-150"
-        onClick={handleCartClick}
-      />
+    <AnimatePresence mode="sync">
+      <div className={cn(`relative`, classNameProp)}>
+        <CartIcon
+          width={24}
+          height={24}
+          className="text-blanco-oscuro cursor-pointer hover:scale-95 hover:opacity-70 active:scale-95 active:opacity-70 transition ease-in duration-150"
+          onClick={isCartOpen ? closeCart : openCart}
+        />
+        {totalItems > 0 && (
+          <div className="absolute -top-2 -right-2 bg-red-600 text-blanco text-xs font-sans font-medium rounded-full w-5 h-5 flex items-center justify-center">
+            {totalItems}
+          </div>
+        )}
+      </div>
       {isCartOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-0">
+        <motion.div
+          key="cart-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: "easeInOut", duration: 0.5 }}
+          onClick={closeCart}
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-0"
+        >
           <motion.div
             initial={{ x: 300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
+            exit={{ x: 0, opacity: 0 }}
             transition={{ ease: "easeInOut", duration: 0.5 }}
-            className="bg-blanco-oscuro w-1/3 max-h-screen pt-1 p-6 overflow-auto overscroll-contain flex flex-col z-10"
+            className="bg-blanco-oscuro/90 w-full sm:w-1/3 max-h-screen p-6 overflow-auto overscroll-contain flex flex-col z-10 "
           >
             <div className="w-full flex justify-between mb-4">
               <h2 className="text-marron text-4xl font-bold">Carrito</h2>
 
               <CloseIcon
                 width={30}
-                className="text-red-500 font-bold hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
-                onClick={handleCartClick}
+                className="text-red-500 font-bold hover:scale-95 transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
+                onClick={closeCart}
               />
             </div>
             {cart.length === 0 ? (
@@ -60,7 +83,7 @@ const Cart = () => {
                       alt=""
                       width={200}
                       height={200}
-                      className="object-cover rounded w-20"
+                      className="object-cover rounded w-20 h-20"
                     />
                     <div className="text-marron flex flex-col flex-grow justify-between">
                       <h3 className="text-xl font-semibold">{item.title}</h3>
@@ -68,7 +91,7 @@ const Cart = () => {
                         <MinusIcon
                           width={32}
                           height={32}
-                          className="text-marron hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
+                          className="text-marron hover:scale-95 transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
                           onClick={() => decreaseQuantity(item.id)}
                         />
                         <p className="text-2xl font-sans font-semibold">
@@ -78,7 +101,7 @@ const Cart = () => {
                         <PlusIcon
                           width={32}
                           height={32}
-                          className="text-marron hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
+                          className="text-marron hover:scale-95 transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
                           onClick={() => addToCart(item)}
                         />
                       </div>
@@ -90,7 +113,7 @@ const Cart = () => {
 
                       <TrashIcon
                         width={24}
-                        className="cursor-pointer text-red-500 hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
+                        className="cursor-pointer text-red-500 hover:scale-95 transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
                         onClick={() => removeFromCart(item.id)}
                       />
                     </div>
@@ -103,9 +126,9 @@ const Cart = () => {
               <span className="text-2xl font-semibold">${totalPrice}</span>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 

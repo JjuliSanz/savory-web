@@ -17,23 +17,23 @@ const ListItem = ({
   href,
   title,
   classNameProp,
+
   pathname,
 }: {
   href: string;
   title: string;
   classNameProp?: string;
+
   pathname?: string;
 }) => {
   const isActive = pathname === href;
   return (
-    <li>
+    <li className={cn(``, classNameProp)}>
       <Link
         href={href}
-        className={cn(
-          `w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70`,
-          classNameProp,
+        className={`w-fit hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70 ${
           isActive ? "underline" : ""
-        )}
+        }`}
       >
         {title}
       </Link>
@@ -58,7 +58,24 @@ const Navbar = () => {
   return (
     <AnimatePresence>
       <nav className="w-full h-fit bg-negro relative z-50 overflow-x-hidden py-2 px-2 sm:px-4">
-        <ul className="w-full max-w-full px-2 h-full flex justify-between text-2xl font-medium text-blanco relative">
+        <ul className="w-full max-w-full px-2 h-full flex justify-between items-center text-2xl font-medium text-blanco relative">
+          {/* MOBILE MENU ICON */}
+          <li className="sm:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              className="bi bi-list block w-8 h-8 sm:hidden cursor-pointer active:scale-95 active:opacity-70 motion-safe:transition ease-in duration-150"
+              viewBox="0 0 16 16"
+              onClick={() => {
+                setShowMenu(!showMenu);
+              }}
+            >
+              <path
+                fillRule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+              />
+            </svg>
+          </li>
           {/* HOME */}
           <ListItem href="/" title="Sávory" pathname={pathname} />
           {/* DESKTOP MENU */}
@@ -90,24 +107,7 @@ const Navbar = () => {
             pathname={pathname}
           />
           {/* CART */}
-          <Cart/>
-          {/* MOBILE MENU ICON */}
-          <li className="sm:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              className="bi bi-list block w-8 h-8 sm:hidden cursor-pointer active:scale-95 active:opacity-70 motion-safe:transition ease-in duration-150"
-              viewBox="0 0 16 16"
-              onClick={() => {
-                setShowMenu(!showMenu);
-              }}
-            >
-              <path
-                fillRule="evenodd"
-                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-              />
-            </svg>
-          </li>
+          <Cart classNameProp=""/>
         </ul>
         {/* <hr className="absolute left-0 bottom-0 h-[2px] w-full border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blanco to-transparent bg-center" /> */}
         {/* <hr className="absolute left-0 bottom-0 h-[2px] w-full bg-blanco bg-center" /> */}

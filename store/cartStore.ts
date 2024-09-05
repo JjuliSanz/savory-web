@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface CartItem {
   id: string;
@@ -10,63 +11,89 @@ interface CartItem {
 
 interface CartState {
   cart: CartItem[];
+  isCartOpen: boolean; // Estado del carrito
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: string) => void;
   decreaseQuantity: (id: string) => void;
+  openCart: () => void;
+  closeCart: () => void;
 }
 
 export const calculateTotalPrice = (items: CartItem[]): number => {
-  return items.reduce((total, item) => total + (item.price * item.quantity), 0);
+  return items.reduce((total, item) => total + item.price * item.quantity, 0);
 };
 
-export const calculateIndividualPrice = (price: number, quantity: number): number => {
+export const calculateTotalItems = (items: CartItem[]): number => {
+  return items.reduce((total, item) => total + item.quantity, 0);
+};
+
+export const calculateIndividualPrice = (
+  price: number,
+  quantity: number
+): number => {
   return price * quantity;
 };
 
-export const useCartStore = create<CartState>((set) => ({
-  cart: [],
-  addToCart: (item) =>
-    set((state) => {
-      const existingItem = state.cart.find(
-        (cartItem) => cartItem.id === item.id
-      );
-      if (existingItem) {
-        return {
-          cart: state.cart.map((cartItem) =>
-            cartItem.id === item.id
-              ? {
-                  ...cartItem,
-                  quantity: cartItem.quantity + 1,
-                }
-              : cartItem
-          ),
-        };
-      }
-      return { cart: [...state.cart, { ...item, quantity: 1 }] };
+export const useCartStore = create<CartState>()(
+  persist(
+    (set) => ({
+      cart: [],
+      isCartOpen: false,
+      addToCart: (item) =>
+        set((state) => {
+          const existingItem = state.cart.find(
+            (cartItem) => cartItem.id === item.id
+          );
+          if (existingItem) {
+            return {
+              cart: state.cart.map((cartItem) =>
+                cartItem.id === item.id
+                  ? {
+                      ...cartItem,
+                      quantity: cartItem.quantity + 1,
+                    }
+                  : cartItem
+              ),
+              isCartOpen: true, // Abrir el carrito
+            };
+          }
+          return {
+            cart: [...state.cart, { ...item, quantity: 1 }],
+            isCartOpen: true, // Abrir el carrito
+          };
+        }),
+      removeFromCart: (id) =>
+        set((state) => ({
+          cart: state.cart.filter((item) => item.id !== id),
+        })),
+      decreaseQuantity: (id) =>
+        set((state) => {
+          const existingItem = state.cart.find(
+            (cartItem) => cartItem.id === id
+          );
+          if (existingItem && existingItem.quantity > 1) {
+            return {
+              cart: state.cart.map((cartItem) =>
+                cartItem.id === id
+                  ? {
+                      ...cartItem,
+                      quantity: cartItem.quantity - 1,
+                    }
+                  : cartItem
+              ),
+            };
+          } else {
+            return {
+              cart: state.cart.filter((cartItem) => cartItem.id !== id),
+            };
+          }
+        }),
+      openCart: () => set({ isCartOpen: true }),
+      closeCart: () => set({ isCartOpen: false }),
     }),
-  removeFromCart: (id) =>
-    set((state) => ({
-      cart: state.cart.filter((item) => item.id !== id),
-    })),
-  decreaseQuantity: (id) =>
-    set((state) => {
-      const existingItem = state.cart.find((cartItem) => cartItem.id === id);
-      if (existingItem && existingItem.quantity > 1) {
-        return {
-          cart: state.cart.map((cartItem) =>
-            cartItem.id === id
-              ? {
-                  ...cartItem,
-                  quantity: cartItem.quantity - 1,
-                }
-              : cartItem
-          ),
-        };
-      } else {
-        return {
-          cart: state.cart.filter((cartItem) => cartItem.id !== id),
-        };
-      }
-    }),
-}));
-
+    {
+      name: "cart-storage", // Nombre para identificar en el localStorage
+      getStorage: () => localStorage, // Definir el uso de localStorage
+    }
+  )
+);
