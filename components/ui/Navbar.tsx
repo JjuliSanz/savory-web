@@ -10,6 +10,8 @@ import Link from "next/link";
 import { cn } from "@/utils/cn";
 import { usePathname } from "next/navigation";
 import { libre } from "@/app/fonts";
+import { CartIcon } from "@/assets/icons/CartIcon";
+import Cart from "../Cart";
 
 const ListItem = ({
   href,
@@ -42,6 +44,7 @@ const ListItem = ({
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [borderMarron, setBorderMarron] = useState(false);
+
   const pathname = usePathname();
 
   useEffect(() => {
@@ -86,6 +89,8 @@ const Navbar = () => {
             classNameProp="hidden sm:block"
             pathname={pathname}
           />
+          {/* CART */}
+          <Cart/>
           {/* MOBILE MENU ICON */}
           <li className="sm:hidden">
             <svg

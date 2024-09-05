@@ -1,9 +1,8 @@
 "use client";
-"use client";
 import { motion } from "framer-motion";
 import { MenuItem } from "@/types";
 import Image from "next/image";
-import React from "react";
+import { useCartStore } from "@/store/cartStore";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -19,6 +18,19 @@ const itemVariants = {
 };
 
 const MenuCard = ({ item }: { item: MenuItem }) => {
+  const addToCart = useCartStore((state) => state.addToCart);
+  
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: item._id, // or item.id if you prefer to use the numeric id
+      title: item.title,
+      price: parseFloat(item.price), // Assuming the price is stored as a string
+      imageSrc: item.imageSrc,
+      quantity: 1,
+      totalPrice: parseFloat(item.price)
+    };
+    addToCart(cartItem);
+  };
   return (
     <motion.div
       initial="hidden"
@@ -51,6 +63,9 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
         <p className="text-end text-blanco-oscuro font-semibold text-2xl md:text-xl lg:text-2xl">
           {item.price} $
         </p>
+        <button onClick={handleAddToCart} className="px-6 py-3 w-fit mx-auto flex motion-safe:transition duration-300 ease-in-out text-xl font-medium rounded bg-blanco-oscuro border-4 border-marron text-marron outline-none focus:outline-none hover:bg-marron hover:text-blanco-oscuro hover:scale-95 active:scale-95">
+          Agregar al carrito
+        </button>
       </div>
     </motion.div>
   );
