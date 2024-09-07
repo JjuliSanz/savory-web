@@ -3,7 +3,15 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { container, leftItem, rightItem } from "@/variants";
-import { ClockIcon, DeliveryIcon, FacebookIcon, InstagramIcon, PhoneIcon, PinIcon, WhatsIcon } from "@/assets/icons";
+import {
+  ClockIcon,
+  DeliveryIcon,
+  FacebookIcon,
+  InstagramIcon,
+  PhoneIcon,
+  PinIcon,
+  WhatsIcon,
+} from "@/assets/icons";
 
 const Contacto = () => {
   const ref = useRef(null);
@@ -15,11 +23,9 @@ const Contacto = () => {
       variants={container}
       ref={ref}
       id="contacto"
-      className="relative w-full min-h-screen flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden z-20"
-      
+      className="relative w-full min-h-screen bg-fixed bg-top bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden z-20"
     >
-      
-      <div className="md:w-1/2 w-full flex flex-col md:text-left text-center">
+      <div className="md:w-1/2 w-full flex flex-col md:text-left text-center z-20">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={
@@ -36,7 +42,7 @@ const Contacto = () => {
         >
           Ven a Conocernos
         </motion.h2>
-        <motion.ul className="text-2xl md:text-3xl font-semibold text-blanco-oscuro space-y-4">
+        <motion.ul className="text-2xl md:text-3xl font-semibold text-blanco-oscuro space-y-4 z-20">
           <motion.li
             variants={leftItem}
             className="flex items-center gap-2 w-fit"
