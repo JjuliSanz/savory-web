@@ -14,6 +14,7 @@ import { PlusIcon } from "@/assets/icons/PlusIcon";
 import { MinusIcon } from "@/assets/icons/MinusIcon";
 import { shallow } from "zustand/shallow";
 import { cn } from "@/utils/cn";
+import WhiteButton from "./ui/WhiteButton";
 
 const Cart = ({ classNameProp }: { classNameProp: string }) => {
   const { cart, isCartOpen } = useCartStore(
@@ -59,15 +60,15 @@ const Cart = ({ classNameProp }: { classNameProp: string }) => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 0, opacity: 0 }}
             transition={{ ease: "easeInOut", duration: 0.5 }}
-            className="bg-blanco-oscuro/90 w-full sm:w-1/3 max-h-screen p-6 overflow-auto overscroll-contain flex flex-col z-10 "
+            className="bg-blanco-oscuro/90 w-full sm:w-1/3 max-h-screen p-6 overflow-auto overscroll-contain flex flex-col gap-6 z-10 "
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="w-full flex justify-between mb-4">
+            <div className="w-full flex justify-between ">
               <h2 className="text-marron text-4xl font-bold">Carrito</h2>
 
               <CloseIcon
                 width={30}
-                className="text-red-500 font-bold hover:scale-95 transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
+                className="text-red-500 cursor-pointer font-bold hover:scale-95 transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
                 onClick={closeCart}
               />
             </div>
@@ -79,7 +80,7 @@ const Cart = ({ classNameProp }: { classNameProp: string }) => {
               cart.map((item) => (
                 <div
                   key={item.id}
-                  className="w-full pb-2 flex gap-2 border-b border-marron-clarito mb-2"
+                  className="w-full pb-2 flex gap-2 border-b border-marron-clarito"
                 >
                   <Image
                     src={item.imageSrc}
@@ -127,7 +128,13 @@ const Cart = ({ classNameProp }: { classNameProp: string }) => {
               <p className="text-2xl font-semibold">Precio Total:</p>
               <span className="text-2xl font-semibold">${totalPrice}</span>
             </div>
-            
+            {cart.length > 1 && (
+              <WhiteButton
+                href="/checkout"
+                text="Hacer pedido"
+                classNameProps="px-3 py-1"
+              />
+            )}
           </motion.div>
         </motion.div>
       )}

@@ -23,7 +23,7 @@ const Contacto = () => {
       variants={container}
       ref={ref}
       id="contacto"
-      className="relative w-full min-h-screen bg-fixed bg-top bg-cover flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden z-20"
+      className="relative w-full min-h-screen flex flex-col md:flex-row  justify-between text-center px-10 py-20 overflow-hidden z-20"
     >
       <div className="md:w-1/2 w-full flex flex-col md:text-left text-center z-20">
         <motion.h2
