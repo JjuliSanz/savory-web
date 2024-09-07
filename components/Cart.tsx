@@ -77,7 +77,10 @@ const Cart = ({ classNameProp }: { classNameProp: string }) => {
               </p>
             ) : (
               cart.map((item) => (
-                <div key={item.id} className="w-full pb-2 flex gap-2 border-b border-marron-clarito mb-2">
+                <div
+                  key={item.id}
+                  className="w-full pb-2 flex gap-2 border-b border-marron-clarito mb-2"
+                >
                   <Image
                     src={item.imageSrc}
                     alt=""
@@ -124,6 +127,7 @@ const Cart = ({ classNameProp }: { classNameProp: string }) => {
               <p className="text-2xl font-semibold">Precio Total:</p>
               <span className="text-2xl font-semibold">${totalPrice}</span>
             </div>
+            
           </motion.div>
         </motion.div>
       )}
