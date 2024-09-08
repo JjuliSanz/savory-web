@@ -35,6 +35,7 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
     <motion.div
       initial="hidden"
       animate="visible"
+      key={item._id}
       variants={itemVariants}
       className="bg-marron rounded-lg flex flex-col"
     >

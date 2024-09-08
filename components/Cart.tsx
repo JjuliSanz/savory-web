@@ -128,7 +128,7 @@ const Cart = ({ classNameProp }: { classNameProp: string }) => {
               <p className="text-2xl font-semibold">Precio Total:</p>
               <span className="text-2xl font-semibold">${totalPrice}</span>
             </div>
-            {cart.length > 1 && (
+            {cart.length > 0 && (
               <WhiteButton
                 href="/checkout"
                 text="Hacer pedido"
