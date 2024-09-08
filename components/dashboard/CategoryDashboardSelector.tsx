@@ -1,7 +1,6 @@
 "use client";
 import { MenuTab } from "@/types";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 
 const menuTabs: MenuTab[] = [
   {
@@ -66,9 +65,8 @@ const CategoryDashboardSelector = ({
     <nav className="w-fit max-w-3xl mx-auto flex justify-center p-4 bg-marron rounded">
       <ul className="flex flex-wrap justify-center gap-4">
         {menuTabs.map((category) => (
-          <motion.li
+          <li
             key={category.value}
-            layoutId="underline"
             className={`cursor-pointer text-lg font-semibold hover:text-blanco-oscuro duration-300 ease-in-out transition  ${
               selectedCategory === category.value
                 ? "text-blanco-oscuro underline"
@@ -77,7 +75,7 @@ const CategoryDashboardSelector = ({
             onClick={() => handleCategoryChange(category.value)}
           >
             {category.title.charAt(0).toUpperCase() + category.title.slice(1)}
-          </motion.li>
+          </li>
         ))}
       </ul>
     </nav>
