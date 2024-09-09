@@ -6,8 +6,7 @@ import { CloseIcon } from "@/assets/icons/CloseIcon";
 import { MenuItem, State } from "@/types";
 import { updateMenuItem } from "@/utils/serverActions";
 import { useFormState, useFormStatus } from "react-dom";
-import { revalidatePath } from "next/cache";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Button = () => {
   const { pending } = useFormStatus();
@@ -126,6 +125,7 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   <option value="Ensaladas">Ensaladas</option>
                   <option value="Postres_Helados">Postres Helados</option>
                   <option value="Heladeria">Heladería</option>
+                  <option value="Sabores_Helado">Sabores de Helado</option>
                 </select>
                 <div id="category-error" aria-live="polite" aria-atomic="true">
                   {state.errors?.category &&

@@ -52,6 +52,11 @@ const menuTabs: MenuTab[] = [
     title: "Heladeria",
     value: "Heladeria",
   },
+  {
+    title: "Sabores de Helado",
+    value: "Sabores_Helado",
+  },
+
 ];
 const CategorySelector = ({
   selectedCategory,
