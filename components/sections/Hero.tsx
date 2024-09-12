@@ -5,6 +5,21 @@ import Logo from "@/assets/Logo";
 import { container, upItem } from "@/variants";
 import Link from "next/link";
 
+const staggerContainer = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5, // Orquestación
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
+};
+
 const Hero = () => {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
@@ -22,9 +37,9 @@ const Hero = () => {
   }, []);
   return (
     <motion.section
+      variants={staggerContainer}
       initial="hidden"
       animate="visible"
-      variants={container}
       id="inicio"
       className="relative min-h-[calc(100vh-44px)] h-[calc(100vh-44px)] w-full flex flex-col items-center justify-center overflow-hidden gap-6"
     >
@@ -58,42 +73,27 @@ const Hero = () => {
         </video>
       </div>
 
-      <div className="flex items-center justify-center z-20 w-[300px] sm:w-[600px]">
+      <motion.div
+        variants={childVariants}
+        className="flex items-center justify-center z-20 w-[300px] sm:w-[600px]"
+      >
         <Logo />
-      </div>
+      </motion.div>
 
       <motion.p
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: {
-            delay: 0.8,
-            duration: 0.5,
-            ease: "easeInOut",
-          },
-        }}
+        variants={childVariants}
         className="text-4xl font-medium relative z-10 text-blanco-oscuro"
       >
         Heladería y Cafetería
       </motion.p>
 
       <motion.button
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: {
-            delay: 1.6,
-            duration: 0.5,
-            ease: "easeInOut",
-          },
-        }}
+        variants={childVariants}
         className="w-fit mx-auto relative"
       >
         <Link
           href="/menu"
-          className="flex motion-safe:transition duration-300 ease-in-out text-3xl font-medium rounded bg-marron border-4 border-blanco-oscuro text-blanco-oscuro outline-none focus:outline-none hover:bg-blanco-oscuro hover:text-marron hover:scale-95 brownButtonShadow px-6 py-3"
-
-          // active:bg-marron active:text-blanco-oscuro
+          className="flex motion-safe:transition duration-300 ease-in-out text-3xl font-medium rounded bg-marron border-4 border-blanco-oscuro text-blanco-oscuro brownButtonShadow px-6 py-3 outline-none focus:outline-none hover:bg-blanco-oscuro hover:text-marron hover:scale-95 active:bg-blanco-oscuro active:text-marron active:scale-95"
         >
           Menú
         </Link>

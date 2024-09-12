@@ -13,7 +13,6 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Parallax } from "swiper/modules";
 import { ArrowRight } from "@/assets/icons/ArrowRight";
 import { ArrowLeft } from "@/assets/icons/ArrowLeft";
-import Footer from "../ui/Footer";
 import { container, upItem } from "@/variants";
 
 const Card = ({
@@ -209,14 +208,13 @@ const MenuCards = () => {
       </Swiper>
       <div className="custom-pagination relative z-20 mt-4"></div>
       {/* LEFT ARROW */}
-      <motion.div className="z-10 custom-prev absolute left-[0%] top-[10%] cursor-pointer ">
+      <motion.div className="z-10 custom-prev absolute left-[0%] top-[15%] cursor-pointer ">
         <ArrowLeft className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
       {/* RIGHT ARROW */}
-      <motion.div className="z-10 custom-next absolute right-[-0%] top-[10%] cursor-pointer ">
+      <motion.div className="z-10 custom-next absolute right-[-0%] top-[15%] cursor-pointer ">
         <ArrowRight className="text-blanco-oscuro w-20 hover:opacity-80 hover:scale-90 active:opacity-80 active:scale-90 transition duration-300 ease-in-out" />
       </motion.div>
-      <Footer />
     </motion.section>
   );
 };

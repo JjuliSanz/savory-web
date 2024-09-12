@@ -21,7 +21,7 @@ const SearchBarMenu = ({ placeholder }: { placeholder: string }) => {
     replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, 300);
   return (
-    <div className="relative flex w-[400px] z-10 mt-10 mx-auto">
+    <div className="relative flex w-[300px] sm:w-[400px] z-10 mt-10 mx-auto">
       <label htmlFor="search" className="sr-only">
         Search
       </label>

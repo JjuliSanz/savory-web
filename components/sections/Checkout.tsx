@@ -104,7 +104,7 @@ const CheckoutForm = () => {
             <button
               type="button"
               onClick={handleSubmit}
-              className="w-fit text-xl font-medium bg-green-600 text-blanco px-3 py-1 rounded hover:bg-green-700 transition mx-auto min-h-[72px] flex items-center justify-center"
+              className="w-fit text-xl font-medium bg-green-600 text-blanco px-3 py-1 rounded hover:bg-green-800 hover:scale-95 active:bg-green-800 active:scale-95 transition mx-auto min-h-[72px] flex items-center justify-center"
             >
               Hacer orden via WhatsApp
             </button>
