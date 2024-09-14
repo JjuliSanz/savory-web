@@ -2,9 +2,7 @@ import { motion } from "framer-motion";
 
 import { Suspense } from "react";
 
-
 import LoadingSkeleton from "@/components/dashboard/LoadingSkeleton";
-
 
 import CategoryDashboardSelector from "@/components/dashboard/CategoryDashboardSelector";
 import ToTopButton from "@/components/ToTopButton";
@@ -19,7 +17,6 @@ export default async function Dashboard({
 }) {
   const selectedCategory = searchParams?.category || "Promociones";
   const query = searchParams?.query || "";
-
 
   return (
     <main className={`flex-1 ml-56 p-8 bg-blanco-oscuro`}>
@@ -41,7 +38,10 @@ export default async function Dashboard({
           <div className="col-span-1 ">Acciones</div>
         </div>
         <Suspense fallback={<LoadingSkeleton />}>
-          <MenuDashboardList selectedCategory={selectedCategory} query={query} />
+          <MenuDashboardList
+            selectedCategory={selectedCategory}
+            query={query}
+          />
         </Suspense>
       </div>
       <ToTopButton />

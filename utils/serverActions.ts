@@ -53,14 +53,12 @@ const FormSchema = z.object({
     .string()
     .min(1, { message: "Ingrese un título válido" })
     .max(60, { message: "El titulo no puede exeder los 60 caracteres" }),
-  description: z.string().optional(), // Descripción opcional
-  imageSrc: z.string().min(1, { message: "La imagen es obligatoria" }), // Imagen obligatoria
-  price: z
-  .string()
-  .min(1, { message: "El precio no puede estar vacío" })
-  .regex(/^(\d+(\.\d{1,2})?|-)?$/, {
-    message: "El precio debe ser un número válido o '-'",
-  }),
+  description: z.string().optional(),
+  imageSrc: z
+    .string()
+    .min(1, { message: "La imagen es obligatoria" })
+    .regex(/^\/.*/, { message: "La URL de la imagen debe comenzar con '/'" }),
+  price: z.string().min(1, { message: "El precio no puede estar vacío" }),
 });
 
 const CreateMenuItem = FormSchema.omit({ _id: true });

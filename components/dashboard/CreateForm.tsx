@@ -88,10 +88,18 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
             <option value="Sandwiches">Sandwiches</option>
             <option value="Ensaladas">Ensaladas</option>
             <option value="Postres_Helados">Postres Helados</option>
+            <option value="Barras_Heladas">Barras Heladas</option>
+            <option value="Tortas_Heladas">Tortas Heladas</option>
             <option value="Heladeria">Heladería</option>
+            <option value="Sabores_Helado">Sabores de Helado</option>
           </select>
         </div>
-        <div id="category-error" aria-live="polite" aria-atomic="true" className="">
+        <div
+          id="category-error"
+          aria-live="polite"
+          aria-atomic="true"
+          className=""
+        >
           {state.errors?.category &&
             state.errors.category.map((error: string) => (
               <p className="text-base font-medium text-red-500" key={error}>
@@ -137,7 +145,12 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
           aria-describedby="description-error"
         />
       </div>
-      <div id="description-error" aria-live="polite" aria-atomic="true" className="">
+      <div
+        id="description-error"
+        aria-live="polite"
+        aria-atomic="true"
+        className=""
+      >
         {state.errors?.description &&
           state.errors.description.map((error: string) => (
             <p className="text-base font-medium text-red-500" key={error}>
@@ -160,7 +173,12 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
           aria-describedby="imageSrc-error"
         />
       </div>
-      <div id="imageSrc-error" aria-live="polite" aria-atomic="true" className="">
+      <div
+        id="imageSrc-error"
+        aria-live="polite"
+        aria-atomic="true"
+        className=""
+      >
         {state.errors?.imageSrc &&
           state.errors.imageSrc.map((error: string) => (
             <p className="text-base font-medium text-red-500" key={error}>

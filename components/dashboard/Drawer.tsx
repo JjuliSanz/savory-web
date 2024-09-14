@@ -124,6 +124,8 @@ export const Drawer = ({ selectedItem }: { selectedItem: MenuItem }) => {
                   <option value="Sandwiches">Sandwiches</option>
                   <option value="Ensaladas">Ensaladas</option>
                   <option value="Postres_Helados">Postres Helados</option>
+                  <option value="Barras_Heladas">Barras Heladas</option>
+                  <option value="Tortas_Heladas">Tortas Heladas</option>
                   <option value="Heladeria">Heladería</option>
                   <option value="Sabores_Helado">Sabores de Helado</option>
                 </select>

@@ -49,6 +49,14 @@ const menuTabs: MenuTab[] = [
     value: "Postres_Helados",
   },
   {
+    title: "Barras Heladas",
+    value: "Barras_Heladas",
+  },
+  {
+    title: "Tortas Heladas",
+    value: "Tortas_Heladas",
+  },
+  {
     title: "Heladeria",
     value: "Heladeria",
   },
