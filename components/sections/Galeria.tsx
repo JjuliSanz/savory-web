@@ -90,7 +90,7 @@ const Galeria = () => {
       id: 7,
     },
     {
-      src: "/food/yogurts.jpeg",
+      src: "/food/frios/yogurts.jpeg",
       alt: "Yogurts",
       id: 8,
     },

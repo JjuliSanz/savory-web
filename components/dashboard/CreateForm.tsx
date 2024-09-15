@@ -81,7 +81,10 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
             <option value="Promociones">Promociones</option>
             <option value="Cafeteria">Cafetería</option>
             <option value="Frios">Frios</option>
-            <option value="Tortas_Delicias">Tortas y Delicias</option>
+            <option value="Yogurts">Yogurts</option>
+            <option value="Tortas">Tortas</option>
+            <option value="Tortas_Heladas">Tortas Heladas</option>
+            <option value="Dulces">Dulces</option>
             <option value="Salados_Clasicos">Salados Clásicos</option>
             <option value="Tostones">Tostones</option>
             <option value="Wraps">Wraps</option>
@@ -89,7 +92,6 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
             <option value="Ensaladas">Ensaladas</option>
             <option value="Postres_Helados">Postres Helados</option>
             <option value="Barras_Heladas">Barras Heladas</option>
-            <option value="Tortas_Heladas">Tortas Heladas</option>
             <option value="Heladeria">Heladería</option>
             <option value="Sabores_Helado">Sabores de Helado</option>
           </select>

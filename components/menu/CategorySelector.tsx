@@ -1,71 +1,9 @@
 "use client";
-import { MenuTab } from "@/types";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { menuTabs } from "@/constants";
 
-const menuTabs: MenuTab[] = [
-  {
-    title: "Promociones",
-    value: "Promociones",
-  },
-  {
-    title: "Cafetería",
-    value: "Cafeteria",
-  },
-  {
-    title: "Frios",
-    value: "Frios",
-  },
-  {
-    title: "Yogurts",
-    value: "Yogurts",
-  },
-  {
-    title: "Tortas y Delicias",
-    value: "Tortas_Delicias",
-  },
-  {
-    title: "Salados Clasicos",
-    value: "Salados_Clasicos",
-  },
-  {
-    title: "Tostones",
-    value: "Tostones",
-  },
-  {
-    title: "Wraps",
-    value: "Wraps",
-  },
-  {
-    title: "Sandwiches",
-    value: "Sandwiches",
-  },
-  {
-    title: "Ensaladas",
-    value: "Ensaladas",
-  },
-  {
-    title: "Postres Helados",
-    value: "Postres_Helados",
-  },
-  {
-    title: "Barras Heladas",
-    value: "Barras_Heladas",
-  },
-  {
-    title: "Tortas Heladas",
-    value: "Tortas_Heladas",
-  },
-  {
-    title: "Heladeria",
-    value: "Heladeria",
-  },
-  {
-    title: "Sabores de Helado",
-    value: "Sabores_Helado",
-  },
 
-];
 const CategorySelector = ({
   selectedCategory,
 }: {
