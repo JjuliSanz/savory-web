@@ -59,6 +59,7 @@ const Hero = () => {
           loop
           controls={false}
           muted
+          preload="auto"
         >
           <source src="/heroVideo2sm.mp4" type="video/mp4" />
         </video>

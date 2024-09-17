@@ -79,6 +79,11 @@ const Card = ({
 const MenuCards = () => {
   const cards = [
     {
+      imageSrc: "/food/promos/merienda.jpg",
+      title: "Promociones",
+      value: "Promociones",
+    },
+    {
       videoSrc: "/food/videos/Coffe1.mp4",
       imageSrc: "/capuccino-edit.jpg",
       title: "Cafetería",
@@ -88,8 +93,8 @@ const MenuCards = () => {
     {
       videoSrc: "/food/videos/tortas01.mp4",
       imageSrc: "/tortas01.jpg",
-      title: "Tortas y Delicias",
-      value: "Tortas_Delicias",
+      title: "Tortas",
+      value: "Tortas",
     },
     {
       videoSrc: "/food/videos/tostados.mp4",
@@ -137,7 +142,7 @@ const MenuCards = () => {
       initial="hidden"
       animate={isInView && "visible"}
       variants={container}
-      className="min-h-screen w-full px-10 pt-20 pb-4 overflow-hidden bg-[url('/bg.webp')] bg-fixed bg-cover relative"
+      className="min-h-dvh w-full px-10 pt-20 pb-4 overflow-hidden bg-[url('/bg.webp')] bg-fixed bg-cover relative"
     >
       <div className="absolute inset-0 bg-marron opacity-80 z-0"></div>
       <motion.h2
