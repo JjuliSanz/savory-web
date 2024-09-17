@@ -26,7 +26,7 @@ export default async function Dashboard({
 
         {/* ADD PRODUCT */}
         <button className="px-3 py-2 border-2 border-marron text-marron text-lg font-bold rounded-xl hover:scale-95 transition duration-300 ease-in-out hover:bg-marron hover:text-blanco-oscuro">
-          <Link href="/dashboard/addProduct">Agregar Producto</Link>
+          <Link href={`/dashboard/addProduct?category=${selectedCategory}`}>Agregar Producto</Link>
         </button>
       </header>
       <div className="min-w-full bg-blanco mt-10">

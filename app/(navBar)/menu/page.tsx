@@ -6,6 +6,9 @@ import { Suspense } from "react";
 import CardSkeleton from "@/components/menu/CardSkeleton";
 
 import SearchBarMenu from "@/components/menu/SearchBarMenu";
+import Image from "next/image";
+import Link from "next/link";
+import { LinkIcon } from "@/assets/icons";
 
 export default function Menu({
   searchParams,
@@ -20,7 +23,18 @@ export default function Menu({
       <div className="absolute inset-0 bg-marron opacity-80 z-10"></div>
       <CategorySelector selectedCategory={selectedCategory} />
 
-      <SearchBarMenu placeholder="Buscar productos por su titulo" />
+      <div className="relative flex flex-col sm:flex-row gap-4 justify-center items-center mt-10 z-10">
+        <SearchBarMenu placeholder="Buscar productos por su titulo" />
+        {selectedCategory === "Sabores_Helado" && (
+          <Link
+            href="/food/heladeria/sabores.jpeg"
+            target="_blank"
+            className="flex gap-2 text-blanco text-2xl items-center justify-center hover:scale-95 motion-safe:transition ease-in duration-150 hover:opacity-70 active:scale-95 active:opacity-70"
+          >
+            Lista de Sabores <LinkIcon className="" />
+          </Link>
+        )}
+      </div>
 
       <section
         key={selectedCategory}

@@ -26,7 +26,7 @@ const Button = () => {
   );
 };
 
-const CreateForm = ({ nextId }: { nextId: number }) => {
+const CreateForm = ({ nextId, selectedCategory }: { nextId: number, selectedCategory: string }) => {
   const ref = useRef<HTMLFormElement>(null);
   const initialState: State = { message: null, errors: {} };
   const [state, formAction] = useFormState(addMenuItem, initialState);
@@ -74,6 +74,7 @@ const CreateForm = ({ nextId }: { nextId: number }) => {
             name="category"
             className="w-full px-3 py-2 border-2 border-marron rounded-xl focus:outline-none focus:border-marron text-lg font-semibold"
             aria-describedby="category-error"
+            value={selectedCategory}
           >
             <option value="" disabled>
               Selecciona la categoría
