@@ -1,7 +1,7 @@
 
-# Las Palmas Pizzeria Website
+# Savory Heladeria & Cafeteria Website
 
-This project showcases the beauty and offerings of our pizzeria through an engaging and interactive web experience. Explore images of our location and delicious food, detailed information about our pizzeria, and a comprehensive menu displaying various pizzas and other dishes, each accompanied by images, descriptions, and prices.
+This project showcases the beauty and offerings of our heladeria through an engaging and interactive web experience. Explore images of our location and delicious food, detailed information about our heladeria, and a comprehensive menu displaying various desserts and other dishes, each accompanied by images, descriptions, and prices.
 
 ## Features
 
@@ -93,7 +93,8 @@ Building this project for Las Palmas Pizzeria was a valuable learning experience
 
 - [@JjuliSanz](https://github.com/JjuliSanz)
 
+
 <p>
-  <img src="public/title.svg" alt="Savory heladeria" width="600"/> 
+  <img src="public/title.svg" alt="Savory heladeria" width="400"/> 
 </p>
 
