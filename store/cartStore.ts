@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 interface CartItem {
   id: string;
@@ -9,7 +9,7 @@ interface CartItem {
   quantity: number;
 }
 
-interface CartState {
+export interface CartState {
   cart: CartItem[];
   isCartOpen: boolean; // Estado del carrito
   addToCart: (item: CartItem) => void;
@@ -35,7 +35,7 @@ export const calculateIndividualPrice = (
 };
 
 export const useCartStore = create<CartState>()(
-  persist(
+  persist<CartState>(
     (set) => ({
       cart: [],
       isCartOpen: false,
@@ -93,7 +93,7 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: "cart-storage", // Nombre para identificar en el localStorage
-      getStorage: () => localStorage, // Definir el uso de localStorage
+      storage: createJSONStorage(() => localStorage), // Definir el uso de localStorage
     }
   )
 );

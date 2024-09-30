@@ -6,23 +6,23 @@ import {
   calculateIndividualPrice,
   calculateTotalItems,
   calculateTotalPrice,
+  CartState,
   useCartStore,
 } from "@/store/cartStore";
 import { CartIcon } from "@/assets/icons/CartIcon";
 import { TrashIcon } from "@/assets/icons/TrashIcon";
 import { PlusIcon } from "@/assets/icons/PlusIcon";
 import { MinusIcon } from "@/assets/icons/MinusIcon";
-import { shallow } from "zustand/shallow";
 import { cn } from "@/utils/cn";
 import WhiteButton from "./ui/WhiteButton";
+import { useShallow } from "zustand/react/shallow";
 
 const Cart = ({ classNameProp }: { classNameProp: string }) => {
   const { cart, isCartOpen } = useCartStore(
-    (state) => ({
+    useShallow((state: CartState) => ({
       cart: state.cart,
       isCartOpen: state.isCartOpen,
-    }),
-    shallow
+    }))
   );
   const { addToCart, removeFromCart, decreaseQuantity, openCart, closeCart } =
     useCartStore();
