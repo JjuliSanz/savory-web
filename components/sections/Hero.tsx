@@ -93,7 +93,7 @@ const Hero = () => {
         className="w-fit mx-auto relative"
       >
         <Link
-          href="/menu"
+          href="/menu?category=promociones"
           className="flex motion-safe:transition duration-300 ease-in-out text-3xl font-medium rounded bg-marron border-4 border-blanco-oscuro text-blanco-oscuro brownButtonShadow px-6 py-3 outline-none focus:outline-none hover:bg-blanco-oscuro hover:text-marron hover:scale-95 active:bg-blanco-oscuro active:text-marron active:scale-95"
         >
           Menú

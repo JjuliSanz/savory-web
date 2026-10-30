@@ -42,7 +42,7 @@ const Heladeria = () => {
           el compromiso de proporcionar lo mejor a nuestros clientes."
           classNameProps="text-blanco-oscuro"
         />
-        <BrownButton href="/menu" text="Menú" classNameProps="px-4 py-2" />
+        <BrownButton href="/menu?category=promociones" text="Menú" classNameProps="px-4 py-2" />
       </div>
       {/* Imagenes */}
       <div className="md:w-1/2 w-full mt-6 md:mt-0 flex flex-row gap-4">

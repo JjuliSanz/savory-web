@@ -31,7 +31,7 @@ const Footer = () => {
         </Link>
         <ul className="flex flex-wrap items-center gap-4 text-xl sm:text-2xl font-medium text-blanco-oscuro ">
           <ListItem href="/nosotros" text="Nosotros" />
-          <ListItem href="/menu?category=Promociones" text="Menú" />
+          <ListItem href="/menu?category=promociones" text="Menú" />
           <ListItem href="/contacto" text="Contacto" />
           {/* Whatsapp */}
           <li>

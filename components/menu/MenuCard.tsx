@@ -22,7 +22,7 @@ const MenuCard = ({ item }: { item: MenuItem }) => {
 
   const handleAddToCart = () => {
     const cartItem = {
-      id: item._id, // or item.id if you prefer to use the numeric id
+      id: item._id || `${item.category}-${item.id}`,
       title: item.title,
       price: parseFloat(item.price), // Assuming the price is stored as a string
       imageSrc: item.imageSrc,

@@ -24,7 +24,7 @@ const CheckoutForm = () => {
     );
   };
   return (
-    <form className="w-[95%] max-w-[800px] p-4 h-full overflow-auto overscroll-contain bg-marron rounded relative text-marron-claro flex flex-col gap-6 font-sans">
+    <form className="w-[95%] max-w-[800px] p-4 h-full  bg-marron rounded relative text-marron-claro flex flex-col gap-6 font-sans">
       {cart.length > 0 ? (
         <>
           <input
@@ -79,7 +79,7 @@ const CheckoutForm = () => {
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="text-xl font-medium flex justify-between items-center border-b border-marron-clarito"
+                className="text-xl font-medium flex gap-2 justify-between items-center border-b border-marron-clarito"
               >
                 <span>
                   {item.title} x{item.quantity}
@@ -97,7 +97,7 @@ const CheckoutForm = () => {
 
           <div className="flex flex-col 500:flex-row gap-4 min-h-[72px] mt-6 items-center justify-center">
             <BrownButton
-              href="/menu?category=Promociones"
+              href="/menu?category=promociones"
               text="Agregar mas productos"
               classNameProps="px-3 py-1 text-xl rounded brownButtonShadow-none min-h-[72px] flex items-center justify-center"
             />
@@ -116,7 +116,7 @@ const CheckoutForm = () => {
             No hay productos en el carrito
           </p>
           <BrownButton
-            href="/menu?category=Promociones"
+            href="/menu?category=promociones"
             text="Menú"
             classNameProps="px-3 py-1 text-xl"
           />

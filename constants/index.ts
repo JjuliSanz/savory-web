@@ -6,63 +6,63 @@ export const promociones: MenuItem[] = [
     id: 1,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "Jarrito + 2 Medialunas",
-    price: "$2600",
+    price: "2600",
   },
   {
     _id: "",
     id: 2,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "Café con Leche + 3 Medialunas",
-    price: "$3400",
+    price: "3400",
   },
   {
     _id: "",
     id: 3,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "Tostado + Vaso de jugo",
-    price: "$7300",
+    price: "7300",
   },
   {
     _id: "",
     id: 4,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "Capuccino + 3 Medialunas ",
-    price: "$3800",
+    price: "3800",
   },
   {
     _id: "",
     id: 5,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "Medialuna grande de jamón y queso + Gaseosa",
-    price: "$6800",
+    price: "6800",
   },
   {
     _id: "",
     id: 6,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "2 Submarinos o 2 Capuccinos + 1 Porción de torta",
-    price: "$12300",
+    price: "12300",
   },
   {
     _id: "",
     id: 7,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "2 Cafés con Leche + Canasta de Tostadas ",
-    price: "$9000",
+    price: "9000",
   },
   {
     _id: "",
     id: 8,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "Café con leche + Muffin a elección",
-    price: "$3600",
+    price: "3600",
   },
   {
     _id: "",
     id: 9,
     imageSrc: "/food/combo-entrada.jpeg",
     title: "Café con leche + Porción de budín a elección",
-    price: "$3800",
+    price: "3800",
   },
 ];
 
@@ -73,7 +73,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café en Pocillo",
-    price: "$50",
+    price: "50",
   },
   {
     _id: "",
@@ -81,7 +81,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café en Jarrito",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -89,7 +89,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Cortado en Jarrito",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -97,7 +97,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Lágrima en Jarrito",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -105,7 +105,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café con Leche",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -113,7 +113,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café Latte",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -121,7 +121,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Café Doble",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -129,7 +129,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Lágrima Doble",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -137,14 +137,14 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Capuccino",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
     id: 10,
     imageSrc: "/capuccino-edit.jpg",
     title: "Submarino",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -152,7 +152,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Chocolatada",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -160,7 +160,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Mate cocido / Té",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -168,7 +168,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Té",
-    price: "$60",
+    price: "60",
   },
   {
     _id: "",
@@ -176,7 +176,7 @@ export const cafeteria: MenuItem[] = [
     category: "Cafeteria",
     imageSrc: "/capuccino-edit.jpg",
     title: "Mate cocido",
-    price: "$60",
+    price: "60",
   },
 ];
 
@@ -186,7 +186,7 @@ export const frios: MenuItem[] = [
     id: 1,
     imageSrc: "/milkshake-varios.jpg",
     title: "Cold brew",
-    price: "$2800",
+    price: "2800",
   },
   {
     _id: "",
@@ -194,7 +194,7 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Nutella latte",
     description: "Café, nutella y leche cremosa",
-    price: "$4100",
+    price: "4100",
   },
   {
     _id: "",
@@ -202,7 +202,7 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Frapuccino",
     description: "Dulce de leche, Oreo y chocotorta",
-    price: "$4900",
+    price: "4900",
   },
   {
     _id: "",
@@ -210,7 +210,7 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Licuado con agua",
     description: "Consultar frutas del día.",
-    price: "$2900",
+    price: "2900",
   },
   {
     _id: "",
@@ -218,7 +218,7 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Licuado con jugo",
     description: "Consultar frutas del día.",
-    price: "$3400",
+    price: "3400",
   },
   {
     _id: "",
@@ -226,21 +226,21 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Licuado con leche",
     description: "Consultar frutas del día.",
-    price: "$3200",
+    price: "3200",
   },
   {
     _id: "",
     id: 7,
     imageSrc: "/milkshake-varios.jpg",
     title: "Limonada",
-    price: "$3800",
+    price: "3800",
   },
   {
     _id: "",
     id: 8,
     imageSrc: "/milkshake-varios.jpg",
     title: "Limonada con menta y jengibre ",
-    price: "$3800",
+    price: "3800",
   },
   {
     _id: "",
@@ -248,7 +248,7 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Sundae",
     description: "Ensalada de frutas + 3 bochas de helado + crema",
-    price: "$6300",
+    price: "6300",
   },
   {
     _id: "",
@@ -256,21 +256,21 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Don pedro",
     description: "Helado de americana (2 bochas) + nueces y whisky",
-    price: "$4800",
+    price: "4800",
   },
   {
     _id: "",
     id: 11,
     imageSrc: "/milkshake-varios.jpg",
     title: "Jugo de naranja ",
-    price: "$2800",
+    price: "2800",
   },
   {
     _id: "",
     id: 12,
     imageSrc: "/milkshake-varios.jpg",
     title: "Jugo de naranja durazno",
-    price: "$2800",
+    price: "2800",
   },
   {
     _id: "",
@@ -278,7 +278,7 @@ export const frios: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Milshakes",
     description: "Batido de leche con sabor de helado a elección",
-    price: "$3800",
+    price: "3800",
   },
 ];
 
@@ -290,7 +290,7 @@ export const yogurts: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt Natural",
     description: "Durazno, kiwi, banana y cereales",
-    price: "$3800",
+    price: "3800",
   },
   {
     _id: "",
@@ -299,7 +299,7 @@ export const yogurts: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt de Frutos",
     description: "Frutos rojos y cereales",
-    price: "$4900",
+    price: "4900",
   },
   {
     _id: "",
@@ -308,7 +308,7 @@ export const yogurts: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Yogurt Maracuya",
     description: "Durazno y cereales",
-    price: "$4900",
+    price: "4900",
   },
 ];
 
@@ -319,7 +319,7 @@ export const tortas_delicias: MenuItem[] = [
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Raffaello",
     description: "Cheescake de coco y chocolate blanco",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
@@ -328,7 +328,7 @@ export const tortas_delicias: MenuItem[] = [
     title: "Cheescake con brownie",
     description:
       "Cheescake de Vainilla horneado con base de brownke y salsa de frutos rojos",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
@@ -336,35 +336,35 @@ export const tortas_delicias: MenuItem[] = [
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Mantecol",
     description: "Cheescake de mantecol con pedacitos de mantecol",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 4,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Lemon Pie",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 5,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Cheescake de Frutos",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 6,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Cheescake de Frutilla",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 7,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Shot",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
@@ -373,35 +373,35 @@ export const tortas_delicias: MenuItem[] = [
     title: "Torta Balcarce",
     description:
       "Pionono, dulce de leche, crema y frutos secos (nueces, almendras, pasas de uva)",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 9,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Oreo",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 10,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Choco Oreo",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 11,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Chocotorta",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
     id: 12,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Torta Tiramisú",
-    price: "$7000",
+    price: "7000",
   },
   {
     _id: "",
@@ -409,7 +409,7 @@ export const tortas_delicias: MenuItem[] = [
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con dulce de leche",
     description: "Dos unidades",
-    price: "$3700",
+    price: "3700",
   },
   {
     _id: "",
@@ -417,7 +417,7 @@ export const tortas_delicias: MenuItem[] = [
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con Nutella",
     description: "Dos unidades",
-    price: "$4500",
+    price: "4500",
   },
   {
     _id: "",
@@ -425,7 +425,7 @@ export const tortas_delicias: MenuItem[] = [
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con dulce de leche + bocha de helado",
     description: "Dos unidades + bocha de helado (Sabor a elección)",
-    price: "$4600",
+    price: "4600",
   },
   {
     _id: "",
@@ -433,63 +433,63 @@ export const tortas_delicias: MenuItem[] = [
     imageSrc: "/food/chocotorta.jpeg",
     title: "Panqueque con nutella + bocha de helado",
     description: "Dos unidades + bocha de helado (Sabor a elección)",
-    price: "$5400",
+    price: "5400",
   },
   {
     _id: "",
     id: 17,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Medialunas de manteca",
-    price: "$350",
+    price: "350",
   },
   {
     _id: "",
     id: 18,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Muffin de dulce de leche",
-    price: "$1300",
+    price: "1300",
   },
   {
     _id: "",
     id: 19,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Muffin de frutos rojos",
-    price: "$1300",
+    price: "1300",
   },
   {
     _id: "",
     id: 19,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Budín marmolado",
-    price: "$1500",
+    price: "1500",
   },
   {
     _id: "",
     id: 19,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Budín de limón y amapolas",
-    price: "$1500",
+    price: "1500",
   },
   {
     _id: "",
     id: 19,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Budín de banana y nuez pecan",
-    price: "$1500",
+    price: "1500",
   },
   {
     _id: "",
     id: 19,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Alfajor cookie de pistacho",
-    price: "$3800",
+    price: "3800",
   },
   {
     _id: "",
     id: 19,
     imageSrc: "/food/chocotorta.jpeg",
     title: "Alfajor cookie de mantecol",
-    price: "$3800",
+    price: "3800",
   },
 ];
 
@@ -501,7 +501,7 @@ export const salados_clasicos: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Tostado de jamón y queso ",
     description: "En pan de miga",
-    price: "$4800",
+    price: "4800",
   },
   {
     _id: "",
@@ -510,7 +510,7 @@ export const salados_clasicos: MenuItem[] = [
     imageSrc: "/milkshake-varios.jpg",
     title: "Medio tostado ",
     description: "En pan de miga",
-    price: "$3200",
+    price: "3200",
   },
   {
     _id: "",
@@ -518,7 +518,7 @@ export const salados_clasicos: MenuItem[] = [
     category: "Salados_Clasicos",
     imageSrc: "/milkshake-varios.jpg",
     title: "Medialuna grande de jamon y queso",
-    price: "$5800",
+    price: "5800",
   },
   {
     _id: "",
@@ -528,7 +528,7 @@ export const salados_clasicos: MenuItem[] = [
     title: "Canasta de tostadas ",
     description:
       "Tostadas y grisines con queso crema, mermelada y dulce de leche",
-    price: "$4400",
+    price: "4400",
   },
   {
     _id: "",
@@ -538,7 +538,7 @@ export const salados_clasicos: MenuItem[] = [
     title: "Tostado frances",
     description:
       "Pan de miga, jamón, queso dambo, queso cheddar. ( Embebido en huevo )",
-    price: "$6200",
+    price: "6200",
   },
 ];
 
@@ -551,7 +551,7 @@ export const tostones: MenuItem[] = [
     title: "Avocado Toast",
     description:
       "Huevo revuelto, queso tipo finlandia, palta, tomate y panceta crispy",
-    price: "$6400",
+    price: "6400",
   },
   {
     _id: "",
@@ -560,7 +560,7 @@ export const tostones: MenuItem[] = [
     imageSrc: "/tostones-jugos.webp",
     title: "Crustón",
     description: "Huevo revuelto, rúcula y queso parmesano",
-    price: "$5700",
+    price: "5700",
   },
   {
     _id: "",
@@ -569,7 +569,7 @@ export const tostones: MenuItem[] = [
     imageSrc: "/tostones-jugos.webp",
     title: "Crustón Cru",
     description: "Huevo revuelto, rúcula, queso parmesano y jamón crudo",
-    price: "$6100",
+    price: "6100",
   },
   {
     _id: "",
@@ -578,7 +578,7 @@ export const tostones: MenuItem[] = [
     imageSrc: "/tostones-jugos.webp",
     title: "Salmón toast",
     description: "Queso tipo finlandia, huevo revuelto y salmón ahumado",
-    price: "$9500",
+    price: "9500",
   },
 ];
 
@@ -587,11 +587,11 @@ export const sandwiches: MenuItem[] = [
     _id: "",
     id: 1,
     category: "Sandwiches",
-    imageSrc: "/food/sandwiches/sandwich-lomito.jpg",
+    imageSrc: "/food/sandwiches/sandwich-lomito.jpeg",
     title: "Sandwich Lomito",
     description:
       "Fiambre de lomito, lechuga, tomates, queso y huevo revuelto en pan frances",
-    price: "$7700",
+    price: "7700",
   },
   {
     _id: "",
@@ -600,7 +600,7 @@ export const sandwiches: MenuItem[] = [
     imageSrc: "/food/sandwiches/sandwich-pollo.jpeg",
     title: "Pollo al Verdeo",
     description: "Pollo al verdeo en pan frances",
-    price: "$7900",
+    price: "7900",
   },
   {
     _id: "",
@@ -610,7 +610,7 @@ export const sandwiches: MenuItem[] = [
     title: "Sandwich de Atún",
     description:
       "Atún, cebolla morada, lechuga, tomate, huevo y salsa de queso ciboulette en pan francés",
-    price: "$7200",
+    price: "7200",
   },
   {
     _id: "",
@@ -620,7 +620,7 @@ export const sandwiches: MenuItem[] = [
     title: "Sandwich Bondiola",
     description:
       "Fiambre de bondiola, tomates confitados, queso azul, rúcula y aceite de oliva en pan ciabatta",
-    price: "$7800",
+    price: "7800",
   },
   {
     _id: "",
@@ -628,7 +628,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/focaccia-salame.jpeg",
     title: "Focaccia de salame y queso gouda",
-    price: "$6500",
+    price: "6500",
   },
   {
     _id: "",
@@ -636,7 +636,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/focaccia-mortadela.jpeg",
     title: "Focaccia de mortadela y queso fontina",
-    price: "$6500",
+    price: "6500",
   },
   {
     _id: "",
@@ -644,7 +644,7 @@ export const sandwiches: MenuItem[] = [
     category: "Sandwiches",
     imageSrc: "/food/sandwiches/focaccia-queso.jpeg",
     title: "Focaccia de queso tybo, mortadela y pesto",
-    price: "$6500",
+    price: "6500",
   },
   {
     _id: "",
@@ -653,7 +653,7 @@ export const sandwiches: MenuItem[] = [
     imageSrc: "/food/sandwiches/canoa.jpeg",
     title: "Canoa en pan francés",
     description: "Pollo a los 4 quesos (con pesto)",
-    price: "$7900",
+    price: "7900",
   },
   {
     _id: "",
@@ -662,7 +662,7 @@ export const sandwiches: MenuItem[] = [
     imageSrc: "/food/sandwiches/chipa-de-chedar.jpeg",
     title: "Chipa cheddar",
     description: "Queso cheddar, panceta y huevo revuelto",
-    price: "$6700",
+    price: "6700",
   },
   {
     _id: "",
@@ -671,7 +671,7 @@ export const sandwiches: MenuItem[] = [
     imageSrc: "/food/sandwiches/pan-de-chipa.jpeg",
     title: "Chipa jamón y queso",
     description: "Lechuga, tomate, jamón y queso con salsa de mayonesa",
-    price: "$6300",
+    price: "6300",
   },
   {
     _id: "",
@@ -680,7 +680,7 @@ export const sandwiches: MenuItem[] = [
     imageSrc: "/food/sandwiches/pan-de-chipa.jpeg",
     title: "Chipa jamón crudo",
     description: "Rúcula, jamón crudo, queso, palta y cebolla caramelizada",
-    price: "$7200",
+    price: "7200",
   },
 ];
 
@@ -693,7 +693,7 @@ export const ensaladas: MenuItem[] = [
     title: "Caesar",
     description:
       "Lechuga, queso parmesano, pollo rebozado en cereal, crustones y salsa caesar",
-    price: "$6200",
+    price: "6200",
   },
   {
     _id: "",
@@ -703,7 +703,7 @@ export const ensaladas: MenuItem[] = [
     title: "Sávory",
     description:
       "Arroz, huevo, jamón, queso cremoso, kanikama, zanahoría y choclo",
-    price: "$6600",
+    price: "6600",
   },
 ];
 
@@ -716,7 +716,7 @@ export const postres_helados: MenuItem[] = [
     title: "Paletas Bañadas en chocolate negro",
     description:
       "Pistacho, Chocotorta, Kinder, Menta granizada, Chocolate Block",
-    price: "$3600",
+    price: "3600",
   },
   {
     _id: "",
@@ -726,7 +726,7 @@ export const postres_helados: MenuItem[] = [
     title: "Cubanotes bañados en chocolate negro",
     description:
       "Dulce de leche, vainilla, frutilla a la crema, sambayón, bombon sávory",
-    price: "$3200",
+    price: "3200",
   },
   {
     _id: "",
@@ -735,7 +735,7 @@ export const postres_helados: MenuItem[] = [
     imageSrc: "/food/heladeria/cubatones-blanco.jpeg",
     title: "Cubanotes bañados en chocolate blanco",
     description: "Mascarpone, chocolate suizo, kinder",
-    price: "$3400",
+    price: "3400",
   },
   {
     _id: "",
@@ -744,7 +744,7 @@ export const postres_helados: MenuItem[] = [
     imageSrc: "/food/heladeria/cubatones-bombon.jpeg",
     title: "Cubanotes bañados en chocolate negro con Bombones",
     description: "americana",
-    price: "$3400",
+    price: "3400",
   },
   {
     _id: "",
@@ -752,7 +752,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/alfajores.jpeg",
     title: "Alfajor Bombón sávory",
-    price: "$2800",
+    price: "2800",
   },
   {
     _id: "",
@@ -760,7 +760,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/alfajores.jpeg",
     title: "Alfajor Chocolate",
-    price: "$2800",
+    price: "2800",
   },
   {
     _id: "",
@@ -768,7 +768,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/alfajores.jpeg",
     title: "Alfajor Americana",
-    price: "$2800",
+    price: "2800",
   },
   {
     _id: "",
@@ -776,7 +776,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/alfajores.jpeg",
     title: "Alfajor Dulce de leche",
-    price: "$2800",
+    price: "2800",
   },
   {
     _id: "",
@@ -784,7 +784,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/alfajores-cookies.jpeg",
     title: "Alfajor cookie de pistacho",
-    price: "$3800",
+    price: "3800",
   },
   {
     _id: "",
@@ -792,7 +792,7 @@ export const postres_helados: MenuItem[] = [
     category: "Postres_Helados",
     imageSrc: "/food/heladeria/alfajores-cookies.jpeg",
     title: "Alfajor cookie de mantecol ",
-    price: "$3800",
+    price: "3800",
   },
   {
     _id: "",
@@ -802,7 +802,7 @@ export const postres_helados: MenuItem[] = [
     title: "Bombon Americana",
     description:
       "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
-    price: "$2700",
+    price: "2700",
   },
   {
     _id: "",
@@ -812,7 +812,7 @@ export const postres_helados: MenuItem[] = [
     title: "Bombon Chocolate",
     description:
       "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
-    price: "$2700",
+    price: "2700",
   },
   {
     _id: "",
@@ -822,18 +822,18 @@ export const postres_helados: MenuItem[] = [
     title: "Bombon Dulce de leche",
     description:
       "Rellenos de helado con corazón de dulce de leche repostero y bañado en chocolate negro",
-    price: "$2700",
+    price: "2700",
   },
 ];
 
-export const heladeria: MenuItem[] = [
+export const sabores_helado: MenuItem[] = [
   {
     _id: "",
     id: 1,
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Almendrado",
-    price: "$6400",
+    price: "6400",
   },
   {
     _id: "",
@@ -841,7 +841,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Americana",
-    price: "$5700",
+    price: "5700",
   },
   {
     _id: "",
@@ -849,7 +849,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Banana",
-    price: "$6100",
+    price: "6100",
   },
   {
     _id: "",
@@ -857,7 +857,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Banana Split",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -865,7 +865,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Bananita Dolca",
-    price: "$5700",
+    price: "5700",
   },
   {
     _id: "",
@@ -874,7 +874,7 @@ export const heladeria: MenuItem[] = [
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Bombón Sávory",
     description: "Crema de avellanas con un veteado de chocolate",
-    price: "$6100",
+    price: "6100",
   },
   {
     _id: "",
@@ -882,7 +882,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Cadbury de frutilla",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -890,7 +890,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Cereza a la Pana",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -898,7 +898,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Crema Rusa",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -906,7 +906,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Flan con Dulce de Leche",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -914,7 +914,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Frutilla a la crema",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -922,7 +922,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Frutos del Bosque",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -930,7 +930,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Granizado",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -938,7 +938,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Huevo Kinder",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -946,7 +946,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Kinotos al Whisky",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -954,7 +954,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Mousse de limón",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -962,7 +962,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Mousse de Maracuyá",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -971,7 +971,7 @@ export const heladeria: MenuItem[] = [
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Mascarpone con Frutos",
     description: "Queso mascarpone con salsa de frutos rojos",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -979,7 +979,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Mantecol",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -987,7 +987,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Marroc",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -995,7 +995,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Menta Granizada",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1003,7 +1003,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Pistacho",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1011,7 +1011,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Sambayón",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1019,7 +1019,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Sambayón con almendras",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1027,7 +1027,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Tiramisú",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1035,7 +1035,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Tramontana",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1043,7 +1043,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Vainilla",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1051,7 +1051,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Vainilla al Oreo",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1059,7 +1059,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate clásico",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1067,7 +1067,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate con pasas al Rhum",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1075,7 +1075,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate con almendras",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1083,7 +1083,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate block",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1092,7 +1092,7 @@ export const heladeria: MenuItem[] = [
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate Suizo",
     description: "Chocolate negro al rum con dulce de leche repostero",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1102,7 +1102,7 @@ export const heladeria: MenuItem[] = [
     title: "Chocolate Sávory",
     description:
       "Chocolate negro con dulce de leche repostero y pedacitos de chocolate blanco",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1110,7 +1110,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate amargo",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1118,7 +1118,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocolate blanco",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1128,7 +1128,7 @@ export const heladeria: MenuItem[] = [
     title: "Chocolate blanco tentación",
     description:
       "Chocolate blanco con dulce de leche repostero y bombones rellenos",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1137,7 +1137,7 @@ export const heladeria: MenuItem[] = [
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Raffaello",
     description: "Chocolate blanco con veteado de coco y cereales",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1145,7 +1145,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Ferrero Rocher",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1153,7 +1153,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Dulce de leche clásico",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1161,7 +1161,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Dulce de leche",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1171,7 +1171,7 @@ export const heladeria: MenuItem[] = [
     title: "Dulce de leche Súper",
     description:
       "Dulce de leche repostero y bombones rellenos de dulce de leche",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1179,7 +1179,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Dulce de leche con Brownie",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1187,7 +1187,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Dulce de leche al Oreo",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1195,7 +1195,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Dulce de leche granizado",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1203,7 +1203,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Dulce de leche con Nuez",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1211,7 +1211,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Chocotorta",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1219,7 +1219,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Frutilla al Agua",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1227,7 +1227,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Limón",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1235,7 +1235,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Ananá",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1243,7 +1243,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Durazno",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1251,7 +1251,7 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Frambueza",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1260,7 +1260,7 @@ export const heladeria: MenuItem[] = [
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Limón Siciliano",
     description: "Limón al agua con salsa de frutos rojos",
-    price: "$9500",
+    price: "9500",
   },
   {
     _id: "",
@@ -1268,73 +1268,73 @@ export const heladeria: MenuItem[] = [
     category: "Heladeria",
     imageSrc: "/food/heladeria/pote.jpeg",
     title: "Pera",
-    price: "$9500",
+    price: "9500",
   },
 ];
 
 export const menuTabs: MenuTab[] = [
   {
     title: "Promociones",
-    value: "Promociones",
+    value: "promociones",
   },
   {
     title: "Cafetería",
-    value: "Cafeteria",
+    value: "cafeteria",
   },
   {
     title: "Frios",
-    value: "Frios",
+    value: "frios",
   },
   {
     title: "Yogurts",
-    value: "Yogurts",
+    value: "yogurts",
   },
+  // {
+  //   title: "Tortas",
+  //   value: "tortas",
+  // },
   {
-    title: "Tortas",
-    value: "Tortas",
-  },
-  {
-    title: "Tortas Heladas",
-    value: "Tortas_Heladas",
+    title: "Tortas y Delicias",
+    value: "tortas_delicias",
   },
   {
     title: "Dulces",
-    value: "Dulces",
+    value: "dulces",
   },
   {
     title: "Salados Clasicos",
-    value: "Salados_Clasicos",
+    value: "salados_clasicos",
   },
   {
     title: "Tostones",
-    value: "Tostones",
+    value: "tostones",
   },
-  {
-    title: "Wraps",
-    value: "Wraps",
-  },
+  // {
+  //   title: "Wraps",
+  //   value: "wraps",
+  // },
   {
     title: "Sandwiches",
-    value: "Sandwiches",
+    value: "sandwiches",
   },
   {
     title: "Ensaladas",
-    value: "Ensaladas",
+    value: "ensaladas",
   },
   {
     title: "Postres Helados",
-    value: "Postres_Helados",
+    value: "postres_helados",
   },
-  {
-    title: "Barras Heladas",
-    value: "Barras_Heladas",
-  },
-  {
-    title: "Heladeria",
-    value: "Heladeria",
-  },
+  // {
+  //   title: "Barras Heladas",
+  //   value: "barras_heladas",
+  // },
+  // {
+  //   title: "Heladeria",
+  //   value: "heladeria",
+  // },
   {
     title: "Sabores de Helado",
-    value: "Sabores_Helado",
+    value: "sabores_helado",
   },
 ];

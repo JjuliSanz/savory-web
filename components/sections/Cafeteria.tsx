@@ -110,7 +110,7 @@ const Cafeteria = () => {
           una opción fresca y ligera, perfecta para cualquier momento del día."
           classNameProps="text-marron-claro"
         />
-        <WhiteButton text="Menú" href="/menu" classNameProps="px-4 py-2" />
+        <WhiteButton text="Menú" href="/menu?category=promociones" classNameProps="px-4 py-2" />
       </div>
     </motion.section>
   );

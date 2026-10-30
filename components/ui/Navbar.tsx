@@ -80,7 +80,7 @@ const Navbar = () => {
           <ListItem href="/" title="Sávory" pathname={pathname} />
           {/* DESKTOP MENU */}
           <ListItem
-            href="/menu"
+            href="/menu?category=promociones"
             title="Menú"
             classNameProp="hidden sm:block"
             pathname={pathname}
@@ -122,7 +122,7 @@ const Navbar = () => {
             borderMarron ? "border-marron" : "border-blanco"
           }  bg-negro/60 backdrop-blur-md flex items-center gap-4 text-2xl text-center text-blanco`}
         >
-          <ListItem href="/menu?category=Promociones" title="Menú" />
+          <ListItem href="/menu?category=promociones" title="Menú" />
           <ListItem href="/nosotros" title="Nosotros" />
           <ListItem href="/contacto" title="Contacto" />
           <ListItem href="/galeria" title="Galería" />

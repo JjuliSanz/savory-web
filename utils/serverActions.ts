@@ -10,22 +10,60 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import bcrypt from "bcrypt";
 import Users from "@/models/UsersModel";
+import {
+  promociones,
+  cafeteria,
+  frios,
+  yogurts,
+  tortas_delicias,
+  salados_clasicos,
+  tostones,
+  sandwiches,
+  ensaladas,
+  postres_helados,
+  sabores_helado,
+} from "@/constants";
+
+const localMenuByCategory: Record<string, MenuItem[]> = {
+  promociones,
+  cafeteria,
+  frios,
+  yogurts,
+  tortas_delicias,
+  salados_clasicos,
+  tostones,
+  sandwiches,
+  ensaladas,
+  postres_helados,
+  sabores_helado,
+};
+
+const getLocalMenuItems = (category: string): MenuItem[] =>
+  localMenuByCategory[category] ?? [];
 
 export const getMenuItems = async (category: string) => {
+  if (process.env.USE_LOCAL_DATA === "true") {
+    return getLocalMenuItems(category);
+  }
   try {
     await connectDB();
     // Filtra los elementos del menú por la categoría proporcionada
     const menuItems = await MenuDB.find({ category: category }).sort({ id: 1 });
-    const formattedMenuItems = menuItems.map((item) => ({
-      ...item.toObject(), // Convierte el documento de Mongoose a un objeto simple
-      createdAt: item.createdAt.toISOString(), // Convierte `createdAt` a string
-      updatedAt: item.updatedAt.toISOString(), // Convierte `updatedAt` a string
-    }));
 
-    return formattedMenuItems;
+    // Si la DB responde pero no hay items, usamos los locales
+    if (menuItems.length === 0) {
+      return getLocalMenuItems(category);
+    }
+
+    return menuItems.map((item) => ({
+      ...item.toObject(),
+      createdAt: item.createdAt.toISOString(),
+      updatedAt: item.updatedAt.toISOString(),
+    }));
   } catch (error) {
-    console.error("Error fetching menu items:", error);
-    throw new Error("Failed to fetch menu items");
+    console.error("Error fetching menu items, using local data:", error);
+    // Si la DB está caída o desactivada, también fallback
+    return getLocalMenuItems(category);
   }
 };
 
@@ -126,7 +164,7 @@ export const addMenuItem = async (prevState: any, formData: FormData) => {
 export const updateMenuItem = async (
   _id: string,
   prevState: any,
-  formData: FormData
+  formData: FormData,
 ) => {
   await connectDB();
   // Obtener y mostrar todos los datos de FormData
@@ -181,7 +219,7 @@ export const updateMenuItem = async (
         imageSrc: imageSrc,
         price: price,
       },
-      { new: true }
+      { new: true },
     );
     return {
       ...prevState,

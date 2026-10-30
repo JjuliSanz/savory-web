@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LinkIcon } from "@/assets/icons";
 
-export default function Menu({
+export default async function Menu({
   searchParams,
 }: {
   searchParams?: { category?: string; query?: string };
